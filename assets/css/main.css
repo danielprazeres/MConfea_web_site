@@ -496,7 +496,7 @@ section {
 
   .mobile-nav-show {
     position: relative;
-    color: #fff;
+    color: #1f7489;
     font-size: 28px;
     cursor: pointer;
     line-height: 0;
@@ -948,12 +948,24 @@ section {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.projects .portfolio-content .portfolio-info .preview-link,
+/* .projects .portfolio-content .portfolio-info .preview-link,
 .projects .portfolio-content .portfolio-info .details-link {
   position: absolute;
   left: calc(50% - 40px);
   font-size: 26px;
   top: calc(50% - 14px);
+  color: #fff;
+  transition: 0.3s;
+  line-height: 1.2;
+} */
+
+.projects .portfolio-content .portfolio-info .preview-link,
+.projects .portfolio-content .portfolio-info .details-link {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
   color: #fff;
   transition: 0.3s;
   line-height: 1.2;
