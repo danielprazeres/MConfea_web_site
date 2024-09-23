@@ -1,0 +1,14 @@
+{
+    "redirects": [
+      {
+        "source": "/in%C3%ADcio/nossos-links",
+        "destination": "/",
+        "permanent": true
+      },
+      {
+        "source": "/início/nossos-links",
+        "destination": "/",
+        "permanent": true
+      }
+    ]
+  }
