@@ -10,7 +10,6 @@
     "capacidade_litragem": null,
     "eficiencia_energetica": "A+++",
     "caracteristicas": ["Controle Wi-Fi", "Modo ECO", "Refrigeração R32"],
-    "preco": 1999.99,
     "disponibilidade": "Em Estoque",
     "pasta": "assets/files/products/ar-condicionado/zantia-split-austin/",
     "imagens": [
@@ -33,14 +32,63 @@
     "capacidade_litragem": null,
     "eficiencia_energetica": "A++",
     "caracteristicas": ["Refrigeração R32", "Modo Silencioso"],
-    "preco": 2499.99,
     "disponibilidade": "Sob Consulta",
     "pasta": "assets/files/products/ar-condicionado/zantia-split-havai/",
     "imagens": [
       "img/split-havai-1.png",
-      "img/split-havai-2.png"
+      "img/split-havai-2.png",
+      "img/split-havai-3.png",
+      "img/split-havai-4.png",
+      "img/split-havai-5.png",
+      "img/split-havai-6.png",
+      "img/split-havai-7.png",
+      "img/split-havai-8.png"
     ],
     "manual": "manual-split-havai.pdf",
     "ficha": "ficha-Split HAVAI.pdf"
+  },
+  {
+    "id": 3,
+    "nome": "Multiplit",
+    "categoria": "Ar Condicionado",
+    "subcategoria": "Multisplit",
+    "descricao": "Modo ECO / Controle Wi-Fi / R32",
+    "empresa": "Zantia",
+    "btu": 18000,
+    "capacidade_litragem": null,
+    "eficiencia_energetica": "A++",
+    "caracteristicas": ["Refrigeração R32", "Modo Silencioso"],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/ar-condicionado/zantia-multisplit/",
+    "imagens": [
+      "img/multisplit-1.png",
+      "img/multisplit-2.png",
+      "img/multisplit-3.png",
+      "img/multisplit-4.png"
+    ],
+    "manual": "manual-Multisplit.pdf",
+    "ficha": "ficha-Multisplit.pdf"
+  },
+  {
+    "id": 4,
+    "nome": "Multiplit V23",
+    "categoria": "Ar Condicionado",
+    "subcategoria": "Multisplit",
+    "descricao": "Modo ECO / Controle Wi-Fi / R32",
+    "empresa": "Zantia",
+    "btu": 18000,
+    "capacidade_litragem": null,
+    "eficiencia_energetica": "A++",
+    "caracteristicas": ["Refrigeração R32", "Modo Silencioso"],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/ar-condicionado/zantia-multisplit-v23/",
+    "imagens": [
+      "img/multisplit-v23-1.png",
+      "img/multisplit-v23-2.png",
+      "img/multisplit-v23-3.png",
+      "img/multisplit-v23-4.png"
+    ],
+    "manual": "manual-Multisplit-v23.pdf",
+    "ficha": "ficha-Multisplit-V23.pdf"
   }
 ]
