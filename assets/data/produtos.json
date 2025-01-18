@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "nome": "Split AUSTIN",
+    "categoria": "Ar Condicionado",
+    "subcategoria": "Split",
+    "descricao": "Classe Energética A+++ / Controle Wi-Fi / R32",
+    "empresa": "Zantia",
+    "btu": 12000,
+    "capacidade_litragem": null,
+    "eficiencia_energetica": "A+++",
+    "caracteristicas": ["Controle Wi-Fi", "Modo ECO", "Refrigeração R32"],
+    "preco": 1999.99,
+    "disponibilidade": "Em Estoque",
+    "pasta": "assets/files/products/ar-condicionado/zantia-split-austin/",
+    "imagens": [
+      "img/split-austin-1.png",
+      "img/split-austin-2.png",
+      "img/split-austin-3.png",
+      "img/split-austin-4.png"
+    ],
+    "manual": "manual-split-austin.pdf",
+    "ficha": "ficha-Split AUSTIN.pdf"
+  },
+  {
+    "id": 2,
+    "nome": "Split HAVAI",
+    "categoria": "Ar Condicionado",
+    "subcategoria": "Split",
+    "descricao": "Modo ECO / Controle Wi-Fi / R32",
+    "empresa": "Zantia",
+    "btu": 18000,
+    "capacidade_litragem": null,
+    "eficiencia_energetica": "A++",
+    "caracteristicas": ["Refrigeração R32", "Modo Silencioso"],
+    "preco": 2499.99,
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/ar-condicionado/zantia-split-havai/",
+    "imagens": [
+      "img/split-havai-1.png",
+      "img/split-havai-2.png"
+    ],
+    "manual": "manual-split-havai.pdf",
+    "ficha": "ficha-Split HAVAI.pdf"
+  }
+]
