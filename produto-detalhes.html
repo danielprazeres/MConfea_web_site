@@ -27,7 +27,7 @@
                 return;
             }
 
-            $.getJSON('produtos.json', function (produtos) {
+            $.getJSON('assets/data/produtos.json', function (produtos) {
                 const produto = produtos.find(p => p.id == produtoId);
                 if (!produto) {
                     $('#produto-container').html('<p>Produto não encontrado.</p>');
