@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Detalhes do Produto</h1>
+    </header>
+    <main>
+        <div id="produto-container">
+            <!-- Conteúdo carregado dinamicamente -->
+        </div>
+    </main>
+    <script>
+        // Carregar os dados do JSON
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const produtoId = urlParams.get('id');
+
+            if (!produtoId) {
+                $('#produto-container').html('<p>Produto não encontrado.</p>');
+                return;
+            }
+
+            $.getJSON('produtos.json', function (produtos) {
+                const produto = produtos.find(p => p.id == produtoId);
+                if (!produto) {
+                    $('#produto-container').html('<p>Produto não encontrado.</p>');
+                    return;
+                }
+
+                // Gerar o HTML do produto
+                const produtoHTML = `
+                    <div class="produto-detalhes">
+                        <div class="produto-imagens">
+                            <img src="${produto.imagem}" alt="${produto.nome}" class="principal">
+                        </div>
+                        <div class="produto-info">
+                            <h2>${produto.nome}</h2>
+                            <p>${produto.descricao}</p>
+                            <p><strong>Preço:</strong> €${produto.preco.toFixed(2)}</p>
+                            <button class="comprar-btn">Comprar</button>
+                        </div>
+                    </div>
+                `;
+
+                $('#produto-container').html(produtoHTML);
+            }).fail(function () {
+                $('#produto-container').html('<p>Erro ao carregar os dados do produto.</p>');
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .produto-detalhes {
+            display: flex;
+            flex-wrap: wrap;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .produto-imagens {
+            flex: 1 1 40%;
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .produto-imagens img.principal {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .produto-info {
+            flex: 1 1 60%;
+            padding: 20px;
+        }
+
+        .produto-info h2 {
+            margin-top: 0;
+        }
+
+        .comprar-btn {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .comprar-btn:hover {
+            background: #218838;
+        }
+    </style>
+</body>
+</html>
