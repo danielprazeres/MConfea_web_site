@@ -26,7 +26,7 @@
     "nome": "Split HAVAI",
     "categoria": "Ar Condicionado",
     "subcategoria": "Split",
-    "descricao": "Modo ECO / Controle Wi-Fi / R32",
+    "descricao": "Classe Energética A+++ / Modo ECO / Controlo Wi-Fi / R32",
     "empresa": "Zantia",
     "btu": 18000,
     "capacidade_litragem": null,
@@ -52,7 +52,7 @@
     "nome": "Multiplit",
     "categoria": "Ar Condicionado",
     "subcategoria": "Multisplit",
-    "descricao": "Modo ECO / Controle Wi-Fi / R32",
+    "descricao": "18000Btu/h a 42000Btu/h | até 5 unidades interiores | 3 tipos de unidades interiores",
     "empresa": "Zantia",
     "btu": 18000,
     "capacidade_litragem": null,
@@ -74,7 +74,7 @@
     "nome": "Multiplit V23",
     "categoria": "Ar Condicionado",
     "subcategoria": "Multisplit",
-    "descricao": "Modo ECO / Controle Wi-Fi / R32",
+    "descricao": "Combina 3 tipos de unidades interiores | Permite ligar até 5 unidades interiores | Potência: 42000Btu/h",
     "empresa": "Zantia",
     "btu": 18000,
     "capacidade_litragem": null,
@@ -90,5 +90,25 @@
     ],
     "manual": "manual-Multisplit-v23.pdf",
     "ficha": "ficha-Multisplit-V23.pdf"
+  },
+  {
+    "id": 5,
+    "nome": "REGINA MAX A+",
+    "categoria": "Bomba de calor",
+    "subcategoria": "A.Q.S.",
+    "descricao": "Prod. Acum. A.Q.S. | 150L, 200L e 300L | Sem Serp. e com 1, 2 Serp. | Aço Inoxidável",
+    "empresa": "Zantia",
+    "btu": null,
+    "capacidade_litragem": "150L, 200L e 300L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": ["Display digital touch", "Controlador integra função solar", "Condensador de alta eficiência", "Fluído frigorigéneo: R134a", "Apoio elétrico de 1,5kW", "Acumulador em aço inoxidável AISI304", "1 ou 2 Serpentina auxiliar: várias fontes de calor, tais como sistema solar, recuperador de calor, caldeira a biomassa, gasóleo ou gás", "Incluí sonda para colector solar", "Acumulador com sistema de proteção avançada anti-corrosão"],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/regina-max-a+/",
+    "imagens": [
+      "img/regina-max-a+-1.png",
+      "img/regina-max-a+-2.png"
+    ],
+    "manual": "manual-REGINA-MAX-A+.pdf",
+    "ficha": "ficha-REGINA-MAX-A+.pdf"
   }
 ]
