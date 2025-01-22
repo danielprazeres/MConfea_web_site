@@ -121,19 +121,42 @@
           }
 
           const preco = produto.preco ? `€${produto.preco.toFixed(2)}` : "Sob consulta";
+          const imagensHTML = produto.imagens.map(img => `
+            <div class="swiper-slide">
+              <img src="${produto.pasta}${img}" alt="${produto.nome}">
+            </div>
+          `).join('');
+
+          const caracteristicasHTML = produto.caracteristicas.map(carac => `
+            <li>${carac}</li>
+          `).join('');
+
           document.getElementById("produto-container").innerHTML = `
             <div class="col-lg-6">
-              <div class="product-image">
-                <img src="${produto.pasta}${produto.imagens[0]}" alt="${produto.nome}" class="img-fluid">
+              <div class="swiper product-slider">
+                <div class="swiper-wrapper">
+                  ${imagensHTML}
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="product-info">
                 <h3>${produto.nome}</h3>
                 <p>${produto.descricao}</p>
-                <a href="contact.html" class="btn btn-primary">Entrar em Contato</a>
+                <p><strong>Preço:</strong> ${preco}</p>
+                <ul>${caracteristicasHTML}</ul>
+                <a href="${produto.pasta}${produto.ficha}" class="btn btn-primary" download>Ficha Técnica</a>
+                <a href="${produto.pasta}${produto.manual}" class="btn btn-secondary" download>Manual de Instruções</a>
               </div>
             </div>`;
+          new Swiper('.product-slider', {
+            loop: true,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          });
         })
         .catch(error => {
           console.error("Erro ao carregar os detalhes do produto:", error);
