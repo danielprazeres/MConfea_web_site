@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -130,6 +130,8 @@
             <li>${carac}</li>
           `).join('');
 
+          const whatsappLink = `https://api.whatsapp.com/send?phone=351913632248&text=Olá%21+Vi+o+produto+${encodeURIComponent(produto.categoria)}+-+${encodeURIComponent(produto.nome)}+no+seu+site+e+gostaria+de+mais+informações.&type=phone_number&app_absent=0`;
+
           document.getElementById("produto-container").innerHTML = `
             <div class="col-lg-6">
               <div class="swiper product-slider">
@@ -145,9 +147,11 @@
               <div class="product-info">
                 <h3>${produto.nome}</h3>
                 <p>${produto.descricao}</p>
+                <p>${produto.detalhes}</p>
                 <ul>${caracteristicasHTML}</ul>
                 <a href="${produto.pasta}${produto.ficha}" class="btn btn-primary" download>Ficha Técnica</a>
                 <a href="${produto.pasta}${produto.manual}" class="btn btn-secondary" download>Manual de Instruções</a>
+                <a href="${whatsappLink}" class="btn btn-success" target="_blank">Contactar via WhatsApp</a>
               </div>
             </div>`;
           new Swiper('.product-slider', {
