@@ -120,7 +120,6 @@
             return;
           }
 
-          const preco = produto.preco ? `€${produto.preco.toFixed(2)}` : "Sob consulta";
           const imagensHTML = produto.imagens.map(img => `
             <div class="swiper-slide">
               <img src="${produto.pasta}${img}" alt="${produto.nome}">
@@ -146,7 +145,6 @@
               <div class="product-info">
                 <h3>${produto.nome}</h3>
                 <p>${produto.descricao}</p>
-                <p><strong>Preço:</strong> ${preco}</p>
                 <ul>${caracteristicasHTML}</ul>
                 <a href="${produto.pasta}${produto.ficha}" class="btn btn-primary" download>Ficha Técnica</a>
                 <a href="${produto.pasta}${produto.manual}" class="btn btn-secondary" download>Manual de Instruções</a>
