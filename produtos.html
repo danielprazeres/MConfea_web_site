@@ -74,8 +74,12 @@
 
       <!-- Barra de pesquisa -->
       <div class="row mb-4">
-        <div class="col-lg-12">
-          <input type="text" id="search-bar" class="form-control" placeholder="Pesquisar produtos..." oninput="searchProducts()">
+        <div class="col-lg-12 d-flex">
+          <input type="text" id="search-bar" class="form-control me-2" placeholder="Pesquisar produtos..." onkeypress="handleKeyPress(event)">
+          <button class="btn btn-primary" onclick="searchProducts()">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn btn-secondary ms-2" onclick="clearSearch()">Limpar</button>
         </div>
       </div>
 
@@ -133,13 +137,15 @@
     const itemsPerPage = 9; // Produtos por página
     let currentPage = 1;
     let allProducts = [];
+    let originalProducts = [];
 
-    // Função para carregar os produtos
+    // Carrega os produtos
     function loadProducts() {
       fetch("assets/data/produtos.json")
         .then(response => response.json())
         .then(produtos => {
           allProducts = produtos;
+          originalProducts = [...produtos];
           renderProducts();
           renderPagination();
         })
@@ -194,17 +200,35 @@
       renderPagination();
     }
 
-    // Função de busca
+    // Função de busca acionada pelo botão ou Enter
     function searchProducts() {
       const query = document.getElementById('search-bar').value.toLowerCase();
-      const filteredProducts = allProducts.filter(produto => 
+      if (query.trim() === '') return;
+      const filteredProducts = originalProducts.filter(produto =>
         produto.nome.toLowerCase().includes(query) ||
         produto.descricao.toLowerCase().includes(query)
       );
-      currentPage = 1;
       allProducts = filteredProducts;
+      currentPage = 1;
       renderProducts();
       renderPagination();
+    }
+
+    // Limpa a pesquisa e restaura os produtos
+    function clearSearch() {
+      document.getElementById('search-bar').value = '';
+      allProducts = [...originalProducts];
+      currentPage = 1;
+      renderProducts();
+      renderPagination();
+    }
+
+    // Dispara a pesquisa ao pressionar Enter
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        searchProducts();
+      }
     }
 
     document.addEventListener("DOMContentLoaded", loadProducts);
