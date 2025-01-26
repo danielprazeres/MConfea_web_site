@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -72,8 +72,26 @@
         <p>Explore nossas soluções de climatização, automação e energia sustentável.</p>
       </div>
 
+      <!-- Barra de pesquisa -->
+      <div class="row mb-4">
+        <div class="col-lg-12">
+          <input type="text" id="search-bar" class="form-control" placeholder="Pesquisar produtos..." oninput="searchProducts()">
+        </div>
+      </div>
+
       <div class="row gy-4" id="product-list">
         <!-- Os produtos serão carregados aqui dinamicamente -->
+      </div>
+
+      <!-- Paginação -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <nav>
+            <ul class="pagination" id="pagination">
+              <!-- Links de paginação serão inseridos dinamicamente -->
+            </ul>
+          </nav>
+        </div>
       </div>
 
     </div>
@@ -112,30 +130,84 @@
 
   <!-- Script para carregar produtos dinamicamente -->
   <script>
-    // Carrega os produtos do arquivo JSON
-    fetch("assets/data/produtos.json")
-      .then(response => response.json())
-      .then(produtos => {
-        const productList = document.getElementById('product-list');
+    const itemsPerPage = 9; // Produtos por página
+    let currentPage = 1;
+    let allProducts = [];
 
-        produtos.forEach(produto => {
-          // Cria o elemento HTML para cada produto
-          const productItem = document.createElement('div');
-          productItem.className = 'col-lg-4 col-md-6';
-          productItem.innerHTML = `
-            <div class="card h-100">
-              <img src="${produto.pasta}${produto.imagens[0]}" class="card-img-top" alt="${produto.nome}">
-              <div class="card-body">
-                <h5 class="card-title">${produto.nome}</h5>
-                <p class="card-text">${produto.descricao}</p>
-                <a href="produto-detalhes.html?id=${produto.id}" class="btn btn-primary">Saber Mais</a>
-              </div>
+    // Função para carregar os produtos
+    function loadProducts() {
+      fetch("assets/data/produtos.json")
+        .then(response => response.json())
+        .then(produtos => {
+          allProducts = produtos;
+          renderProducts();
+          renderPagination();
+        })
+        .catch(error => console.error("Erro ao carregar produtos:", error));
+    }
+
+    // Renderiza os produtos com base na página atual
+    function renderProducts() {
+      const productList = document.getElementById('product-list');
+      productList.innerHTML = '';
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const productsToShow = allProducts.slice(startIndex, endIndex);
+
+      productsToShow.forEach(produto => {
+        const productItem = document.createElement('div');
+        productItem.className = 'col-lg-4 col-md-6';
+        productItem.innerHTML = `
+          <div class="card h-100">
+            <img src="${produto.pasta}${produto.imagens[0]}" class="card-img-top" alt="${produto.nome}">
+            <div class="card-body">
+              <h5 class="card-title">${produto.nome}</h5>
+              <p class="card-text">${produto.descricao}</p>
+              <a href="produto-detalhes.html?id=${produto.id}" class="btn btn-primary">Saber Mais</a>
             </div>
-          `;
-          productList.appendChild(productItem);
-        });
-      })
-      .catch(error => console.error("Erro ao carregar produtos:", error));
+          </div>
+        `;
+        productList.appendChild(productItem);
+      });
+    }
+
+    // Renderiza os links de paginação
+    function renderPagination() {
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+
+      const totalPages = Math.ceil(allProducts.length / itemsPerPage);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageItem = document.createElement('li');
+        pageItem.className = 'page-item ' + (i === currentPage ? 'active' : '');
+        pageItem.innerHTML = `<a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>`;
+        pagination.appendChild(pageItem);
+      }
+    }
+
+    // Função para mudar de página
+    function goToPage(pageNumber) {
+      currentPage = pageNumber;
+      renderProducts();
+      renderPagination();
+    }
+
+    // Função de busca
+    function searchProducts() {
+      const query = document.getElementById('search-bar').value.toLowerCase();
+      const filteredProducts = allProducts.filter(produto => 
+        produto.nome.toLowerCase().includes(query) ||
+        produto.descricao.toLowerCase().includes(query)
+      );
+      currentPage = 1;
+      allProducts = filteredProducts;
+      renderProducts();
+      renderPagination();
+    }
+
+    document.addEventListener("DOMContentLoaded", loadProducts);
   </script>
 
 </body>
