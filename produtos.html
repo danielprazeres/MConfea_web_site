@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -75,7 +75,7 @@
       <!-- Barra de pesquisa -->
       <div class="row mb-4">
         <div class="col-lg-12 d-flex">
-          <input type="text" id="search-bar" class="form-control me-2" placeholder="Pesquisar produtos..." onkeypress="handleKeyPress(event)">
+          <input type="text" id="search-bar" class="form-control me-2" placeholder="Pesquisar produtos por nome, categoria ou descrição..." onkeypress="handleKeyPress(event)">
           <button class="btn btn-primary" onclick="searchProducts()">
             <i class="bi bi-search"></i>
           </button>
@@ -170,6 +170,7 @@
             <div class="card-body">
               <h5 class="card-title">${produto.nome}</h5>
               <p class="card-text">${produto.descricao}</p>
+              <p class="text-muted"><small>${produto.categoria} > ${produto.subcategoria}</small></p>
               <a href="produto-detalhes.html?id=${produto.id}" class="btn btn-primary">Saber Mais</a>
             </div>
           </div>
@@ -206,7 +207,9 @@
       if (query.trim() === '') return;
       const filteredProducts = originalProducts.filter(produto =>
         produto.nome.toLowerCase().includes(query) ||
-        produto.descricao.toLowerCase().includes(query)
+        produto.descricao.toLowerCase().includes(query) ||
+        produto.categoria.toLowerCase().includes(query) ||
+        produto.subcategoria.toLowerCase().includes(query)
       );
       allProducts = filteredProducts;
       currentPage = 1;
