@@ -203,8 +203,8 @@
 
     // Função de busca acionada pelo botão ou Enter
     function searchProducts() {
-      const query = document.getElementById('search-bar').value.toLowerCase();
-      if (query.trim() === '') return;
+      const query = document.getElementById('search-bar').value.toLowerCase().trim(); // Adicionado .trim()
+      if (query === '') return;
       const filteredProducts = originalProducts.filter(produto =>
         produto.nome.toLowerCase().includes(query) ||
         produto.descricao.toLowerCase().includes(query) ||
