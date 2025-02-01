@@ -1,0 +1,30 @@
+.pagination {
+  display: flex; /* Garante que os itens da paginação fiquem em linha */
+  justify-content: center; /* Centraliza os itens da paginação */
+  margin: 1.5rem auto; /* Adiciona espaçamento acima e centraliza horizontalmente */
+}
+
+.pagination li {
+  margin: 0 10px; /* Espaçamento entre os itens da paginação */
+  list-style: none; /* Remove o marcador de lista */
+}
+
+.pagination li a {
+  text-decoration: none; /* Remove o sublinhado do link */
+  padding: 10px 15px; /* Adiciona espaçamento interno */
+  border: 1px solid #ccc; /* Borda para cada link */
+  border-radius: 5px; /* Bordas arredondadas */
+  color: var(--color-default); /* Cor do texto */
+  transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+.pagination li a:hover {
+  background-color: var(--color-primary); /* Fundo ao passar o mouse */
+  color: #fff; /* Cor do texto ao passar o mouse */
+}
+
+.pagination .active a {
+  background-color: var(--color-primary); /* Fundo do item ativo */
+  color: #fff; /* Cor do texto no item ativo */
+  font-weight: bold; /* Texto em negrito */
+}
