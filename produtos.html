@@ -140,6 +140,8 @@
     let currentPage = 1;
     let allProducts = [];
     let originalProducts = [];
+    let filteredProducts = []; // Nova variável para armazenar produtos filtrados
+    let isSearching = false; // Indica se estamos realizando uma busca
 
     // Carrega os produtos
     function loadProducts() {
@@ -148,6 +150,7 @@
         .then(produtos => {
           allProducts = produtos;
           originalProducts = [...produtos];
+          filteredProducts = [...produtos]; // Inicialmente, a lista filtrada é igual à original
           renderProducts();
           renderPagination();
         })
@@ -159,9 +162,12 @@
       const productList = document.getElementById('product-list');
       productList.innerHTML = '';
 
+      // Define a lista de produtos com base na busca ou exibição padrão
+      const productsToDisplay = isSearching ? filteredProducts : originalProducts;
+
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const productsToShow = allProducts.slice(startIndex, endIndex);
+      const productsToShow = productsToDisplay.slice(startIndex, endIndex);
 
       productsToShow.forEach(produto => {
         const productItem = document.createElement('div');
@@ -186,7 +192,9 @@
       const pagination = document.getElementById('pagination');
       pagination.innerHTML = '';
 
-      const totalPages = Math.ceil(allProducts.length / itemsPerPage);
+      // Define a lista correta para paginação (produtos filtrados ou todos)
+      const productsToPaginate = isSearching ? filteredProducts : originalProducts;
+      const totalPages = Math.ceil(productsToPaginate.length / itemsPerPage);
 
       for (let i = 1; i <= totalPages; i++) {
         const pageItem = document.createElement('li');
@@ -205,16 +213,24 @@
 
     // Função de busca acionada pelo botão ou Enter
     function searchProducts() {
-      const query = document.getElementById('search-bar').value.toLowerCase().trim(); // Adicionado .trim()
-      if (query === '') return;
-      const filteredProducts = originalProducts.filter(produto =>
+      const query = document.getElementById('search-bar').value.toLowerCase().trim();
+      
+      if (query === '') {
+        clearSearch(); // Se a pesquisa estiver vazia, volta para a exibição normal
+        return;
+      }
+
+      isSearching = true; // Indica que a pesquisa está ativa
+
+      // Filtra os produtos com base na pesquisa
+      filteredProducts = originalProducts.filter(produto =>
         produto.nome.toLowerCase().includes(query) ||
         produto.descricao.toLowerCase().includes(query) ||
         produto.categoria.toLowerCase().includes(query) ||
         produto.subcategoria.toLowerCase().includes(query)
       );
-      allProducts = filteredProducts;
-      currentPage = 1;
+
+      currentPage = 1; // Sempre volta para a primeira página ao buscar
       renderProducts();
       renderPagination();
     }
@@ -222,7 +238,8 @@
     // Limpa a pesquisa e restaura os produtos
     function clearSearch() {
       document.getElementById('search-bar').value = '';
-      allProducts = [...originalProducts];
+      isSearching = false; // Indica que a pesquisa não está mais ativa
+      filteredProducts = [...originalProducts]; // Restaura a lista original
       currentPage = 1;
       renderProducts();
       renderPagination();
