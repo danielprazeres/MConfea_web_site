@@ -325,5 +325,37 @@
     ],
     "manual": "manual-ficha-REGINA-SMART-500-A.pdf",
     "ficha": "ficha-REGINA-SMART-500-A.pdf"
+  },
+  {
+    "id": 10,
+    "nome": "ALYS 32",
+    "categoria": "Ar Condicionado",
+    "subcategoria": "Split",
+    "descricao": "12 velocidades | Eficiência energética | Funções",
+    "detalhes": "Explore os sistemas ar condicionado e descubra uma experiência de climatização completa. Para além de arrefecer o ambiente, esses sistemas equilibram habilmente a temperatura, oferecem aquecimento quando necessário, controlam a humidade e garantem a pureza do ar. Desfrute de um conforto personalizado em todos os momentos com o nosso ar condicionado Mono Split  inverter",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "200L",
+    "eficiencia_energetica": "A+++",
+    "caracteristicas": [
+    "Gás refrigerante R32",
+    "Classe energética até A+++*",
+    "Tecnologia 2D INVERTER *",
+    "Ventilador de 12 velocidades",
+    "Funções Follow-Me, Memory, BOOSTER, autolimpeza, desumidificação, etc.",
+    "Rácio de trabalho desde -15ºC a +50ºC",
+    "Sensor de perda de gás refrigerante",
+    "Tratamento Golden-Fin, alta-durabilidade e eficiência nos ambientes mais agressivos",
+    "Controlo Wi-Fi com ARISTON CLIMA R32 opcional"],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/ar-condicionado/ariston-alys-32/",
+    "imagens": [
+      "img/alys-32-1.png",
+      "img/alys-32-2.png",
+      "img/alys-32-3.png",
+      "img/alys-32-4.png"
+    ],
+    "manual": "manual-alys-32.pdf",
+    "ficha": "ficha-alys-32.pdf"
   }
 ]
