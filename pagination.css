@@ -28,3 +28,10 @@
   color: #fff; /* Cor do texto no item ativo */
   font-weight: bold; /* Texto em negrito */
 }
+
+.card-img-top {
+  width: 100%; /* Assegura que a largura da imagem preencha o espaço do card */
+  height: 200px; /* Define uma altura fixa para manter a consistência */
+  object-fit: cover; /* Corta a imagem proporcionalmente */
+  object-position: center; /* Centraliza a imagem no caso de cortes */
+}
