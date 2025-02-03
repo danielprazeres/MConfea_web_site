@@ -358,33 +358,31 @@
     "manual": "manual-alys-32.pdf",
     "ficha": "ficha-alys-32.pdf"
   },
-  [
-    {
-      "id": 11,
-      "nome": "NUOS PLUS S2 WIFI",
-      "categoria": "Bombas de Calor",
-      "subcategoria": "Para Água Quente",
-      "descricao": "A nova bomba de calor para água quente da Ariston que revoluciona a sustentabilidade.",
-      "detalhes": "É líder em aquecimento rápido (aproximadamente 3h35min). Graças ao seu refrigerante natural R290 e ao seu baixo potencial de aquecimento atmosférico (PCA=3), esta bomba de calor está na vanguarda da tecnologia verde. Com classe energética A+* e o COP máximo na sua categoria, a NUOS PLUS S2 WI-FI é a opção mais sustentável e responsável para quem procura poupar energia sem renunciar ao conforto.",
-      "empresa": "Ariston",
-      "btu": null,
-      "capacidade_litragem": "A PREENCHER",
-      "eficiencia_energetica": "A+",
-      "caracteristicas": [
-        "Alta eficiência",
-        "Super silencioso",
-        "Conectividade Wi-Fi"
-      ],
-      "disponibilidade": "Sob Consulta",
-      "pasta": "assets/files/products/bomba-de-calor/ariston-nuos-plus-s2-wifi/",
-      "imagens": [
-        "img/nuos-plus-s2-wifi-1.png",
-        "img/nuos-plus-s2-wifi-2.png",
-        "img/nuos-plus-s2-wifi-3.png",
-        "img/nuos-plus-s2-wifi-4.png"
-      ],
-      "manual": "manual-nuos-plus-s2-wifi.pdf",
-      "ficha": "ficha-nuos-plus-s2-wifi.pdf"
-    }
-  ]
+  {
+    "id": 11,
+    "nome": "NUOS PLUS S2 WIFI",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "Para Água Quente",
+    "descricao": "A nova bomba de calor para água quente da Ariston que revoluciona a sustentabilidade.",
+    "detalhes": "É líder em aquecimento rápido (aproximadamente 3h35min). Graças ao seu refrigerante natural R290 e ao seu baixo potencial de aquecimento atmosférico (PCA=3), esta bomba de calor está na vanguarda da tecnologia verde. Com classe energética A+* e o COP máximo na sua categoria, a NUOS PLUS S2 WI-FI é a opção mais sustentável e responsável para quem procura poupar energia sem renunciar ao conforto.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "A PREENCHER",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Alta eficiência",
+      "Super silencioso",
+      "Conectividade Wi-Fi"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/ariston-nuos-plus-s2-wifi/",
+    "imagens": [
+      "img/nuos-plus-s2-wifi-1.png",
+      "img/nuos-plus-s2-wifi-2.png",
+      "img/nuos-plus-s2-wifi-3.png",
+      "img/nuos-plus-s2-wifi-4.png"
+    ],
+    "manual": "manual-nuos-plus-s2-wifi.pdf",
+    "ficha": "ficha-nuos-plus-s2-wifi.pdf"
+  }
 ]
