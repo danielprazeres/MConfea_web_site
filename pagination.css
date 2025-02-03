@@ -29,9 +29,28 @@
   font-weight: bold; /* Texto em negrito */
 }
 
+.card {
+  height: 400px; /* Altura fixa para uniformizar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .card-img-top {
-  width: 100%; /* Assegura que a largura da imagem preencha o espaço do card */
-  height: 200px; /* Define uma altura fixa para manter a consistência */
+  width: 100%; /* Preenche a largura do card */
+  height: 200px; /* Altura fixa para as imagens */
   object-fit: cover; /* Corta a imagem proporcionalmente */
-  object-position: center; /* Centraliza a imagem no caso de cortes */
+  object-position: center; /* Centraliza o conteúdo visível */
+}
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Mostra no máximo 3 linhas */
+  -webkit-box-orient: vertical;
+}
+
+.col-lg-4 {
+  max-width: 33.333%; /* Tamanho uniforme para cada card */
 }
