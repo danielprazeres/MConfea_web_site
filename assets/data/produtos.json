@@ -384,5 +384,115 @@
     ],
     "manual": "manual-nuos-plus-s2-wifi.pdf",
     "ficha": "ficha-nuos-plus-s2-wifi.pdf"
+  },
+  {
+    "id": 12,
+    "nome": "NUOS PLUS WIFI",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "Para Água Quente",
+    "descricao": "A nova bomba de calor para água quente da Ariston que revoluciona a sustentabilidade.",
+    "detalhes": "NUOS PLUS WIFI a nova bomba de calor monobloco de grande capacidade, equipada com uma série de inovações tecnológicas que maximizam a eficiência energética, reduzindo o tempo de aquecimento da água e ao mesmo tempo o nível de ruído. Possui conectividade de serie através da app Ariston Net que fornece ao utilizador relatórios de consumo, conselhos de poupança controlo absoluto sobre o produto (pode selecionar: funções, alterar a temperatura, programação horária e muito mais)",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "200L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Melhor desempenho da categoria (COP 3,35)",
+      "Poupança de energia de 80% em comparação com termo elétrico tradicional",
+      "Máximo conforto com aquecimento rápido",
+      "Funcionamento super silencioso (52dB(A))",
+      "Compatível com caldeiras a gás e placas solares",
+      "Conectividade Wi-Fi integrada via App Aqua Ariston Net"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/ariston-nuos-plus-wifi/",
+    "imagens": [
+      "img/nuos-plus-wifi-1.png",
+      "img/nuos-plus-wifi-2.png",
+      "img/nuos-plus-wifi-3.png"    ],
+    "manual": "manual-nuos-plus-wifi.pdf",
+    "ficha": "ficha-nuos-plus-wifi.pdf"
+  },
+  {
+    "id": 13,
+    "nome": "NUOS PRIMO HC A+",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "Para Água Quente",
+    "descricao": "A nova bomba de calor para água quente da Ariston que revoluciona a sustentabilidade.",
+    "detalhes": "Bomba de calor compacta de chão. Novos padrões de eficiência ao utilizar o calor do ar como fonte de energia renovável para o máximo conforto e alta economia de energia. NUOS PLUS WIFI a nova bomba de calor monobloco de grande capacidade, equipada com uma série de inovações tecnológicas que maximizam a eficiência energética, reduzindo o tempo de aquecimento da água e ao mesmo tempo o nível de ruído. Possui conectividade de série através da app Ariston Net que fornece ao utilizador relatórios de consumo, conselhos de poupança e controlo absoluto sobre o produto (pode selecionar: funções, alterar a temperatura, programação horária e muito mais).",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "200L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Ideal para famílias de 3-5 pessoas",
+      "Poupança de energia de até 70% comparado a um termoacumulador elétrico",
+      "Proteção contra corrosão e calcário com ânodo de titânio",
+      "Classificação energética A+*"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/ariston-nuos-primo-hc-a+/",
+    "imagens": [
+      "img/nuos-primo-hc-a+-1.png"],
+    "manual": "manual-ariston-nuos-primo-hc-a+.pdf",
+    "ficha": "ficha-ariston-nuos-primo-hc-a+.pdf"
+  },
+  {
+    "id": 13,
+    "nome": "NUOS SPLIT INVERTER WIFI WH 120-150-200",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "Para Água Quente",
+    "descricao": "A nova bomba de calor para água quente da Ariston que revoluciona a sustentabilidade.",
+    "detalhes": "A gama de NUOS SPLIT INVERTER WH dispõe de uma tecnologia Inverter, conectividade Wi-Fi integrada, ausência total de ruído dentro da casa e economia de espaço. Disponível nas capacidades de 150 e 200L.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "200L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Grande quantidade de água sempre disponível",
+      "Tecnologia inverter e conectividade Wi-Fi integrada",
+      "Poupança de energia de 70% em comparação com um termoacumulador elétrico",
+      "Ausência de ruído no interior da habitação",
+      "Grande flexibilidade de instalação",
+      "Baixo impacto visual nas ligações hidráulicas",
+      "Novo modelo disponível de 120L"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/ariston-nuos-split-inverter-wifi-wh/",
+    "imagens": [
+      "img/nuos-split-inverter-wifi-wh-1.png",
+      "img/nuos-split-inverter-wifi-wh-2.png"
+    ],
+    "manual": "manual-nuos-split-inverter-wifi-wh.pdf",
+    "ficha": "ficha-nuos-split-inverter-wifi-wh.pdf"
+  },
+  {
+    "id": 14,
+    "nome": "NUOS SPLIT INVERTER WIFI FS 270",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "Para Água Quente",
+    "descricao": "A nova bomba de calor para água quente da Ariston que revoluciona a sustentabilidade.",
+    "detalhes": "A gama de NUOS SPLIT INVERTER WH dispõe de uma tecnologia Inverter, conectividade Wi-Fi integrada, ausência total de ruído dentro da casa e economia de espaço. Disponível nas capacidades de 150 e 200L.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "200L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Grande quantidade de água sempre disponível",
+      "Tecnologia inverter e conectividade Wi-Fi integrada",
+      "Poupança de energia de 70% em comparação com um termoacumulador elétrico",
+      "Ausência de ruído no interior da habitação",
+      "Grande flexibilidade de instalação",
+      "Baixo impacto visual nas ligações hidráulicas",
+      "Novo modelo disponível de 120L"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/ariston-nuos-split-inverter-wifi-fs-270/",
+    "imagens": [
+      "img/nuos-split-inverter-wifi-fs-270-1.png",
+      "img/nuos-split-inverter-wifi-fs-270-2.png"
+    ],
+    "manual": "manual-nuos-split-inverter-wifi-fs-270.pdf",
+    "ficha": "ficha-nuos-split-inverter-wifi-fs-270.pdf"
   }
 ]
