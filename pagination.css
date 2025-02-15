@@ -29,12 +29,8 @@
   font-weight: bold; /* Texto em negrito */
 }
 
-.card-img-top {
-  width: 100%; /* Garante que a imagem ocupe toda a largura disponível */
-  height: 250px; /* Altura fixa para todas as imagens */
-  object-fit: contain; /* Mantém a proporção original sem cortar */
-  object-position: center; /* Centraliza a imagem */
-  background-color: #f8f9fa; /* Fundo cinza claro para imagens menores */
-  padding: 10px; /* Evita que imagens menores fiquem muito pequenas */
-  border-radius: 5px; /* Mantém o design uniforme */
+#product-list .card-img-top {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: contain !important;
 }
