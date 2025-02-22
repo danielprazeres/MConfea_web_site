@@ -136,7 +136,11 @@
             <div class="col-lg-6">
               <div class="swiper product-slider">
                 <div class="swiper-wrapper">
-                  ${imagensHTML}
+                  ${produto.imagens.map(img => `
+                    <div class="swiper-slide">
+                      <img src="${produto.pasta}${img}" alt="${produto.nome}" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                    </div>
+                  `).join('')}
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
