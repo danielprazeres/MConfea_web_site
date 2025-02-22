@@ -34,3 +34,28 @@
   height: 250px !important;
   object-fit: contain !important;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px; /* Ajuste conforme necessário */
+  object-fit: contain; /* Mantém a proporção da imagem sem cortar */
+  padding: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card .btn {
+  margin-top: auto;
+}
