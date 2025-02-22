@@ -32,6 +32,47 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/pagination.css" rel="stylesheet">
 
+  <style>
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+    }
+  
+    .card-img-top {
+      width: 100%;
+      height: 250px; /* Ajuste conforme necessário */
+      object-fit: contain; /* Garante que a imagem se ajuste sem distorcer */
+      padding: 10px;
+    }
+  
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  
+    .card .btn {
+      margin-top: auto;
+    }
+  
+    /* Para garantir que os cards tenham a mesma altura */
+    .card.h-100 {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
+
 </head>
 
 <body>
