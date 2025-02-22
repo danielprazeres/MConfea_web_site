@@ -527,5 +527,39 @@
     ],
     "manual": "manual-lydos-hybrid-wifi.pdf",
     "ficha": "ficha-lydos-hybrid-wifi.pdf"
-  }
+  },
+  {
+    "id": 16,
+    "nome": "VELIS PRO",
+    "categoria": "Termo Elétrico",
+    "subcategoria": "Para Água Quente",
+    "descricao": "O termoacumulador elétrico superfino e flexível, projetado para oferecer o primeiro duche em metade do tempo.",
+    "detalhes": "Descubra o futuro do conforto com VELIS PRO, termoacumulador elétrico superfino. Simples de instalar e incrivelmente flexível, foi projetado para oferecer o primeiro duche em metade do tempo. Transforme sua rotina diária numa experiência de bem-estar com nossa tecnologia avançada.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "50L, 80L, 100L",
+    "eficiencia_energetica": "B",
+    "caracteristicas": [
+        "Depósito de aço vitrificado em titânio",
+        "Amplo e intuitivo display frontal LCD tátil",
+        "Mais água quente disponível graças ao duplo depósito",
+        "Maior rapidez em aquecer a água graças a duas resistências",
+        "Dupla resistência blindada",
+        "Ânodo de magnésio",
+        "Design plano, apenas 27 cm de profundidade",
+        "Multiposição: Instalação tanto em vertical como em horizontal",
+        "Válvula de segurança a 8 bar",
+        "Função ECO EVO"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/termo-eletrico/ariston-velis-pro/",
+    "imagens": [
+        "img/velis-pro-1.png",
+        "img/velis-pro-2.png",
+        "img/velis-pro-3.png",
+        "img/velis-pro-4.png"
+    ],
+    "manual": "",
+    "ficha": ""
+}
 ]
