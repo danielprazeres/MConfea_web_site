@@ -149,8 +149,8 @@
                 <p>${produto.descricao}</p>
                 <p>${produto.detalhes}</p>
                 <ul>${caracteristicasHTML}</ul>
-                <a href="${produto.pasta}${produto.ficha}" class="btn btn-primary" download>Ficha Técnica</a>
-                <a href="${produto.pasta}${produto.manual}" class="btn btn-secondary" download>Manual de Instruções</a>
+                ${produto.ficha ? `<a href="${produto.pasta}${produto.ficha}" class="btn btn-primary" download>Ficha Técnica</a>` : ''}
+                ${produto.manual ? `<a href="${produto.pasta}${produto.manual}" class="btn btn-secondary" download>Manual de Instruções</a>` : ''}
                 <a href="${whatsappLink}" class="btn btn-success" target="_blank">Contactar via WhatsApp</a>
               </div>
             </div>`;
