@@ -494,5 +494,38 @@
     ],
     "manual": "manual-nuos-split-inverter-wifi-fs-270.pdf",
     "ficha": "ficha-nuos-split-inverter-wifi-fs-270.pdf"
+  },
+  {
+    "id": 15,
+    "nome": "LYDOS HYBRID WIFI",
+    "categoria": "Termos Híbridos",
+    "subcategoria": "Para Água Quente",
+    "descricao": "O primeiro termoacumulador híbrido do mercado que combina de maneira eficiente a energia elétrica e a bomba de calor.",
+    "detalhes": "LYDOS HYBRID WIFI combina uma inteligência híbrida exclusiva para otimizar o consumo de energia. Ele permite uma economia de até 50% em comparação a um termoacumulador elétrico de classe B. O dispositivo conta com conectividade Wi-Fi para controle remoto via aplicativo Ariston Net, possibilitando funções como programação horária, ajuste de temperatura e seleção de modos de operação.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "80L, 100L",
+    "eficiencia_energetica": "A",
+    "caracteristicas": [
+        "Instalação vertical",
+        "Função i-Memory",
+        "Programação semanal",
+        "Controle eletrônico",
+        "Alta eficiência energética",
+        "Conectividade Wi-Fi integrada",
+        "Modo de economia de energia",
+        "Sistema anti-legionela",
+        "Revestimento de titânio",
+        "Compatível com energia solar",
+        "Depósito de condensados opcional",
+        "Fácil instalação"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/termo-hibrido/ariston-lydos-hybrid-wifi/",
+    "imagens": [
+        "img/lydos-hybrid-wifi-1.png"
+    ],
+    "manual": "manual-lydos-hybrid-wifi.pdf",
+    "ficha": "ficha-lydos-hybrid-wifi.pdf"
   }
 ]
