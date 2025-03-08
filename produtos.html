@@ -271,6 +271,7 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Script para carregar produtos dinamicamente -->
+  <!-- Script para carregar produtos dinamicamente -->
   <script>
     const itemsPerPage = 9; // Produtos por página
     let currentPage = 1;
@@ -376,31 +377,102 @@
       });
     }
     
-    // Atualiza a lista de subcategorias com base na categoria selecionada
-    function updateSubcategoriesBasedOnCategory() {
+    // Atualiza as categorias com base na empresa selecionada
+    function updateCategoriesBasedOnCompany() {
+      const empresaSelect = document.getElementById('empresa-filter');
       const categoriaSelect = document.getElementById('categoria-filter');
       const subcategoriaSelect = document.getElementById('subcategoria-filter');
-      const selectedCategory = categoriaSelect.value;
+      const selectedEmpresa = empresaSelect.value;
+      
+      // Reseta subcategorias
+      while (subcategoriaSelect.options.length > 1) {
+        subcategoriaSelect.remove(1);
+      }
+      subcategoriaSelect.value = '';
+      
+      // Limpa as opções de categorias (mantendo a primeira opção)
+      while (categoriaSelect.options.length > 1) {
+        categoriaSelect.remove(1);
+      }
+      categoriaSelect.value = '';
+      
+      if (selectedEmpresa === '') {
+        // Se nenhuma empresa for selecionada, mostra todas as categorias
+        categorias.forEach(categoria => {
+          const option = document.createElement('option');
+          option.value = categoria;
+          option.textContent = categoria;
+          categoriaSelect.appendChild(option);
+        });
+      } else {
+        // Se uma empresa for selecionada, mostra apenas as categorias relacionadas
+        const relatedCategories = new Set();
+        
+        allProducts.forEach(produto => {
+          if (produto.empresa === selectedEmpresa && produto.categoria) {
+            relatedCategories.add(produto.categoria);
+          }
+        });
+        
+        Array.from(relatedCategories).sort().forEach(categoria => {
+          const option = document.createElement('option');
+          option.value = categoria;
+          option.textContent = categoria;
+          categoriaSelect.appendChild(option);
+        });
+      }
+    }
+    
+    // Atualiza as subcategorias com base na empresa e categoria selecionadas
+    function updateSubcategoriesBasedOnCategory() {
+      const empresaSelect = document.getElementById('empresa-filter');
+      const categoriaSelect = document.getElementById('categoria-filter');
+      const subcategoriaSelect = document.getElementById('subcategoria-filter');
+      const selectedEmpresa = empresaSelect.value;
+      const selectedCategoria = categoriaSelect.value;
       
       // Limpa as opções existentes (mantendo a primeira opção)
       while (subcategoriaSelect.options.length > 1) {
         subcategoriaSelect.remove(1);
       }
+      subcategoriaSelect.value = '';
       
-      if (selectedCategory === '') {
-        // Se nenhuma categoria for selecionada, mostra todas as subcategorias
-        subcategorias.forEach(subcategoria => {
-          const option = document.createElement('option');
-          option.value = subcategoria;
-          option.textContent = subcategoria;
-          subcategoriaSelect.appendChild(option);
-        });
+      if (selectedCategoria === '') {
+        // Se nenhuma categoria for selecionada, verifica se há empresa selecionada
+        if (selectedEmpresa === '') {
+          // Se nem empresa nem categoria forem selecionadas, mostra todas as subcategorias
+          subcategorias.forEach(subcategoria => {
+            const option = document.createElement('option');
+            option.value = subcategoria;
+            option.textContent = subcategoria;
+            subcategoriaSelect.appendChild(option);
+          });
+        } else {
+          // Se apenas empresa for selecionada, mostra subcategorias dessa empresa
+          const relatedSubcategories = new Set();
+          
+          allProducts.forEach(produto => {
+            if (produto.empresa === selectedEmpresa && produto.subcategoria) {
+              relatedSubcategories.add(produto.subcategoria);
+            }
+          });
+          
+          Array.from(relatedSubcategories).sort().forEach(subcategoria => {
+            const option = document.createElement('option');
+            option.value = subcategoria;
+            option.textContent = subcategoria;
+            subcategoriaSelect.appendChild(option);
+          });
+        }
       } else {
-        // Se uma categoria for selecionada, mostra apenas as subcategorias relacionadas
+        // Se categoria for selecionada, filtra por empresa (se houver) e categoria
         const relatedSubcategories = new Set();
         
         allProducts.forEach(produto => {
-          if (produto.categoria === selectedCategory && produto.subcategoria) {
+          const matchEmpresa = selectedEmpresa === '' || produto.empresa === selectedEmpresa;
+          const matchCategoria = produto.categoria === selectedCategoria;
+          
+          if (matchEmpresa && matchCategoria && produto.subcategoria) {
             relatedSubcategories.add(produto.subcategoria);
           }
         });
@@ -529,6 +601,11 @@
           updateSubcategoriesBasedOnCategory();
         }
         
+        // Se for o filtro de empresa, atualiza categorias e subcategorias
+        if (filterType === 'empresa') {
+          updateCategoriesBasedOnCompany();
+        }
+        
         // Reaplica os filtros
         applyFilters();
       });
@@ -550,8 +627,8 @@
       
       isFiltering = false;
       
-      // Atualiza subcategorias
-      updateSubcategoriesBasedOnCategory();
+      // Reinstancia todos os filtros
+      populateFilterDropdowns();
       
       // Limpa a exibição de filtros ativos
       document.getElementById('active-filters').innerHTML = '';
@@ -707,11 +784,12 @@
       }
     }
 
-    // Adiciona listeners de eventos para os filtros de categoria
+    // Adiciona listeners de eventos para os filtros
     document.addEventListener("DOMContentLoaded", function() {
       loadProducts();
       
-      // Adiciona event listener para atualizar subcategorias quando a categoria mudar
+      // Adiciona event listeners para os selects de filtros
+      document.getElementById('empresa-filter').addEventListener('change', updateCategoriesBasedOnCompany);
       document.getElementById('categoria-filter').addEventListener('change', updateSubcategoriesBasedOnCategory);
     });
   </script>
