@@ -40,23 +40,82 @@
       text-align: center;
       height: 100%;
     }
-
+  
     .card-img-top {
       width: 100%;
-      height: 250px;
-      object-fit: contain;
+      height: 250px; /* Ajuste conforme necessário */
+      object-fit: contain; /* Garante que a imagem se ajuste sem distorcer */
       padding: 10px;
     }
-
+  
     .card-body {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+    }
+  
+    .card .btn {
+      margin-top: auto;
+    }
+  
+    /* Para garantir que os cards tenham a mesma altura */
+    .card.h-100 {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
     }
 
-    .card.h-100 {
-      height: 100%;
+    /* Estilo dos filtros */
+    .filters-container {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .filter-dropdown {
+      margin-bottom: 10px;
+    }
+
+    .filter-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    /* Estilo para o botão de filtro principal */
+    .filter-btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #0b2341;
+      border-color: #0b2341;
+    }
+    
+    .filter-btn:hover {
+      background-color: #0e3266;
+      border-color: #0e3266;
+    }
+
+    /* Badge para contagem de filtros ativos */
+    .filter-badge {
+      background-color: #dc3545;
+      margin-left: 5px;
+    }
+
+    /* Responsividade para telas menores */
+    @media (max-width: 768px) {
+      .filters-container {
+        margin-bottom: 15px;
+      }
     }
   </style>
 
@@ -80,7 +139,7 @@
         </ul>
       </nav>
     </div>
-  </header>
+  </header><!-- End Header -->
 
   <!-- ======= Breadcrumbs ======= -->
   <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
@@ -91,7 +150,7 @@
         <li>Produtos</li>
       </ol>
     </div>
-  </div>
+  </div><!-- End Breadcrumbs -->
 
   <!-- ======= Products Section ======= -->
   <section id="products" class="products">
@@ -104,125 +163,557 @@
 
       <!-- Barra de pesquisa -->
       <div class="row mb-4">
-        <div class="col-lg-9 d-flex">
+        <div class="col-lg-12 d-flex">
           <input type="text" id="search-bar" class="form-control me-2" placeholder="Pesquisar produtos por nome, categoria ou descrição..." onkeypress="handleKeyPress(event)">
           <button class="btn btn-primary" onclick="searchProducts()">
-            <i class="bi bi-search"></i> Buscar
+            <i class="bi bi-search"></i>
           </button>
-        </div>
-        <div class="col-lg-3 d-flex">
-          <button class="btn btn-secondary ms-2" onclick="clearSearch()">Limpar Pesquisa</button>
+          <button class="btn btn-secondary ms-2" onclick="clearSearch()">Limpar</button>
         </div>
       </div>
 
-      <!-- Filtros -->
+      <!-- Seção de Filtros -->
       <div class="row mb-4">
-        <div class="col-lg-3">
-          <select id="filter-empresa" class="form-select" onchange="applyFilters()">
-            <option value="">Filtrar por Empresa</option>
-          </select>
-        </div>
-        <div class="col-lg-3">
-          <select id="filter-categoria" class="form-select" onchange="applyFilters()">
-            <option value="">Filtrar por Categoria</option>
-          </select>
-        </div>
-        <div class="col-lg-3">
-          <select id="filter-subcategoria" class="form-select" onchange="applyFilters()">
-            <option value="">Filtrar por Subcategoria</option>
-          </select>
-        </div>
-        <div class="col-lg-3 d-flex">
-          <button class="btn btn-secondary ms-2" onclick="clearFilters()">Limpar Filtros</button>
+        <div class="col-12">
+          <div class="filters-container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="filter-dropdown">
+                  <p class="filter-title">Empresa</p>
+                  <select id="empresa-filter" class="form-select">
+                    <option value="">Todas as Empresas</option>
+                    <!-- Opções serão adicionadas dinamicamente -->
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="filter-dropdown">
+                  <p class="filter-title">Categoria</p>
+                  <select id="categoria-filter" class="form-select">
+                    <option value="">Todas as Categorias</option>
+                    <!-- Opções serão adicionadas dinamicamente -->
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="filter-dropdown">
+                  <p class="filter-title">Subcategoria</p>
+                  <select id="subcategoria-filter" class="form-select">
+                    <option value="">Todas as Subcategorias</option>
+                    <!-- Opções serão adicionadas dinamicamente -->
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <button id="filter-btn" class="btn btn-primary filter-btn" onclick="applyFilters()">
+                  Filtrar <span id="filter-count" class="badge filter-badge d-none">0</span>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <div id="active-filters" class="d-flex flex-wrap">
+                  <!-- Tags de filtros ativos serão adicionadas aqui -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="row gy-4" id="product-list"></div>
+      <div class="row gy-4" id="product-list">
+        <!-- Os produtos serão carregados aqui dinamicamente -->
+      </div>
 
       <!-- Paginação -->
       <div class="row">
         <div class="col-12 text-center mt-4">
           <nav class="d-inline-block">
-            <ul class="pagination" id="pagination"></ul>
+            <ul class="pagination" id="pagination">
+              <!-- Links de paginação serão inseridos dinamicamente -->
+            </ul>
           </nav>
         </div>
       </div>
 
     </div>
-  </section>
+  </section><!-- End Products Section -->
 
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="footer-legal text-center position-relative">
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>M Conf&A</span></strong>. Todos os direitos reservados.
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- Botão flutuante do WhatsApp -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <a href="https://wa.me/351913632248?text=Olá! Vi seu site e gostaria de mais informações."
+    style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:1000;"
+    target="_blank">
+    <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+  </a>
+
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Script para carregar produtos dinamicamente -->
   <script>
-    let allProducts = [];
-    let filteredProducts = [];
+    const itemsPerPage = 9; // Produtos por página
     let currentPage = 1;
-    const itemsPerPage = 9;
+    let allProducts = [];
+    let originalProducts = [];
+    let filteredProducts = []; // Nova variável para armazenar produtos filtrados
+    let isSearching = false; // Indica se estamos realizando uma busca
+    let isFiltering = false; // Indica se estamos aplicando filtros
+    
+    // Armazena os filtros ativos
+    let activeFilters = {
+      empresa: '',
+      categoria: '',
+      subcategoria: ''
+    };
+    
+    // Arrays para armazenar opções únicas para os filtros
+    let empresas = [];
+    let categorias = [];
+    let subcategorias = [];
 
-    async function loadProducts() {
-      try {
-        const response = await fetch("assets/data/produtos.json");
-        allProducts = await response.json();
-        filteredProducts = [...allProducts];
-        populateFilters();
+    // Carrega os produtos
+    function loadProducts() {
+      fetch("assets/data/produtos.json")
+        .then(response => response.json())
+        .then(produtos => {
+          allProducts = produtos;
+          originalProducts = [...produtos];
+          filteredProducts = [...produtos]; // Inicialmente, a lista filtrada é igual à original
+          
+          // Extrai valores únicos para os filtros
+          extractFilterOptions();
+          
+          // Popula os dropdowns de filtros
+          populateFilterDropdowns();
+          
+          renderProducts();
+          renderPagination();
+        })
+        .catch(error => console.error("Erro ao carregar produtos:", error));
+    }
+
+    // Extrai opções únicas para os filtros
+    function extractFilterOptions() {
+      // Conjunto para garantir valores únicos
+      const empresasSet = new Set();
+      const categoriasSet = new Set();
+      const subcategoriasSet = new Set();
+      
+      allProducts.forEach(produto => {
+        if (produto.empresa) empresasSet.add(produto.empresa);
+        if (produto.categoria) categoriasSet.add(produto.categoria);
+        if (produto.subcategoria) subcategoriasSet.add(produto.subcategoria);
+      });
+      
+      // Converte os conjuntos para arrays ordenados
+      empresas = Array.from(empresasSet).sort();
+      categorias = Array.from(categoriasSet).sort();
+      subcategorias = Array.from(subcategoriasSet).sort();
+    }
+    
+    // Preenche os dropdowns de filtros com as opções disponíveis
+    function populateFilterDropdowns() {
+      const empresaSelect = document.getElementById('empresa-filter');
+      const categoriaSelect = document.getElementById('categoria-filter');
+      const subcategoriaSelect = document.getElementById('subcategoria-filter');
+      
+      // Limpa as opções existentes (mantendo a primeira opção)
+      while (empresaSelect.options.length > 1) {
+        empresaSelect.remove(1);
+      }
+      
+      while (categoriaSelect.options.length > 1) {
+        categoriaSelect.remove(1);
+      }
+      
+      while (subcategoriaSelect.options.length > 1) {
+        subcategoriaSelect.remove(1);
+      }
+      
+      // Adiciona as opções de empresas
+      empresas.forEach(empresa => {
+        const option = document.createElement('option');
+        option.value = empresa;
+        option.textContent = empresa;
+        empresaSelect.appendChild(option);
+      });
+      
+      // Adiciona as opções de categorias
+      categorias.forEach(categoria => {
+        const option = document.createElement('option');
+        option.value = categoria;
+        option.textContent = categoria;
+        categoriaSelect.appendChild(option);
+      });
+      
+      // Adiciona as opções de subcategorias
+      subcategorias.forEach(subcategoria => {
+        const option = document.createElement('option');
+        option.value = subcategoria;
+        option.textContent = subcategoria;
+        subcategoriaSelect.appendChild(option);
+      });
+    }
+    
+    // Atualiza a lista de subcategorias com base na categoria selecionada
+    function updateSubcategoriesBasedOnCategory() {
+      const categoriaSelect = document.getElementById('categoria-filter');
+      const subcategoriaSelect = document.getElementById('subcategoria-filter');
+      const selectedCategory = categoriaSelect.value;
+      
+      // Limpa as opções existentes (mantendo a primeira opção)
+      while (subcategoriaSelect.options.length > 1) {
+        subcategoriaSelect.remove(1);
+      }
+      
+      if (selectedCategory === '') {
+        // Se nenhuma categoria for selecionada, mostra todas as subcategorias
+        subcategorias.forEach(subcategoria => {
+          const option = document.createElement('option');
+          option.value = subcategoria;
+          option.textContent = subcategoria;
+          subcategoriaSelect.appendChild(option);
+        });
+      } else {
+        // Se uma categoria for selecionada, mostra apenas as subcategorias relacionadas
+        const relatedSubcategories = new Set();
+        
+        allProducts.forEach(produto => {
+          if (produto.categoria === selectedCategory && produto.subcategoria) {
+            relatedSubcategories.add(produto.subcategoria);
+          }
+        });
+        
+        Array.from(relatedSubcategories).sort().forEach(subcategoria => {
+          const option = document.createElement('option');
+          option.value = subcategoria;
+          option.textContent = subcategoria;
+          subcategoriaSelect.appendChild(option);
+        });
+      }
+    }
+    
+    // Aplica os filtros selecionados
+    function applyFilters() {
+      const empresaSelect = document.getElementById('empresa-filter');
+      const categoriaSelect = document.getElementById('categoria-filter');
+      const subcategoriaSelect = document.getElementById('subcategoria-filter');
+      
+      // Atualiza os filtros ativos
+      activeFilters.empresa = empresaSelect.value;
+      activeFilters.categoria = categoriaSelect.value;
+      activeFilters.subcategoria = subcategoriaSelect.value;
+      
+      isFiltering = activeFilters.empresa !== '' || 
+                   activeFilters.categoria !== '' || 
+                   activeFilters.subcategoria !== '';
+      
+      // Filtra os produtos
+      if (isFiltering) {
+        filteredProducts = originalProducts.filter(produto => {
+          // Verifica cada filtro
+          const matchEmpresa = activeFilters.empresa === '' || produto.empresa === activeFilters.empresa;
+          const matchCategoria = activeFilters.categoria === '' || produto.categoria === activeFilters.categoria;
+          const matchSubcategoria = activeFilters.subcategoria === '' || produto.subcategoria === activeFilters.subcategoria;
+          
+          // Produto deve corresponder a todos os filtros ativos
+          return matchEmpresa && matchCategoria && matchSubcategoria;
+        });
+      } else {
+        // Se não houver filtros, restaura a lista original
+        filteredProducts = [...originalProducts];
+      }
+      
+      // Se também houver uma pesquisa ativa, aplica o filtro de pesquisa novamente
+      if (isSearching) {
+        const query = document.getElementById('search-bar').value.toLowerCase().trim();
+        filteredProducts = filteredProducts.filter(produto =>
+          produto.nome.toLowerCase().includes(query) ||
+          produto.descricao.toLowerCase().includes(query) ||
+          produto.categoria.toLowerCase().includes(query) ||
+          produto.subcategoria.toLowerCase().includes(query)
+        );
+      }
+      
+      // Atualiza a exibição de filtros ativos
+      updateActiveFiltersDisplay();
+      
+      // Atualiza o contador de filtros
+      updateFilterCount();
+      
+      // Reseta para a primeira página
+      currentPage = 1;
+      renderProducts();
+      renderPagination();
+    }
+    
+    // Atualiza o contador de filtros ativos
+    function updateFilterCount() {
+      const filterCountBadge = document.getElementById('filter-count');
+      let count = 0;
+      
+      if (activeFilters.empresa !== '') count++;
+      if (activeFilters.categoria !== '') count++;
+      if (activeFilters.subcategoria !== '') count++;
+      
+      if (count > 0) {
+        filterCountBadge.textContent = count;
+        filterCountBadge.classList.remove('d-none');
+      } else {
+        filterCountBadge.classList.add('d-none');
+      }
+    }
+    
+    // Atualiza a exibição de filtros ativos
+    function updateActiveFiltersDisplay() {
+      const activeFiltersContainer = document.getElementById('active-filters');
+      activeFiltersContainer.innerHTML = '';
+      
+      // Se não houver filtros ativos, não exibe nada
+      if (!isFiltering) return;
+      
+      // Exibe os filtros ativos como tags removíveis
+      if (activeFilters.empresa !== '') {
+        const tag = createFilterTag('Empresa: ' + activeFilters.empresa, 'empresa');
+        activeFiltersContainer.appendChild(tag);
+      }
+      
+      if (activeFilters.categoria !== '') {
+        const tag = createFilterTag('Categoria: ' + activeFilters.categoria, 'categoria');
+        activeFiltersContainer.appendChild(tag);
+      }
+      
+      if (activeFilters.subcategoria !== '') {
+        const tag = createFilterTag('Subcategoria: ' + activeFilters.subcategoria, 'subcategoria');
+        activeFiltersContainer.appendChild(tag);
+      }
+    }
+    
+    // Cria uma tag de filtro removível
+    function createFilterTag(text, filterType) {
+      const tag = document.createElement('span');
+      tag.className = 'badge bg-secondary me-2 mb-2 p-2';
+      tag.innerHTML = `${text} <i class="bi bi-x-circle" style="cursor: pointer;"></i>`;
+      
+      // Adiciona evento para remover o filtro
+      tag.querySelector('i').addEventListener('click', function() {
+        // Reseta o filtro específico
+        activeFilters[filterType] = '';
+        
+        // Reseta o select correspondente
+        document.getElementById(`${filterType}-filter`).value = '';
+        
+        // Se for o filtro de categoria, atualiza as subcategorias
+        if (filterType === 'categoria') {
+          updateSubcategoriesBasedOnCategory();
+        }
+        
+        // Reaplica os filtros
+        applyFilters();
+      });
+      
+      return tag;
+    }
+    
+    // Limpa todos os filtros
+    function clearFilters() {
+      // Reseta os selects
+      document.getElementById('empresa-filter').value = '';
+      document.getElementById('categoria-filter').value = '';
+      document.getElementById('subcategoria-filter').value = '';
+      
+      // Reseta os filtros ativos
+      activeFilters.empresa = '';
+      activeFilters.categoria = '';
+      activeFilters.subcategoria = '';
+      
+      isFiltering = false;
+      
+      // Atualiza subcategorias
+      updateSubcategoriesBasedOnCategory();
+      
+      // Limpa a exibição de filtros ativos
+      document.getElementById('active-filters').innerHTML = '';
+      
+      // Atualiza o contador de filtros
+      updateFilterCount();
+      
+      // Se ainda houver pesquisa ativa, mantenha apenas os resultados da pesquisa
+      if (isSearching) {
+        searchProducts();
+      } else {
+        // Restaura a lista original
+        filteredProducts = [...originalProducts];
+        currentPage = 1;
         renderProducts();
         renderPagination();
-      } catch (error) {
-        console.error("Erro ao carregar produtos:", error);
       }
     }
 
-    function populateFilters() {
-      const empresaSet = new Set();
-      const categoriaSet = new Set();
-      const subcategoriaSet = new Set();
+    // Renderiza os produtos com base na página atual
+    function renderProducts() {
+      const productList = document.getElementById('product-list');
+      productList.innerHTML = '';
 
-      allProducts.forEach(produto => {
-        empresaSet.add(produto.empresa);
-        categoriaSet.add(produto.categoria);
-        subcategoriaSet.add(produto.subcategoria);
+      // Define a lista de produtos com base na filtragem ou pesquisa
+      const productsToDisplay = isFiltering || isSearching ? filteredProducts : originalProducts;
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const productsToShow = productsToDisplay.slice(startIndex, endIndex);
+
+      // Se não houver produtos para exibir, mostra uma mensagem
+      if (productsToShow.length === 0) {
+        productList.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <h3>Nenhum produto encontrado</h3>
+            <p>Tente modificar sua pesquisa ou filtros.</p>
+            <button class="btn btn-secondary mt-3" onclick="clearAll()">Limpar Todos os Filtros</button>
+          </div>
+        `;
+        return;
+      }
+
+      productsToShow.forEach(produto => {
+        const productItem = document.createElement('div');
+        productItem.className = 'col-lg-4 col-md-6';
+        productItem.innerHTML = `
+          <div class="card h-100">
+            <img src="${produto.pasta}${produto.imagens[0]}" class="card-img-top" alt="${produto.nome}">
+            <div class="card-body">
+              <h5 class="card-title">${produto.nome}</h5>
+              <p class="card-text">${produto.descricao}</p>
+              <p class="text-muted"><small>${produto.categoria} > ${produto.subcategoria}</small></p>
+              <p class="text-muted"><strong>Fabricante:</strong> ${produto.empresa}</p>
+              <a href="produto-detalhes.html?id=${produto.id}" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        `;
+        productList.appendChild(productItem);
       });
-
-      populateSelect("filter-empresa", Array.from(empresaSet));
-      populateSelect("filter-categoria", Array.from(categoriaSet));
-      populateSelect("filter-subcategoria", Array.from(subcategoriaSet));
     }
 
-    function populateSelect(selectId, options) {
-      const select = document.getElementById(selectId);
-      select.innerHTML = `<option value="">Filtrar por ${select.getAttribute('id').split('-')[1]}</option>`;
-      options.forEach(option => {
-        select.innerHTML += `<option value="${option}">${option}</option>`;
-      });
+    // Renderiza os links de paginação
+    function renderPagination() {
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+
+      // Define a lista correta para paginação
+      const productsToPaginate = isFiltering || isSearching ? filteredProducts : originalProducts;
+      const totalPages = Math.ceil(productsToPaginate.length / itemsPerPage);
+
+      // Se não houver páginas, não exibe paginação
+      if (totalPages === 0) return;
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageItem = document.createElement('li');
+        pageItem.className = 'page-item ' + (i === currentPage ? 'active' : '');
+        pageItem.innerHTML = `<a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>`;
+        pagination.appendChild(pageItem);
+      }
     }
 
-    function applyFilters() {
-      const searchQuery = document.getElementById("search-bar").value.toLowerCase().trim();
-      const empresa = document.getElementById("filter-empresa").value;
-      const categoria = document.getElementById("filter-categoria").value;
-      const subcategoria = document.getElementById("filter-subcategoria").value;
+    // Função para mudar de página
+    function goToPage(pageNumber) {
+      currentPage = pageNumber;
+      renderProducts();
+      renderPagination();
+    }
 
-      filteredProducts = allProducts.filter(produto =>
-        (empresa === "" || produto.empresa === empresa) &&
-        (categoria === "" || produto.categoria === categoria) &&
-        (subcategoria === "" || produto.subcategoria === subcategoria) &&
-        (searchQuery === "" || produto.nome.toLowerCase().includes(searchQuery))
+    // Função de busca acionada pelo botão ou Enter
+    function searchProducts() {
+      const query = document.getElementById('search-bar').value.toLowerCase().trim();
+      
+      if (query === '') {
+        clearSearch(); // Se a pesquisa estiver vazia, volta para a exibição normal
+        return;
+      }
+
+      isSearching = true; // Indica que a pesquisa está ativa
+
+      // Se também houver filtros ativos, começa com a lista já filtrada
+      const baseProductList = isFiltering ? filteredProducts : originalProducts;
+
+      // Filtra os produtos com base na pesquisa
+      filteredProducts = baseProductList.filter(produto =>
+        produto.nome.toLowerCase().includes(query) ||
+        produto.descricao.toLowerCase().includes(query) ||
+        produto.categoria.toLowerCase().includes(query) ||
+        produto.subcategoria.toLowerCase().includes(query)
       );
 
+      currentPage = 1; // Sempre volta para a primeira página ao buscar
+      renderProducts();
+      renderPagination();
+    }
+
+    // Limpa a pesquisa e restaura os produtos
+    function clearSearch() {
+      document.getElementById('search-bar').value = '';
+      isSearching = false; // Indica que a pesquisa não está mais ativa
+      
+      // Se houver filtros ativos, mantém apenas os filtros aplicados
+      if (isFiltering) {
+        applyFilters(); // Reaplica os filtros para restaurar a lista filtrada
+      } else {
+        filteredProducts = [...originalProducts]; // Restaura a lista original
+        currentPage = 1;
+        renderProducts();
+        renderPagination();
+      }
+    }
+
+    // Limpa todos os filtros e pesquisa
+    function clearAll() {
+      document.getElementById('search-bar').value = '';
+      isSearching = false;
+      
+      // Limpa filtros
+      clearFilters();
+      
+      // Restaura a lista original
+      filteredProducts = [...originalProducts];
       currentPage = 1;
       renderProducts();
       renderPagination();
     }
 
-    function clearFilters() {
-      document.getElementById("filter-empresa").value = "";
-      document.getElementById("filter-categoria").value = "";
-      document.getElementById("filter-subcategoria").value = "";
-      document.getElementById("search-bar").value = "";
-      applyFilters();
+    // Dispara a pesquisa ao pressionar Enter
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        searchProducts();
+      }
     }
 
-    document.addEventListener("DOMContentLoaded", loadProducts);
+    // Adiciona listeners de eventos para os filtros de categoria
+    document.addEventListener("DOMContentLoaded", function() {
+      loadProducts();
+      
+      // Adiciona event listener para atualizar subcategorias quando a categoria mudar
+      document.getElementById('categoria-filter').addEventListener('change', updateSubcategoriesBasedOnCategory);
+    });
   </script>
 
 </body>
