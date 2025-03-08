@@ -561,5 +561,171 @@
     ],
     "manual": "",
     "ficha": ""
-}
+  },
+  {
+    "id": 17,
+    "nome": "LYDOS ECO",
+    "categoria": "Termo Elétrico",
+    "subcategoria": "Para Água Quente",
+    "descricao": "Termoacumulador elétrico com elevada performance e eficiência, ideal para as necessidades modernas.",
+    "detalhes": "O termoacumulador elétrico LYDOS ECO, com design exclusivo e tecnologias avançadas, proporciona economia e alta eficiência energética. Ideal para aplicações residenciais e comerciais.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "50L, 80L, 100L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+        "Controlo eletrónico",
+        "Função ECO EVO",
+        "Pack de segurança ABS",
+        "Eficiência energética"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/termo-eletrico/ariston-lydos-eco/",
+    "imagens": [
+        "img/lydos-eco-1.png",
+        "img/lydos-eco-2.png",
+        "img/lydos-eco-3.png",
+        "img/lydos-eco-4.png",
+        "img/lydos-eco-5.png"
+    ],
+    "manual": "manual-lydos-eco.pdf",
+    "ficha": "ficha-lydos-eco.pdf"
+  },
+  {
+      "id": 18,
+      "nome": "PRO1 R VTD",
+      "categoria": "Termo Elétrico",
+      "subcategoria": "Para Água Quente",
+      "descricao": "Termoacumulador de instalação vertical com resistência elétrica incorporada.",
+      "detalhes": "O PRO1 R VTD é ideal para quem busca eficiência e praticidade, oferecendo aquecimento de água eficiente e instalação simplificada.",
+      "empresa": "Ariston",
+      "btu": null,
+      "capacidade_litragem": "50L, 80L, 100L",
+      "eficiencia_energetica": "B",
+      "caracteristicas": [
+          "Vitrificado a titânio",
+          "Mais quantidade de água quente",
+          "Regulação externa da temperatura",
+          "Italian design"
+      ],
+      "disponibilidade": "Sob Consulta",
+      "pasta": "assets/files/products/termo-eletrico/ariston-pro1-r-vtd/",
+      "imagens": [
+          "img/pro1-r-vtd-1.png"
+      ],
+      "manual": "manual-pro1-r-vtd.pdf",
+      "ficha": "ficha-pro1-r-vtd.pdf"
+  },
+  {
+      "id": 19,
+      "nome": "PRO1 ECO H",
+      "categoria": "Termo Elétrico",
+      "subcategoria": "Para Água Quente",
+      "descricao": "Termoacumulador elétrico horizontal com tecnologia T-Max para máxima eficiência.",
+      "detalhes": "O PRO1 ECO H é um termoacumulador moderno que proporciona água quente constante e economia de energia, ideal para qualquer ambiente.",
+      "empresa": "Ariston",
+      "btu": null,
+      "capacidade_litragem": "50L, 80L, 100L",
+      "eficiencia_energetica": "A+",
+      "caracteristicas": [
+          "Controlo eletrónico",
+          "Função ECO EVO",
+          "Pack de segurança ABS",
+          "Eficiência energética"
+      ],
+      "disponibilidade": "Sob Consulta",
+      "pasta": "assets/files/products/termo-eletrico/ariston-pro1-eco-h/",
+      "imagens": [
+          "img/pro1-eco-h-1.png"
+      ],
+      "manual": "manual-pro1-eco-h.pdf",
+      "ficha": "ficha-pro1-eco-h.pdf"
+  },
+  {
+      "id": 20,
+      "nome": "PRO ZEN",
+      "categoria": "Termo Elétrico",
+      "subcategoria": "Para Água Quente",
+      "descricao": "Termoacumulador elétrico de grande capacidade para instalação mural vertical.",
+      "detalhes": "O PRO ZEN é ideal para quem busca durabilidade e eficiência. Possui ânodo ativo de titânio e é preparado para tarifa noturna.",
+      "empresa": "Ariston",
+      "btu": null,
+      "capacidade_litragem": "50L, 80L, 100L",
+      "eficiencia_energetica": "A+",
+      "caracteristicas": [
+          "Vitrificado a titânio",
+          "Anticorrosão"
+      ],
+      "disponibilidade": "Sob Consulta",
+      "pasta": "assets/files/products/termo-eletrico/ariston-pro-zen/",
+      "imagens": [
+          "img/pro-zen-1.png"
+      ],
+      "manual": "manual-pro-zen.pdf",
+      "ficha": "ficha-pro-zen.pdf"
+  },
+  {
+    "id": 21,
+    "nome": "VELIS WIFI",
+    "categoria": "Termo Elétrico",
+    "subcategoria": "Para Água Quente",
+    "descricao": "O Termoacumulador Velis wifi atinge um novo nível de conforto, mais inteligente, económico e elegante.",
+    "detalhes": "O Termoacumulador Velis wifi atinge um novo nível de conforto, mais inteligente, económico e elegante. Graças à função ECO EVO, Velis wifi memoriza quando e quanta água quente utiliza obtendo assim a máxima eficiência energética. Sempre que Velis wifi termina de aquecer a água suficiente para garantir o primeiro banho, o símbolo 'Shower Ready' acende-se no display. Extra fino, pode ser instalado na horizontal ou na vertical. Possui conectividade de série através da app Aqua Ariston Net que fornece ao utilizador relatórios de consumo, conselhos de poupança, controlo absoluto sobre o produto, pode selecionar funções, alterar a temperatura, programação horária e muito mais.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "50L, 80L, 100L",
+    "eficiencia_energetica": "B",
+    "caracteristicas": [
+        "Design elegante e exclusivo",
+        "Multiposição: Instalação tanto em vertical como em horizontal",
+        "Função Shower Ready",
+        "Resistência blindada anticálcario",
+        "Depósito esmaltado a titânio a 850°C",
+        "Primeiro duche em metade do tempo",
+        "Conectividade integrada"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/termo-eletrico/ariston-velis-wifi/",
+    "imagens": [
+        "img/velis-wifi-1.png",
+        "img/velis-wifi-2.png",
+        "img/velis-wifi-3.png",
+        "img/velis-wifi-4.png"
+    ],
+    "manual": "manual-velis-wifi.pdf",
+    "ficha": "ficha-velis-wifi.pdf"
+  },
+  {
+    "id": 22,
+    "nome": "LYDOS PLUS",
+    "categoria": "Termo Elétrico",
+    "subcategoria": "Para Água Quente",
+    "descricao": "Termoacumulador elétrico com um design totalmente inovador, com mais água quente e com uma eficiência que atinge a classe energética máxima da categoria.",
+    "detalhes": "Termoacumulador elétrico com um design totalmente inovador, com mais água quente e com uma eficiência que atinge a classe energética máxima da categoria. Uma nova experiência em água quente.",
+    "empresa": "Ariston",
+    "btu": null,
+    "capacidade_litragem": "50L, 80L",
+    "eficiencia_energetica": "B",
+    "caracteristicas": [
+        "Novo design exclusivo com ligações hidráulicas semi-ocultas",
+        "Eficiência energética Pack de segurança ABS",
+        "Display frontal inteligente com programação horária",
+        "Termostato eletrónico para regulação precisa da temperatura",
+        "Possibilidade de selecionar a rapidez do aquecimento"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/termo-eletrico/ariston-lydos-plus/",
+    "imagens": [
+        "img/lydos-plus-1.png",
+        "img/lydos-plus-2.png",
+        "img/lydos-plus-3.png",
+        "img/lydos-plus-4.png",
+        "img/lydos-plus-5.png",
+        "img/lydos-plus-6.png",
+        "img/lydos-plus-7.png",
+        "img/lydos-plus-8.png"
+    ],
+    "manual": "manual-lydos-plus.pdf",
+    "ficha": "ficha-lydos-plus.pdf"
+  } 
 ]
