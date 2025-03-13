@@ -166,7 +166,7 @@
   {
     "id": 5,
     "nome": "REGINA MAX A+",
-    "categoria": "Bomba de calor",
+    "categoria": "Bombas de Calor",
     "subcategoria": "A.Q.S.",
     "descricao": "Prod. Acum. A.Q.S. | 150L, 200L e 300L | Sem Serp. e com 1, 2 Serp. | Aço Inoxidável",
     "detalhes": "Bomba de calor de alta eficiência energética para produção e acumulação de água quente sanitária com capacidade de 150,  200 e 300Lts e com display digital touch. Acumulador em aço inoxidável com 1 ou 2 serpentinas para interligação com outra fonte de calor ou sem serpentina. A transferência de energia do circuito frigorífico é efectuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
@@ -197,7 +197,7 @@
   {
     "id": 6,
     "nome": "REGINA SMART 100 A+",
-    "categoria": "Bomba de calor",
+    "categoria": "Bombas de Calor",
     "subcategoria": "A.Q.S.",
     "descricao": "Prod. e Acum. de A.Q.S. | 100L | WI-FI | Sem Serp. | Aço inox Duplex 2205",
     "detalhes": "Bomba de calor de alta eficiência energética para produção e acumulação de água quente sanitária. Display digital touch com interface de controlo via WIFI. Acumulador em aço inox Duplex 2205. A transferência de energia do circuito frigorífico é efectuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
@@ -225,7 +225,7 @@
   {
     "id": 7,
     "nome": "REGINA SMART 200 A+",
-    "categoria": "Bomba de calor",
+    "categoria": "Bombas de Calor",
     "subcategoria": "A.Q.S.",
     "descricao": "Prod. e Acum. de A.Q.S. | 200L | 1 Serp. | WI-FI | Aço inox Duplex 2205",
     "detalhes": "Bomba de calor de alta eficiência energética para produção e acumulação de água quente sanitária com capacidade de 200Lts. Display digital touch com interface de controlo via WIFI. Acumulador em aço inox Duplex 2205. A transferência de energia do circuito frigorífico é efectuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
@@ -259,7 +259,7 @@
   {
     "id": 8,
     "nome": "REGINA SMART 300 A+",
-    "categoria": "Bomba de calor",
+    "categoria": "Bombas de Calor",
     "subcategoria": "A.Q.S.",
     "descricao": "Prod. e Acum. de A.Q.S. | 300L | 1 e 2 Serp | WI-FI | Aço inox Duplex 2205",
     "detalhes": "Bomba de calor de alta eficiência energética para produção e acumulação de água quente sanitária com capacidade de 300Lts. Display digital touch com interface de controlo via WIFI. Acumulador em aço inox Duplex 2205. A transferência de energia do circuito frigorífico é efectuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
@@ -295,7 +295,7 @@
   {
     "id": 9,
     "nome": "REGINA SMART 500 A",
-    "categoria": "Bomba de calor",
+    "categoria": "Bombas de Calor",
     "subcategoria": "A.Q.S.",
     "descricao": "Prod. Acum. A.Q.S. | 500L | 1 e 2 Serp. | WI-FI | Aço inox Duplex 2205",
     "detalhes": "Bomba de calor de alta eficiência energética para produção e acumulação de água quente sanitária com capacidade de 500Lts. Display digital touch com interface de controlo via WIFI. Acumulador em aço inox Duplex 2205. A transferência de energia do circuito frigorífico é efectuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
@@ -498,7 +498,7 @@
   {
     "id": 15,
     "nome": "LYDOS HYBRID WIFI",
-    "categoria": "Termos Híbridos",
+    "categoria": "Termoacumuladores",
     "subcategoria": "Para Água Quente",
     "descricao": "O primeiro termoacumulador híbrido do mercado que combina de maneira eficiente a energia elétrica e a bomba de calor.",
     "detalhes": "LYDOS HYBRID WIFI combina uma inteligência híbrida exclusiva para otimizar o consumo de energia. Ele permite uma economia de até 50% em comparação a um termoacumulador elétrico de classe B. O dispositivo conta com conectividade Wi-Fi para controle remoto via aplicativo Ariston Net, possibilitando funções como programação horária, ajuste de temperatura e seleção de modos de operação.",
@@ -531,7 +531,7 @@
   {
     "id": 16,
     "nome": "VELIS PRO",
-    "categoria": "Termo Elétrico",
+    "categoria": "Termoacumuladores",
     "subcategoria": "Para Água Quente",
     "descricao": "O termoacumulador elétrico superfino e flexível, projetado para oferecer o primeiro duche em metade do tempo.",
     "detalhes": "Descubra o futuro do conforto com VELIS PRO, termoacumulador elétrico superfino. Simples de instalar e incrivelmente flexível, foi projetado para oferecer o primeiro duche em metade do tempo. Transforme sua rotina diária numa experiência de bem-estar com nossa tecnologia avançada.",
@@ -565,7 +565,7 @@
   {
     "id": 17,
     "nome": "LYDOS ECO",
-    "categoria": "Termo Elétrico",
+    "categoria": "Termoacumuladores",
     "subcategoria": "Para Água Quente",
     "descricao": "Termoacumulador elétrico com elevada performance e eficiência, ideal para as necessidades modernas.",
     "detalhes": "O termoacumulador elétrico LYDOS ECO, com design exclusivo e tecnologias avançadas, proporciona economia e alta eficiência energética. Ideal para aplicações residenciais e comerciais.",
@@ -594,7 +594,7 @@
   {
       "id": 18,
       "nome": "PRO1 R VTD",
-      "categoria": "Termo Elétrico",
+      "categoria": "Termoacumuladores",
       "subcategoria": "Para Água Quente",
       "descricao": "Termoacumulador de instalação vertical com resistência elétrica incorporada.",
       "detalhes": "O PRO1 R VTD é ideal para quem busca eficiência e praticidade, oferecendo aquecimento de água eficiente e instalação simplificada.",
@@ -619,7 +619,7 @@
   {
       "id": 19,
       "nome": "PRO1 ECO H",
-      "categoria": "Termo Elétrico",
+      "categoria": "Termoacumuladores",
       "subcategoria": "Para Água Quente",
       "descricao": "Termoacumulador elétrico horizontal com tecnologia T-Max para máxima eficiência.",
       "detalhes": "O PRO1 ECO H é um termoacumulador moderno que proporciona água quente constante e economia de energia, ideal para qualquer ambiente.",
@@ -644,7 +644,7 @@
   {
       "id": 20,
       "nome": "PRO ZEN",
-      "categoria": "Termo Elétrico",
+      "categoria": "Termoacumuladores",
       "subcategoria": "Para Água Quente",
       "descricao": "Termoacumulador elétrico de grande capacidade para instalação mural vertical.",
       "detalhes": "O PRO ZEN é ideal para quem busca durabilidade e eficiência. Possui ânodo ativo de titânio e é preparado para tarifa noturna.",
@@ -667,7 +667,7 @@
   {
     "id": 21,
     "nome": "VELIS WIFI",
-    "categoria": "Termo Elétrico",
+    "categoria": "Termoacumuladores",
     "subcategoria": "Para Água Quente",
     "descricao": "O Termoacumulador Velis wifi atinge um novo nível de conforto, mais inteligente, económico e elegante.",
     "detalhes": "O Termoacumulador Velis wifi atinge um novo nível de conforto, mais inteligente, económico e elegante. Graças à função ECO EVO, Velis wifi memoriza quando e quanta água quente utiliza obtendo assim a máxima eficiência energética. Sempre que Velis wifi termina de aquecer a água suficiente para garantir o primeiro banho, o símbolo 'Shower Ready' acende-se no display. Extra fino, pode ser instalado na horizontal ou na vertical. Possui conectividade de série através da app Aqua Ariston Net que fornece ao utilizador relatórios de consumo, conselhos de poupança, controlo absoluto sobre o produto, pode selecionar funções, alterar a temperatura, programação horária e muito mais.",
@@ -698,7 +698,7 @@
   {
     "id": 22,
     "nome": "LYDOS PLUS",
-    "categoria": "Termo Elétrico",
+    "categoria": "Termoacumuladores",
     "subcategoria": "Para Água Quente",
     "descricao": "Termoacumulador elétrico com um design totalmente inovador, com mais água quente e com uma eficiência que atinge a classe energética máxima da categoria.",
     "detalhes": "Termoacumulador elétrico com um design totalmente inovador, com mais água quente e com uma eficiência que atinge a classe energética máxima da categoria. Uma nova experiência em água quente.",
