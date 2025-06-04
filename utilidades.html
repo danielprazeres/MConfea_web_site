@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Utilidades - Calculadoras e Ferramentas | M Conf&A</title>
+  <meta name="description" content="Ferramentas úteis e calculadoras para dimensionamento de sistemas de climatização. Calcule a potência ideal para seu ar condicionado de forma rápida e precisa.">
+  <meta name="keywords" content="calculadora ar condicionado, dimensionamento climatização, BTU, aquecimento Portugal, ferramentas AVAC">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Custom CSS for utilities -->
+  <style>
+    .calculator-section {
+      background: #f8f9fa;
+      padding: 60px 0;
+    }
+    
+    .calculator-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+    
+    .calculator-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .calculator-icon {
+      font-size: 3rem;
+      color: #f39c12;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    
+    .result-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .result-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .btn-calculate {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-calculate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+      color: white;
+    }
+    
+    .category-section {
+      padding: 40px 0;
+    }
+    
+    .category-card {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .category-card:hover {
+      border-color: #f39c12;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .category-icon {
+      font-size: 3rem;
+      color: #f39c12;
+      margin-bottom: 20px;
+    }
+    
+    .info-text {
+      background: #e8f4f8;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+      </a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="utilidades.html" class="active">Utilidades</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+      <h2>Utilidades</h2>
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Utilidades</li>
+      </ol>
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+  <main id="main">
+
+    <!-- ======= Utilities Introduction ======= -->
+    <section class="py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4">Ferramentas e Calculadoras</h2>
+            <p class="lead">Simplifique seus projetos com nossas ferramentas especializadas. Calculadoras precisas para dimensionamento de sistemas de climatização e aquecimento, adaptadas ao mercado português.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Categories Section ======= -->
+    <section class="category-section">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-thermometer-half"></i>
+              </div>
+              <h4>Aquecimento e Climatização</h4>
+              <p>Calculadoras para dimensionamento de ar condicionado, aquecimento e ventilação.</p>
+              <span class="badge bg-primary">Ativo</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-hammer"></i>
+              </div>
+              <h4>Construção</h4>
+              <p>Ferramentas para cálculos estruturais, materiais e dimensionamento de obras.</p>
+              <span class="badge bg-secondary">Em breve</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-swimming-pool"></i>
+              </div>
+              <h4>Piscinas</h4>
+              <p>Calculadoras para sistemas de filtragem, aquecimento e manutenção de piscinas.</p>
+              <span class="badge bg-secondary">Em breve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= AC Calculator Section ======= -->
+    <section class="calculator-section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="calculator-card">
+              <div class="text-center mb-4">
+                <div class="calculator-icon">
+                  <i class="fas fa-snowflake"></i>
+                </div>
+                <h3>Calculadora de Ar Condicionado</h3>
+                <p class="text-muted">Calcule a potência ideal para climatização do seu espaço</p>
+              </div>
+
+              <div class="info-text">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Informação:</strong> Esta calculadora considera as condições climáticas típicas de Portugal e os padrões de eficiência energética europeus.
+              </div>
+
+              <form id="acCalculator">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Área do Espaço (m²)</label>
+                      <input type="number" class="form-control" id="area" placeholder="Ex: 25" min="1" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Altura do Teto (m)</label>
+                      <input type="number" class="form-control" id="altura" placeholder="Ex: 2.7" min="2" max="5" step="0.1" value="2.7" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Tipo de Ambiente</label>
+                      <select class="form-control" id="tipoAmbiente" required>
+                        <option value="">Selecione...</option>
+                        <option value="quarto">Quarto</option>
+                        <option value="sala">Sala de Estar</option>
+                        <option value="escritorio">Escritório</option>
+                        <option value="cozinha">Cozinha</option>
+                        <option value="comercial">Ambiente Comercial</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Exposição Solar</label>
+                      <select class="form-control" id="exposicaoSolar" required>
+                        <option value="">Selecione...</option>
+                        <option value="pouca">Pouca (Norte/Sombra)</option>
+                        <option value="media">Média (Leste/Oeste)</option>
+                        <option value="muita">Muita (Sul/Direto)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Número de Pessoas</label>
+                      <input type="number" class="form-control" id="pessoas" placeholder="Ex: 2" min="1" value="2" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Isolamento Térmico</label>
+                      <select class="form-control" id="isolamento" required>
+                        <option value="">Selecione...</option>
+                        <option value="bom">Bom (Edifício recente)</option>
+                        <option value="medio">Médio (Edifício padrão)</option>
+                        <option value="fraco">Fraco (Edifício antigo)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center mt-4">
+                  <button type="button" class="btn btn-calculate" onclick="calcularAC()">
+                    <i class="fas fa-calculator me-2"></i>Calcular Potência
+                  </button>
+                </div>
+              </form>
+
+              <div id="resultado" class="result-card" style="display: none;">
+                <h4>Resultado do Cálculo</h4>
+                <div class="result-value" id="potenciaKW">-</div>
+                <div class="mb-3">
+                  <strong id="potenciaBTU">-</strong> BTU/h
+                </div>
+                <div class="row text-start">
+                  <div class="col-md-6">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Recomendações:</h6>
+                    <ul id="recomendacoes" class="list-unstyled">
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h6><i class="fas fa-leaf me-2"></i>Eficiência Energética:</h6>
+                    <p id="eficiencia" class="mb-0"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Contact CTA ======= -->
+    <section class="py-5 bg-light">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <h3 class="mb-3">Precisa de Ajuda Profissional?</h3>
+            <p class="lead mb-4">Os nossos especialistas estão prontos para ajudar com projetos personalizados e instalações profissionais.</p>
+            <a href="contact.html" class="btn btn-primary btn-lg">
+              <i class="fas fa-phone me-2"></i>Entre em Contacto
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-content position-relative">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>M Conf&A</h3>
+              <p>
+                Aveiro, Portugal<br><br>
+                <strong>Telefone:</strong> +351 XXX XXX XXX<br>
+                <strong>Email:</strong> info@mconfa.pt<br>
+              </p>
+              <div class="social-links d-flex mt-3">
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Links Úteis</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="produtos.html">Produtos</a></li>
+              <li><a href="utilidades.html">Utilidades</a></li>
+              <li><a href="contact.html">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-3 footer-links">
+            <h4>Nossos Serviços</h4>
+            <ul>
+              <li><a href="#">Ar Condicionado</a></li>
+              <li><a href="#">Energia Solar</a></li>
+              <li><a href="#">Automação Residencial</a></li>
+              <li><a href="#">VMC Duplo Fluxo</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-3 footer-links">
+            <h4>Ferramentas</h4>
+            <ul>
+              <li><a href="#acCalculator">Calculadora AC</a></li>
+              <li><a href="#">Calculadoras de Construção</a></li>
+              <li><a href="#">Ferramentas de Piscina</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal text-center position-relative">
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>M Conf&A</span></strong>. Todos os direitos reservados
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- AC Calculator Script -->
+  <script>
+    function calcularAC() {
+      // Obter valores do formulário
+      const area = parseFloat(document.getElementById('area').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+      const tipoAmbiente = document.getElementById('tipoAmbiente').value;
+      const exposicaoSolar = document.getElementById('exposicaoSolar').value;
+      const pessoas = parseInt(document.getElementById('pessoas').value);
+      const isolamento = document.getElementById('isolamento').value;
+
+      // Validar inputs
+      if (!area || !altura || !tipoAmbiente || !exposicaoSolar || !pessoas || !isolamento) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Cálculo base: volume do espaço
+      const volume = area * altura;
+      
+      // Fator base para Portugal (50-70 W/m²)
+      let fatorBase = 60; // W/m²
+
+      // Ajustes por tipo de ambiente
+      const fatoresAmbiente = {
+        'quarto': 1.0,
+        'sala': 1.1,
+        'escritorio': 1.2,
+        'cozinha': 1.4,
+        'comercial': 1.5
+      };
+
+      // Ajustes por exposição solar
+      const fatoresExposicao = {
+        'pouca': 0.9,
+        'media': 1.0,
+        'muita': 1.2
+      };
+
+      // Ajustes por isolamento
+      const fatoresIsolamento = {
+        'bom': 0.9,
+        'medio': 1.0,
+        'fraco': 1.3
+      };
+
+      // Calcular potência base
+      let potencia = area * fatorBase;
+      
+      // Aplicar fatores
+      potencia *= fatoresAmbiente[tipoAmbiente];
+      potencia *= fatoresExposicao[exposicaoSolar];
+      potencia *= fatoresIsolamento[isolamento];
+      
+      // Adicionar carga por pessoa (100W por pessoa adicional após a primeira)
+      if (pessoas > 1) {
+        potencia += (pessoas - 1) * 100;
+      }
+
+      // Margem de segurança de 10%
+      potencia *= 1.1;
+
+      // Converter para kW
+      const potenciaKW = (potencia / 1000).toFixed(1);
+      
+      // Converter para BTU/h (1 W = 3.412 BTU/h)
+      const potenciaBTU = Math.round(potencia * 3.412);
+
+      // Exibir resultado
+      document.getElementById('potenciaKW').textContent = potenciaKW + ' kW';
+      document.getElementById('potenciaBTU').textContent = potenciaBTU.toLocaleString('pt-PT');
+
+      // Gerar recomendações
+      const recomendacoes = [];
+      
+      if (potenciaKW <= 2.5) {
+        recomendacoes.push('Equipamento split de 9.000 BTU/h seria adequado');
+      } else if (potenciaKW <= 3.5) {
+        recomendacoes.push('Equipamento split de 12.000 BTU/h seria adequado');
+      } else if (potenciaKW <= 5.0) {
+        recomendacoes.push('Equipamento split de 18.000 BTU/h seria adequado');
+      } else {
+        recomendacoes.push('Considere um sistema multi-split ou central');
+      }
+
+      if (isolamento === 'fraco') {
+        recomendacoes.push('Melhore o isolamento para reduzir consumo');
+      }
+
+      if (exposicaoSolar === 'muita') {
+        recomendacoes.push('Considere proteção solar nas janelas');
+      }
+
+      // Eficiência energética
+      let eficiencia = 'Procure equipamentos com classificação A++ ou superior para máxima eficiência energética e economia na fatura elétrica.';
+      
+      if (potenciaKW > 5) {
+        eficiencia += ' Para potências elevadas, considere sistemas inverter para melhor controlo de temperatura.';
+      }
+
+      // Preencher recomendações
+      const listaRecomendacoes = document.getElementById('recomendacoes');
+      listaRecomendacoes.innerHTML = '';
+      recomendacoes.forEach(rec => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check text-success me-2"></i>${rec}`;
+        listaRecomendacoes.appendChild(li);
+      });
+
+      document.getElementById('eficiencia').textContent = eficiencia;
+
+      // Mostrar resultado
+      document.getElementById('resultado').style.display = 'block';
+      
+      // Scroll para o resultado
+      document.getElementById('resultado').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }
+
+    // Inicializar AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  </script>
+
+</body>
+
+</html> 
