@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Permitir indexação de todas as páginas principais
+Allow: /index.html
+Allow: /produtos.html
+Allow: /utilidades.html
+Allow: /contact.html
+Allow: /energia-solar.html
+Allow: /services.html
+Allow: /about.html
+Allow: /produto-detalhes.html
+
+# Permitir indexação de assets importantes
+Allow: /assets/img/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Desallow arquivos desnecessários para SEO
+Disallow: /assets/vendor/
+Disallow: /forms/
+Disallow: /.git/
+Disallow: /.DS_Store
+Disallow: /README.md
+Disallow: /Readme.txt
+
+# Sitemap
+Sitemap: https://mconfa.pt/sitemap.xml
+
+# Crawl-delay para ser respeitoso com os servidores
+Crawl-delay: 1 
