@@ -176,6 +176,33 @@
       margin: 20px 0;
       border-radius: 5px;
     }
+    
+    .filter-btn {
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+    
+    .filter-btn.active {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+      border-color: #f39c12;
+      color: white;
+    }
+    
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+    }
+    
+    .calculator-card {
+      transition: all 0.3s ease;
+    }
+    
+    .calculator-card.hide {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -225,31 +252,103 @@
       </div>
     </section>
 
-    <!-- ======= Categories Section ======= -->
-    <section class="category-section">
+    <!-- ======= Filters Section ======= -->
+    <section class="py-4" style="background: #f8f9fa;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <button class="btn btn-outline-primary filter-btn active" data-filter="all">Todas</button>
+              <button class="btn btn-outline-primary filter-btn" data-filter="climatizacao">Climatização</button>
+              <button class="btn btn-outline-primary filter-btn" data-filter="aquecimento">Aquecimento</button>
+              <button class="btn btn-outline-primary filter-btn" data-filter="aguas-sanitarias">Águas Sanitárias</button>
+              <button class="btn btn-outline-primary filter-btn" data-filter="piso-radiante">Piso Radiante</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Calculator Cards Section ======= -->
+    <section class="py-5">
       <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="category-card">
-              <div class="category-icon">
-                <i class="fas fa-thermometer-half"></i>
+        <div class="row" id="calculatorCards">
+          
+          <!-- Ar Condicionado Card -->
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="climatizacao">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-snowflake"></i>
+                </div>
+                <h5 class="card-title">Calculadora de Ar Condicionado</h5>
+                <p class="card-text">Calcule a potência ideal para climatização do seu espaço</p>
+                <a href="#acCalculator" class="btn btn-primary">
+                  <i class="fas fa-calculator me-2"></i>Calcular
+                </a>
               </div>
-              <h4>Aquecimento e Climatização</h4>
-              <p>Calculadoras para dimensionamento de ar condicionado, aquecimento e ventilação.</p>
-              <span class="badge bg-primary">Ativo</span>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="category-card">
-              <div class="category-icon">
-                <i class="fas fa-swimming-pool"></i>
+          <!-- Bomba de Calor Card -->
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="aquecimento">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-fire"></i>
+                </div>
+                <h5 class="card-title">Calculadora de Bomba de Calor</h5>
+                <p class="card-text">Dimensione a bomba de calor ideal para aquecimento</p>
+                <a href="#heatPumpCalculator" class="btn btn-primary">
+                  <i class="fas fa-calculator me-2"></i>Calcular
+                </a>
               </div>
-              <h4>Piscinas</h4>
-              <p>Calculadoras para sistemas de filtragem, aquecimento e manutenção de piscinas.</p>
-              <span class="badge bg-secondary">Em breve</span>
             </div>
           </div>
+
+          <!-- Termoacumulador Card -->
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="aguas-sanitarias">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-tint"></i>
+                </div>
+                <h5 class="card-title">Calculadora de Termoacumulador</h5>
+                <p class="card-text">Calcule a capacidade ideal para águas sanitárias</p>
+                <a href="#termoCalculator" class="btn btn-primary">
+                  <i class="fas fa-calculator me-2"></i>Calcular
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Future Calculators (Hidden for now) -->
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="aquecimento" style="display: none;">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-burn"></i>
+                </div>
+                <h5 class="card-title">Calculadora de Caldeira</h5>
+                <p class="card-text">Dimensione caldeira para aquecimento central</p>
+                <span class="badge bg-secondary">Em breve</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="piso-radiante" style="display: none;">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-th-large"></i>
+                </div>
+                <h5 class="card-title">Calculadora de Piso Radiante</h5>
+                <p class="card-text">Calcule dimensionamento de piso radiante</p>
+                <span class="badge bg-secondary">Em breve</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -493,6 +592,152 @@
                 <div class="mt-3">
                   <h6><i class="fas fa-leaf me-2"></i>Eficiência e Economia:</h6>
                   <p id="eficienciaHP" class="mb-0"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Termoacumulador Calculator Section ======= -->
+    <section class="calculator-section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="calculator-card">
+              <div class="text-center mb-4">
+                <div class="calculator-icon">
+                  <i class="fas fa-tint"></i>
+                </div>
+                <h3>Calculadora de Termoacumulador</h3>
+                <p class="text-muted">Calcule a capacidade ideal do termoacumulador para águas sanitárias</p>
+              </div>
+
+              <div class="info-text">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Informação:</strong> Esta calculadora considera o consumo típico de água quente sanitária por pessoa e os padrões de eficiência energética em Portugal.
+              </div>
+
+              <form id="termoCalculator">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Número de Ocupantes</label>
+                      <input type="number" class="form-control" id="ocupantesTermo" placeholder="Ex: 4" min="1" max="15" value="4" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Padrão de Consumo</label>
+                      <select class="form-control" id="padraoConsumo" required>
+                        <option value="">Selecione...</option>
+                        <option value="baixo">Baixo (Duches rápidos)</option>
+                        <option value="medio">Médio (Uso normal)</option>
+                        <option value="alto">Alto (Banhos longos)</option>
+                        <option value="muito-alto">Muito Alto (Uso intensivo)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Tipo de Habitação</label>
+                      <select class="form-control" id="tipoHabitacao" required>
+                        <option value="">Selecione...</option>
+                        <option value="apartamento">Apartamento</option>
+                        <option value="moradia">Moradia</option>
+                        <option value="comercial">Estabelecimento Comercial</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Número de Casas de Banho</label>
+                      <select class="form-control" id="casasBanho" required>
+                        <option value="">Selecione...</option>
+                        <option value="1">1 Casa de Banho</option>
+                        <option value="2">2 Casas de Banho</option>
+                        <option value="3">3 Casas de Banho</option>
+                        <option value="4+">4 ou mais</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Presença de Banheira</label>
+                      <select class="form-control" id="banheira" required>
+                        <option value="">Selecione...</option>
+                        <option value="nao">Apenas Duches</option>
+                        <option value="pequena">Banheira Pequena</option>
+                        <option value="grande">Banheira Grande/Hidro</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Outros Pontos de Água Quente</label>
+                      <select class="form-control" id="outrosPontos" required>
+                        <option value="">Selecione...</option>
+                        <option value="0">Nenhum</option>
+                        <option value="1">Cozinha apenas</option>
+                        <option value="2">Cozinha + Lavandaria</option>
+                        <option value="3+">Múltiplos pontos</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Horário de Maior Uso</label>
+                      <select class="form-control" id="horarioUso" required>
+                        <option value="">Selecione...</option>
+                        <option value="manha">Principalmente Manhã</option>
+                        <option value="noite">Principalmente Noite</option>
+                        <option value="distribuido">Uso Distribuído</option>
+                        <option value="intensivo">Uso Intensivo (Picos)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Eficiência Desejada</label>
+                      <select class="form-control" id="eficienciaTermo" required>
+                        <option value="">Selecione...</option>
+                        <option value="basica">Básica (Modelo simples)</option>
+                        <option value="media">Média (Bom isolamento)</option>
+                        <option value="alta">Alta (A+ ou superior)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center mt-4">
+                  <button type="button" class="btn btn-calculate" onclick="calcularTermoacumulador()">
+                    <i class="fas fa-calculator me-2"></i>Calcular Capacidade
+                  </button>
+                </div>
+              </form>
+
+              <div id="resultadoTermo" class="result-card" style="display: none;">
+                <h4>Resultado do Dimensionamento</h4>
+                <div class="result-value" id="capacidadeTermo">-</div>
+                <div class="mb-3">
+                  <strong>Capacidade Recomendada do Termoacumulador</strong>
+                </div>
+                <div class="row text-start">
+                  <div class="col-md-6">
+                    <h6><i class="fas fa-tint me-2"></i>Consumo Estimado:</h6>
+                    <ul id="consumoDetalhes" class="list-unstyled">
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Recomendações:</h6>
+                    <ul id="recomendacoesTermo" class="list-unstyled">
+                    </ul>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <h6><i class="fas fa-bolt me-2"></i>Consumo Energético:</h6>
+                  <p id="consumoEnergetico" class="mb-0"></p>
                 </div>
               </div>
             </div>
@@ -836,6 +1081,232 @@
         block: 'center' 
       });
     }
+
+    // Termoacumulador Calculator Function
+    function calcularTermoacumulador() {
+      // Obter valores do formulário
+      const ocupantes = parseInt(document.getElementById('ocupantesTermo').value);
+      const padraoConsumo = document.getElementById('padraoConsumo').value;
+      const tipoHabitacao = document.getElementById('tipoHabitacao').value;
+      const casasBanho = document.getElementById('casasBanho').value;
+      const banheira = document.getElementById('banheira').value;
+      const outrosPontos = document.getElementById('outrosPontos').value;
+      const horarioUso = document.getElementById('horarioUso').value;
+      const eficiencia = document.getElementById('eficienciaTermo').value;
+
+      // Validar inputs
+      if (!ocupantes || !padraoConsumo || !tipoHabitacao || !casasBanho || !banheira || !outrosPontos || !horarioUso || !eficiencia) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Consumo base por pessoa em litros/dia a 40°C
+      const consumoBasePorPessoa = {
+        'baixo': 35,     // Duches rápidos
+        'medio': 50,     // Uso normal
+        'alto': 70,      // Banhos longos
+        'muito-alto': 100 // Uso intensivo
+      };
+
+      // Fatores por tipo de habitação
+      const fatoresHabitacao = {
+        'apartamento': 1.0,
+        'moradia': 1.1,
+        'comercial': 1.4
+      };
+
+      // Fatores por número de casas de banho
+      const fatoresCasasBanho = {
+        '1': 1.0,
+        '2': 1.2,
+        '3': 1.4,
+        '4+': 1.6
+      };
+
+      // Fatores por presença de banheira
+      const fatoresBanheira = {
+        'nao': 1.0,
+        'pequena': 1.3,
+        'grande': 1.8
+      };
+
+      // Fatores por outros pontos de água quente
+      const fatoresOutrosPontos = {
+        '0': 1.0,
+        '1': 1.15,
+        '2': 1.3,
+        '3+': 1.5
+      };
+
+      // Fatores por horário de uso (pico simultâneo)
+      const fatoresHorario = {
+        'manha': 1.2,      // Pico concentrado manhã
+        'noite': 1.2,      // Pico concentrado noite  
+        'distribuido': 1.0, // Uso distribuído
+        'intensivo': 1.4   // Múltiplos picos
+      };
+
+      // Calcular consumo diário total
+      let consumoDiario = ocupantes * consumoBasePorPessoa[padraoConsumo];
+      consumoDiario *= fatoresHabitacao[tipoHabitacao];
+      consumoDiario *= fatoresCasasBanho[casasBanho];
+      consumoDiario *= fatoresBanheira[banheira];
+      consumoDiario *= fatoresOutrosPontos[outrosPontos];
+
+      // Calcular capacidade do termoacumulador
+      // Considerando pico de uso simultâneo
+      let capacidadeRecomendada = consumoDiario * fatoresHorario[horarioUso];
+
+      // Ajustar por eficiência do equipamento
+      const fatoresEficiencia = {
+        'basica': 1.2,  // Perdas maiores, precisa mais capacidade
+        'media': 1.0,   // Padrão
+        'alta': 0.9     // Menor perda, pode ter menos capacidade
+      };
+
+      capacidadeRecomendada *= fatoresEficiencia[eficiencia];
+
+      // Arredondar para capacidades comerciais comuns
+      let capacidadeFinal;
+      if (capacidadeRecomendada <= 80) {
+        capacidadeFinal = 80;
+      } else if (capacidadeRecomendada <= 100) {
+        capacidadeFinal = 100;
+      } else if (capacidadeRecomendada <= 120) {
+        capacidadeFinal = 120;
+      } else if (capacidadeRecomendada <= 150) {
+        capacidadeFinal = 150;
+      } else if (capacidadeRecomendada <= 200) {
+        capacidadeFinal = 200;
+      } else if (capacidadeRecomendada <= 300) {
+        capacidadeFinal = 300;
+      } else if (capacidadeRecomendada <= 500) {
+        capacidadeFinal = 500;
+      } else {
+        capacidadeFinal = Math.ceil(capacidadeRecomendada / 100) * 100;
+      }
+
+      // Exibir resultado
+      document.getElementById('capacidadeTermo').textContent = capacidadeFinal + ' L';
+
+      // Gerar detalhes de consumo
+      const detalhesConsumo = [];
+      detalhesConsumo.push(`Consumo por pessoa: ${consumoBasePorPessoa[padraoConsumo]}L/dia`);
+      detalhesConsumo.push(`Consumo total estimado: ${Math.round(consumoDiario)}L/dia`);
+      detalhesConsumo.push(`Pico de demanda: ${Math.round(capacidadeRecomendada)}L`);
+      
+      if (banheira !== 'nao') {
+        const volumeBanheira = banheira === 'pequena' ? '150-200L' : '300-400L';
+        detalhesConsumo.push(`Volume banheira: ${volumeBanheira}`);
+      }
+
+      // Gerar recomendações
+      const recomendacoes = [];
+
+      if (capacidadeFinal >= 200) {
+        recomendacoes.push('Considere modelo com dupla resistência');
+      }
+
+      if (horarioUso === 'intensivo') {
+        recomendacoes.push('Recomendado modelo de recuperação rápida');
+      }
+
+      if (eficiencia === 'basica') {
+        recomendacoes.push('Invista em modelo com melhor isolamento');
+      }
+
+      if (banheira === 'grande') {
+        recomendacoes.push('Considere sistema híbrido ou solar térmico');
+      }
+
+      if (ocupantes >= 6) {
+        recomendacoes.push('Avalie sistema de produção instantânea');
+      }
+
+      if (tipoHabitacao === 'comercial') {
+        recomendacoes.push('Considere sistema trifásico e controlo automático');
+      }
+
+      // Consumo energético
+      const potenciaMedia = capacidadeFinal <= 100 ? 1.5 : capacidadeFinal <= 200 ? 2.2 : 3.0; // kW
+      const horasFuncionamentoDia = Math.min(8, Math.max(2, consumoDiario / 20)); // Estimativa
+      const consumoMensal = (potenciaMedia * horasFuncionamentoDia * 30) / 1000; // MWh
+      const custoMensal = consumoMensal * 150; // €/MWh (preço médio)
+
+      let consumoEnergetico = `Potência estimada: ${potenciaMedia} kW. `;
+      consumoEnergetico += `Consumo mensal: ${consumoMensal.toFixed(1)} MWh (≈${Math.round(custoMensal)}€/mês). `;
+      
+      if (eficiencia === 'alta') {
+        consumoEnergetico += `Com modelo A+: economia de 15-20% no consumo.`;
+      }
+
+      // Adicionar recomendação de programação
+      if (horarioUso !== 'distribuido') {
+        recomendacoes.push('Configure programação para tarifa bi-horária');
+      }
+
+      // Preencher detalhes de consumo
+      const listaConsumo = document.getElementById('consumoDetalhes');
+      listaConsumo.innerHTML = '';
+      detalhesConsumo.forEach(det => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-tint text-primary me-2"></i>${det}`;
+        listaConsumo.appendChild(li);
+      });
+
+      // Preencher recomendações
+      const listaRecomendacoesTermo = document.getElementById('recomendacoesTermo');
+      listaRecomendacoesTermo.innerHTML = '';
+      recomendacoes.forEach(rec => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check text-success me-2"></i>${rec}`;
+        listaRecomendacoesTermo.appendChild(li);
+      });
+
+      document.getElementById('consumoEnergetico').textContent = consumoEnergetico;
+
+      // Mostrar resultado
+      document.getElementById('resultadoTermo').style.display = 'block';
+      
+      // Scroll para o resultado
+      document.getElementById('resultadoTermo').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }
+
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const calculatorCards = document.querySelectorAll('.calculator-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+
+          const filterValue = this.getAttribute('data-filter');
+
+          calculatorCards.forEach(card => {
+            if (filterValue === 'all') {
+              // Show all cards except hidden ones
+              if (!card.style.display || card.style.display !== 'none') {
+                card.classList.remove('hide');
+              }
+            } else {
+              // Show/hide based on category
+              if (card.getAttribute('data-category') === filterValue) {
+                card.classList.remove('hide');
+              } else {
+                card.classList.add('hide');
+              }
+            }
+          });
+        });
+      });
+    });
 
     // Inicializar AOS
     AOS.init({
