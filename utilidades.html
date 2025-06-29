@@ -203,6 +203,59 @@
     .calculator-card.hide {
       display: none !important;
     }
+    
+    /* Estilos para recomendações de produtos */
+    .product-recommendation {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #f39c12;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .product-recommendation:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(243, 156, 18, 0.2);
+    }
+    
+    .product-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    
+    .product-description {
+      color: #6c757d;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    .product-btn {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: white;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .product-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(243, 156, 18, 0.4);
+      color: white;
+      text-decoration: none;
+    }
+    
+    .product-specs {
+      font-size: 0.85rem;
+      color: #28a745;
+      font-weight: 500;
+    }
   </style>
 </head>
 
@@ -247,6 +300,11 @@
           <div class="col-lg-8 text-center">
             <h2 class="mb-4">Ferramentas e Calculadoras</h2>
             <p class="lead">Simplifique seus projetos com nossas ferramentas especializadas. Calculadoras precisas para dimensionamento de sistemas de climatização e aquecimento, adaptadas ao mercado português.</p>
+            
+            <div class="alert alert-info mt-4">
+              <i class="fas fa-lightbulb me-2"></i>
+              <strong>💡 Novidade!</strong> Agora receba recomendações diretas dos nossos produtos após cada cálculo, com links para ver detalhes e especificações técnicas.
+            </div>
           </div>
         </div>
       </div>
@@ -1078,6 +1136,99 @@
 
   <!-- AC Calculator Script -->
   <script>
+    // Função para criar recomendação de produto com link
+    function criarRecomendacaoProduto(nome, descricao, especificacoes, produtoId) {
+      return `
+        <div class="product-recommendation">
+          <div class="product-title">${nome}</div>
+          <div class="product-description">${descricao}</div>
+          <div class="product-specs">${especificacoes}</div>
+          <a href="produto-detalhes.html?id=${produtoId}" class="product-btn" target="_blank">
+            <i class="fas fa-eye me-2"></i>Ver Detalhes
+          </a>
+        </div>
+      `;
+    }
+
+    // Base de dados de produtos para recomendações
+    const produtosRecomendados = {
+      // Ar Condicionado
+      'austin': {
+        nome: 'Split AUSTIN',
+        descricao: 'Sistema split de 12.000 BTU/h com classe energética A+++',
+        especificacoes: 'A+++ • 12.000 BTU • WiFi Opcional • R32',
+        id: 1
+      },
+      'havai': {
+        nome: 'Split HAVAI',
+        descricao: 'Sistema split de 18.000 BTU/h com modo ECO e WiFi',
+        especificacoes: 'A++ • 18.000 BTU • WiFi • Modo ECO • R32',
+        id: 2
+      },
+      'alys32': {
+        nome: 'ALYS 32 (Ariston)',
+        descricao: 'Sistema split Ariston com 12 velocidades e alta eficiência',
+        especificacoes: 'A+++ • 12 Velocidades • R32 • 2D Inverter',
+        id: 10
+      },
+      'multisplit': {
+        nome: 'Multisplit V23',
+        descricao: 'Sistema multi-split para até 5 unidades interiores',
+        especificacoes: 'Até 42.000 BTU • 5 Unidades • 3 Tipos • WiFi',
+        id: 4
+      },
+
+      // Termoacumuladores
+      'lydos-eco': {
+        nome: 'LYDOS ECO (Ariston)',
+        descricao: 'Termoacumulador elétrico com função ECO EVO',
+        especificacoes: 'A+ • 50-100L • Função ECO EVO • Controlo Eletrónico',
+        id: 17
+      },
+      'velis-wifi': {
+        nome: 'VELIS WIFI (Ariston)',
+        descricao: 'Termoacumulador extra fino com conectividade WiFi',
+        especificacoes: 'WiFi • 50-100L • Shower Ready • Multi-posição',
+        id: 21
+      },
+      'lydos-hybrid': {
+        nome: 'LYDOS HYBRID WIFI (Ariston)',
+        descricao: 'Primeiro termoacumulador híbrido com economia de 50%',
+        especificacoes: 'Híbrido • 80-100L • WiFi • Economia 50% • Classe A',
+        id: 15
+      },
+      'regina-smart-200': {
+        nome: 'REGINA SMART 200 A+ (Zantia)',
+        descricao: 'Bomba de calor AQS com 200L e conectividade WiFi',
+        especificacoes: 'A+ • 200L • WiFi • Aço Inox • 1 Serpentina',
+        id: 7
+      },
+      'regina-smart-300': {
+        nome: 'REGINA SMART 300 A+ (Zantia)',
+        descricao: 'Bomba de calor AQS com 300L e 1-2 serpentinas',
+        especificacoes: 'A+ • 300L • WiFi • Aço Inox • 1-2 Serpentinas',
+        id: 8
+      },
+      'regina-smart-500': {
+        nome: 'REGINA SMART 500 A (Zantia)',
+        descricao: 'Bomba de calor AQS de grande capacidade com 500L',
+        especificacoes: 'A • 500L • WiFi • Aço Inox • Dupla Serpentina',
+        id: 9
+      },
+      'velis-pro': {
+        nome: 'VELIS PRO (Ariston)',
+        descricao: 'Termoacumulador superfino com duplo depósito',
+        especificacoes: '50-100L • Duplo Depósito • 27cm Profundidade • Multi-posição',
+        id: 16
+      },
+      'lydos-plus': {
+        nome: 'LYDOS PLUS (Ariston)',
+        descricao: 'Design inovador com display inteligente',
+        especificacoes: '50-80L • Display Inteligente • Design Exclusivo • Programação',
+        id: 22
+      }
+    };
+  </script>
     function calcularAC() {
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('area').value);
@@ -1169,16 +1320,36 @@
       
       if (btuSugerido <= 12000) {
         recomendacoes.push('Equipamento split de 9.000-12.000 BTU/h seria adequado');
-        recomendacoes.push('<strong>Produto recomendado:</strong> Split AUSTIN (12.000 BTU) - Classe A+++, WiFi opcional');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados.austin.nome,
+          produtosRecomendados.austin.descricao,
+          produtosRecomendados.austin.especificacoes,
+          produtosRecomendados.austin.id
+        ));
       } else if (btuSugerido <= 18000) {
         recomendacoes.push('Equipamento split de 18.000 BTU/h seria adequado');
-        recomendacoes.push('<strong>Produto recomendado:</strong> Split HAVAI (18.000 BTU) - Classe A++, WiFi, Modo ECO');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados.havai.nome,
+          produtosRecomendados.havai.descricao,
+          produtosRecomendados.havai.especificacoes,
+          produtosRecomendados.havai.id
+        ));
       } else if (btuSugerido <= 24000) {
         recomendacoes.push('Equipamento split de 24.000 BTU/h seria adequado');
-        recomendacoes.push('<strong>Produto recomendado:</strong> ALYS 32 (Ariston) - Classe A+++, 12 velocidades');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados.alys32.nome,
+          produtosRecomendados.alys32.descricao,
+          produtosRecomendados.alys32.especificacoes,
+          produtosRecomendados.alys32.id
+        ));
       } else {
         recomendacoes.push('Considere um sistema multi-split');
-        recomendacoes.push('<strong>Produto recomendado:</strong> Multisplit V23 - Até 42.000 BTU, 5 unidades interiores');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados.multisplit.nome,
+          produtosRecomendados.multisplit.descricao,
+          produtosRecomendados.multisplit.especificacoes,
+          produtosRecomendados.multisplit.id
+        ));
       }
 
       if (isolamento === 'fraco') {
@@ -1204,6 +1375,17 @@
         li.innerHTML = `<i class="fas fa-check text-success me-2"></i>${rec}`;
         listaRecomendacoes.appendChild(li);
       });
+
+      // Adicionar botão para ver todos os produtos
+      const liVerTodos = document.createElement('li');
+      liVerTodos.innerHTML = `
+        <div style="margin-top: 15px; text-align: center;">
+          <a href="produtos.html" class="btn btn-outline-primary" target="_blank">
+            <i class="fas fa-th-large me-2"></i>Ver Todos os Produtos
+          </a>
+        </div>
+      `;
+      listaRecomendacoes.appendChild(liVerTodos);
 
       document.getElementById('eficiencia').textContent = eficiencia;
 
@@ -1509,22 +1691,61 @@
 
       // Sugestões de produtos baseadas na capacidade
       if (capacidadeFinal <= 100) {
-        recomendacoes.push('<strong>Produtos recomendados:</strong>');
-        recomendacoes.push('• LYDOS ECO (50-100L) - Classe A+, Função ECO EVO');
-        recomendacoes.push('• VELIS WIFI (50-100L) - Extra fino, WiFi, Shower Ready');
-        recomendacoes.push('• LYDOS HYBRID WIFI (80-100L) - Híbrido, economia 50%');
+        recomendacoes.push('<strong>Produtos recomendados para até 100L:</strong>');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['lydos-eco'].nome,
+          produtosRecomendados['lydos-eco'].descricao,
+          produtosRecomendados['lydos-eco'].especificacoes,
+          produtosRecomendados['lydos-eco'].id
+        ));
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['velis-wifi'].nome,
+          produtosRecomendados['velis-wifi'].descricao,
+          produtosRecomendados['velis-wifi'].especificacoes,
+          produtosRecomendados['velis-wifi'].id
+        ));
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['lydos-hybrid'].nome,
+          produtosRecomendados['lydos-hybrid'].descricao,
+          produtosRecomendados['lydos-hybrid'].especificacoes,
+          produtosRecomendados['lydos-hybrid'].id
+        ));
       } else if (capacidadeFinal <= 200) {
-        recomendacoes.push('<strong>Produtos recomendados:</strong>');
-        recomendacoes.push('• LYDOS PLUS (80L) - Design inovador, display inteligente');
-        recomendacoes.push('• REGINA SMART 200 A+ - Bomba calor AQS, WiFi, aço inox');
-        recomendacoes.push('• VELIS PRO (80-100L) - Superfino, duplo depósito');
+        recomendacoes.push('<strong>Produtos recomendados para até 200L:</strong>');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['lydos-plus'].nome,
+          produtosRecomendados['lydos-plus'].descricao,
+          produtosRecomendados['lydos-plus'].especificacoes,
+          produtosRecomendados['lydos-plus'].id
+        ));
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['regina-smart-200'].nome,
+          produtosRecomendados['regina-smart-200'].descricao,
+          produtosRecomendados['regina-smart-200'].especificacoes,
+          produtosRecomendados['regina-smart-200'].id
+        ));
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['velis-pro'].nome,
+          produtosRecomendados['velis-pro'].descricao,
+          produtosRecomendados['velis-pro'].especificacoes,
+          produtosRecomendados['velis-pro'].id
+        ));
       } else if (capacidadeFinal <= 300) {
-        recomendacoes.push('<strong>Produtos recomendados:</strong>');
-        recomendacoes.push('• REGINA SMART 300 A+ - Bomba calor AQS, WiFi, 1-2 serpentinas');
-        recomendacoes.push('• REGINA MAX A+ (300L) - Display touch, aço inoxidável');
+        recomendacoes.push('<strong>Produtos recomendados para até 300L:</strong>');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['regina-smart-300'].nome,
+          produtosRecomendados['regina-smart-300'].descricao,
+          produtosRecomendados['regina-smart-300'].especificacoes,
+          produtosRecomendados['regina-smart-300'].id
+        ));
       } else {
-        recomendacoes.push('<strong>Produto recomendado:</strong>');
-        recomendacoes.push('• REGINA SMART 500 A - Grande capacidade, WiFi, dupla serpentina');
+        recomendacoes.push('<strong>Produto recomendado para grande capacidade:</strong>');
+        recomendacoes.push(criarRecomendacaoProduto(
+          produtosRecomendados['regina-smart-500'].nome,
+          produtosRecomendados['regina-smart-500'].descricao,
+          produtosRecomendados['regina-smart-500'].especificacoes,
+          produtosRecomendados['regina-smart-500'].id
+        ));
       }
 
       if (capacidadeFinal >= 200) {
@@ -1586,6 +1807,17 @@
         li.innerHTML = `<i class="fas fa-check text-success me-2"></i>${rec}`;
         listaRecomendacoesTermo.appendChild(li);
       });
+
+      // Adicionar botão para ver todos os produtos
+      const liVerTodosTermo = document.createElement('li');
+      liVerTodosTermo.innerHTML = `
+        <div style="margin-top: 15px; text-align: center;">
+          <a href="produtos.html" class="btn btn-outline-primary" target="_blank">
+            <i class="fas fa-th-large me-2"></i>Ver Todos os Produtos
+          </a>
+        </div>
+      `;
+      listaRecomendacoesTermo.appendChild(liVerTodosTermo);
 
       document.getElementById('consumoEnergetico').textContent = consumoEnergetico;
 
@@ -2075,6 +2307,15 @@
       } else {
         recomendacoes.push('<strong>Bomba calor compatível:</strong> ' + Math.ceil(potenciaNecessaria/1000) + ' kW ou superior');
       }
+
+      recomendacoes.push(`
+        <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 8px;">
+          <strong>💡 Dica:</strong> Para piso radiante, recomendamos bombas de calor específicas para aquecimento. 
+          <br><a href="produtos.html" class="btn btn-sm btn-outline-primary mt-2" target="_blank">
+            <i class="fas fa-fire me-2"></i>Ver Bombas de Calor Compatíveis
+          </a>
+        </div>
+      `);
 
       // Parâmetros de instalação
       let parametros = `Sistema hidráulico: Tubo Ø16mm ou Ø20mm, espaçamento ${espacamentoTubos}mm. `;
