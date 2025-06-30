@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>M Conf&A - Solicitação de Manutenção</title>
+  <meta name="description" content="Solicite manutenção dos seus equipamentos M Conf&A. Registre o serviço realizado e receba lembretes automatizados para manutenção preventiva.">
+  <meta name="keywords" content="manutenção, serviço técnico, climatização, ar condicionado, energia solar, M Conf&A">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .form-section {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    
+    .form-section h4 {
+      color: #37517e;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .maintenance-form .form-control {
+      padding: 12px 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 1rem;
+    }
+    
+    .maintenance-form .form-control:focus {
+      border-color: #ff6a00;
+      box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.25);
+    }
+    
+    .maintenance-form select.form-control {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 12px center;
+      background-repeat: no-repeat;
+      background-size: 16px 12px;
+      padding-right: 40px;
+    }
+    
+    .btn-submit {
+      background: linear-gradient(45deg, #ff6a00, #ff8c00);
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3);
+      color: white;
+    }
+    
+    .alert {
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 1rem;
+      color: #666;
+    }
+    
+    .loading .spinner-border {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="utilidades.html">Utilidades</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+        <h2>Solicitação de Manutenção</h2>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Manutenção</li>
+        </ol>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Maintenance Request Section ======= -->
+    <section id="maintenance-request" class="contact">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="section-header text-center mb-5">
+              <h2>Registe o Seu Serviço</h2>
+              <p>Preencha o formulário abaixo para registar o serviço realizado na sua casa. Iremos contactá-lo quando for altura da próxima manutenção preventiva.</p>
+            </div>
+
+            <form id="maintenanceForm" class="maintenance-form">
+              
+              <!-- Dados Pessoais -->
+              <div class="form-section">
+                <h4><i class="bi bi-person-circle me-2"></i>Dados Pessoais</h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite o seu nome completo" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="seuemail@exemplo.com" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="telefone" class="form-label">Telefone *</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="912345678" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="nif" class="form-label">NIF</label>
+                    <input type="text" id="nif" name="nif" class="form-control" placeholder="123456789">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Endereço do Serviço -->
+              <div class="form-section">
+                <h4><i class="bi bi-geo-alt-fill me-2"></i>Local do Serviço</h4>
+                <div class="row">
+                  <div class="col-md-8">
+                    <label for="morada_servico" class="form-label">Morada *</label>
+                    <input type="text" id="morada_servico" name="morada_servico" class="form-control" placeholder="Rua das Flores, 123" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="codigo_postal" class="form-label">Código Postal</label>
+                    <input type="text" id="codigo_postal" name="codigo_postal" class="form-control" placeholder="1000-000">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="cidade" class="form-label">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Lisboa" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Detalhes do Serviço -->
+              <div class="form-section">
+                <h4><i class="bi bi-tools me-2"></i>Detalhes do Serviço</h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="tipo_servico" class="form-label">Tipo de Serviço *</label>
+                    <select id="tipo_servico" name="tipo_servico" class="form-control" required>
+                      <option value="">Selecione o tipo de serviço</option>
+                      <option value="Instalação">Instalação</option>
+                      <option value="Manutenção">Manutenção</option>
+                      <option value="Reparação">Reparação</option>
+                      <option value="Inspeção">Inspeção</option>
+                      <option value="Limpeza">Limpeza</option>
+                      <option value="Outros">Outros</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="data_preferida" class="form-label">Data Preferida para Próxima Manutenção</label>
+                    <input type="date" id="data_preferida" name="data_preferida" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="periodo_preferido" class="form-label">Período Preferido</label>
+                    <select id="periodo_preferido" name="periodo_preferido" class="form-control">
+                      <option value="">Selecione o período</option>
+                      <option value="manha">Manhã (9h-12h)</option>
+                      <option value="tarde">Tarde (14h-17h)</option>
+                      <option value="qualquer">Qualquer horário</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="descricao_problema" class="form-label">Descrição do Serviço Realizado</label>
+                    <textarea id="descricao_problema" name="descricao_problema" class="form-control" rows="4" placeholder="Descreva o serviço que foi realizado na sua casa..."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mensagens -->
+              <div class="loading">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Carregando...</span>
+                </div>
+                A processar a sua solicitação...
+              </div>
+              
+              <div class="alert alert-success d-none" id="successMessage">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <strong>Sucesso!</strong> A sua solicitação foi enviada com sucesso. Entraremos em contacto em breve.
+              </div>
+              
+              <div class="alert alert-danger d-none" id="errorMessage">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <strong>Erro!</strong> <span id="errorText">Ocorreu um erro ao enviar a solicitação. Tente novamente.</span>
+              </div>
+
+              <!-- Botão de Envio -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-submit">
+                  <i class="bi bi-send me-2"></i>Enviar Solicitação
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Maintenance Request Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="footer-legal text-center position-relative">
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>M Conf&A</span></strong>. Todos os direitos reservados.
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- Botão flutuante do WhatsApp -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <a href="https://wa.me/351913632248?text=Olá! Vi seu site e gostaria de mais informações." style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:1000;" target="_blank">
+    <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+  </a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Maintenance Form JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('maintenanceForm');
+      const loadingDiv = document.querySelector('.loading');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      const errorText = document.getElementById('errorText');
+
+      // Inicializar AOS
+      AOS.init();
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Limpar mensagens anteriores
+        successMessage.classList.add('d-none');
+        errorMessage.classList.add('d-none');
+        loadingDiv.style.display = 'block';
+
+        // Coletar dados do formulário
+        const formData = new FormData(form);
+        const data = {};
+        
+        for (let [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+
+        try {
+          // Fazer requisição à API
+          const response = await fetch('http://localhost:5085/api/maintenance-request', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.success) {
+            // Sucesso
+            successMessage.classList.remove('d-none');
+            form.reset();
+            
+            // Scroll para a mensagem de sucesso
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            // Erro da API
+            errorText.textContent = result.error || 'Erro desconhecido ao processar a solicitação.';
+            errorMessage.classList.remove('d-none');
+            
+            // Scroll para a mensagem de erro
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } catch (error) {
+          // Erro de conexão
+          console.error('Erro:', error);
+          errorText.textContent = 'Erro de conexão. Verifique se o servidor está a funcionar e tente novamente.';
+          errorMessage.classList.remove('d-none');
+          
+          // Scroll para a mensagem de erro
+          errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } finally {
+          loadingDiv.style.display = 'none';
+        }
+      });
+
+      // Validação de telefone (apenas números)
+      document.getElementById('telefone').addEventListener('input', function(e) {
+        this.value = this.value.replace(/\D/g, '');
+      });
+
+      // Validação de NIF (apenas números)
+      document.getElementById('nif').addEventListener('input', function(e) {
+        this.value = this.value.replace(/\D/g, '');
+      });
+
+      // Formatação de código postal
+      document.getElementById('codigo_postal').addEventListener('input', function(e) {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length >= 4) {
+          value = value.substring(0, 4) + '-' + value.substring(4, 7);
+        }
+        this.value = value;
+      });
+    });
+  </script>
+
+</body>
+
+</html> 
