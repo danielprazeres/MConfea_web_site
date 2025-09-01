@@ -1227,6 +1227,16 @@
     };
 
     function calcularAC() {
+      // Verificar se a calculadora está visível
+      const acCard = document.querySelector('.calculator-card[data-category="climatizacao"]');
+      if (acCard && acCard.classList.contains('hide')) {
+        // Se estiver oculta, ativar a aba "Todas"
+        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
+      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('area').value);
       const altura = parseFloat(document.getElementById('altura').value);
@@ -1398,6 +1408,16 @@
 
     // Heat Pump Calculator Function
     function calcularBombaCalor() {
+      // Verificar se a calculadora está visível
+      const bombaCalorCard = document.querySelector('.calculator-card[data-category="aquecimento"]');
+      if (bombaCalorCard && bombaCalorCard.classList.contains('hide')) {
+        // Se estiver oculta, ativar a aba "Todas"
+        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
+      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaHP').value);
       const zonaClimatica = document.getElementById('zonaClimatica').value;
@@ -1567,6 +1587,15 @@
 
     // Termoacumulador Calculator Function
     function calcularTermoacumulador() {
+      // Verificar se a calculadora está visível
+      const termoCard = document.querySelector('.calculator-card[data-category="aguas-sanitarias"]');
+      if (termoCard && termoCard.classList.contains('hide')) {
+        // Se estiver oculta, ativar a aba "Todas"
+        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
       // Obter valores do formulário
       const ocupantes = parseInt(document.getElementById('ocupantesTermo').value);
       const padraoConsumo = document.getElementById('padraoConsumo').value;
@@ -1830,6 +1859,18 @@
 
     // Caldeira Calculator Function
     function calcularCaldeira() {
+      // Verificar se a calculadora está visível
+      const caldeiraCard = document.querySelectorAll('.calculator-card[data-category="aquecimento"]');
+      // A caldeira é o segundo card com categoria "aquecimento" 
+      const caldeiraSpecificCard = caldeiraCard[1];
+      if (caldeiraSpecificCard && caldeiraSpecificCard.classList.contains('hide')) {
+        // Se estiver oculta, ativar a aba "Todas"
+        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
+      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaCaldeira').value);
       const zonaClimatica = document.getElementById('zonaClimaticaCaldeira').value;
@@ -1963,6 +2004,18 @@
 
     // Caldeira Calculator Function
     function calcularCaldeira() {
+      // Verificar se a calculadora está visível
+      const caldeiraCard = document.querySelectorAll('.calculator-card[data-category="aquecimento"]');
+      // A caldeira é o segundo card com categoria "aquecimento" 
+      const caldeiraSpecificCard = caldeiraCard[1];
+      if (caldeiraSpecificCard && caldeiraSpecificCard.classList.contains('hide')) {
+        // Se estiver oculta, ativar a aba "Todas"
+        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
+      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaCaldeira').value);
       const zonaClimatica = document.getElementById('zonaClimaticaCaldeira').value;
@@ -2155,6 +2208,16 @@
 
     // Piso Radiante Calculator Function - Versão Simplificada
     function calcularPisoRadiante() {
+      // Verificar se a calculadora está visível
+      const pisoRadianteCard = document.querySelector('.calculator-card[data-category="piso-radiante"]');
+      if (pisoRadianteCard && pisoRadianteCard.classList.contains('hide')) {
+        // Se estiver oculta, ativar a aba "Todas"
+        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allButton) {
+          allButton.click();
+        }
+      }
+      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaPiso').value);
       const tipoAmbiente = document.getElementById('tipoAmbientePiso').value;
