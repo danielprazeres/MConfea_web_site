@@ -203,12 +203,6 @@
     .calculator-card.hide {
       display: none !important;
     }
-
-    .calculator-form.hide {
-      position: absolute !important;
-      left: -9999px !important;
-      visibility: hidden !important;
-    }
     
     /* Estilos para recomendações de produtos */
     .product-recommendation {
@@ -3141,7 +3135,7 @@
 
           const filterValue = this.getAttribute('data-filter');
 
-          // Filter cards
+          // Filter cards only - forms are always visible
           calculatorCards.forEach(card => {
             if (filterValue === 'all') {
               card.classList.remove('hide');
@@ -3153,89 +3147,28 @@
               }
             }
           });
-
-          // Filter forms
-          calculatorForms.forEach(form => {
-            if (filterValue === 'all') {
-              form.classList.remove('hide');
-            } else {
-              if (form.getAttribute('data-category') === filterValue) {
-                form.classList.remove('hide');
-              } else {
-                form.classList.add('hide');
-              }
-            }
-          });
         });
       });
 
       // Smooth scroll for calculator links
       const calculatorLinks = document.querySelectorAll('.calculator-card a[href^="#"]');
-      console.log('Found calculator links:', calculatorLinks.length);
 
       calculatorLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          console.log('Calculator link clicked!');
 
           const targetId = this.getAttribute('href');
-          console.log('Target ID:', targetId);
-
           const target = document.querySelector(targetId);
-          console.log('Target element:', target);
 
           if (target) {
-            // Target might be a form or a section
-            // First try to find if target itself is a section
-            let targetSection = target.matches('section.calculator-form') ? target : target.closest('section.calculator-form');
-            console.log('Target section:', targetSection);
+            // Simple scroll to target with offset
+            const yOffset = -100; // Offset for any fixed header
+            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-            if (targetSection) {
-              const targetCategory = targetSection.getAttribute('data-category');
-              console.log('Target category:', targetCategory);
-
-              // Hide all calculator forms first
-              const allForms = document.querySelectorAll('section.calculator-form');
-              console.log('Hiding all forms:', allForms.length);
-              allForms.forEach(form => form.classList.add('hide'));
-
-              // Show only the target calculator form
-              console.log('Showing target section');
-              targetSection.classList.remove('hide');
-
-              // Update filter buttons to show active state
-              const filterButtons = document.querySelectorAll('.filter-btn');
-              filterButtons.forEach(btn => btn.classList.remove('active'));
-
-              // Find and activate the corresponding filter button
-              const correspondingButton = document.querySelector(`.filter-btn[data-filter="${targetCategory}"]`);
-              if (correspondingButton) {
-                correspondingButton.classList.add('active');
-                console.log('Activated filter button:', targetCategory);
-              }
-
-              // Scroll to target after a brief delay
-              setTimeout(() => {
-                console.log('Scrolling to section');
-                console.log('Window scroll before:', window.pageYOffset);
-                console.log('Section position:', targetSection.getBoundingClientRect());
-
-                // Scroll to top of section with offset for header
-                const yOffset = -100; // Offset for any fixed header
-                const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-                console.log('Scrolling to Y position:', y);
-
-                window.scrollTo({
-                  top: y,
-                  behavior: 'smooth'
-                });
-              }, 200);
-            } else {
-              console.error('Could not find target section!');
-            }
-          } else {
-            console.error('Target element not found:', targetId);
+            window.scrollTo({
+              top: y,
+              behavior: 'smooth'
+            });
           }
         });
       });
