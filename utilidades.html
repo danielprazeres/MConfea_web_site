@@ -319,6 +319,7 @@
               <button class="btn btn-outline-primary filter-btn" data-filter="aquecimento">Aquecimento</button>
               <button class="btn btn-outline-primary filter-btn" data-filter="aguas-sanitarias">Águas Sanitárias</button>
               <button class="btn btn-outline-primary filter-btn" data-filter="piso-radiante">Piso Radiante</button>
+              <button class="btn btn-outline-primary filter-btn" data-filter="conversor">Conversor</button>
             </div>
           </div>
         </div>
@@ -378,6 +379,22 @@
             </div>
           </div>
 
+          <!-- Pool Heat Pump Card -->
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="aquecimento">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-swimming-pool"></i>
+                </div>
+                <h5 class="card-title">Calculadora Bomba de Calor para Piscinas</h5>
+                <p class="card-text">Dimensione bomba de calor para aquecimento de piscina</p>
+                <a href="#poolHeatPumpCalculator" class="btn btn-primary">
+                  <i class="fas fa-calculator me-2"></i>Calcular
+                </a>
+              </div>
+            </div>
+          </div>
+
           <!-- Caldeira Card -->
           <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="aquecimento">
             <div class="card h-100 shadow-sm">
@@ -404,6 +421,22 @@
                 <p class="card-text">Dimensione sistema de piso radiante hidráulico</p>
                 <a href="#pisoRadianteCalculator" class="btn btn-primary">
                   <i class="fas fa-calculator me-2"></i>Calcular
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit Converter Card -->
+          <div class="col-lg-4 col-md-6 mb-4 calculator-card" data-category="conversor">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <div class="calculator-icon mb-3">
+                  <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h5 class="card-title">Conversor de Unidades</h5>
+                <p class="card-text">Converta unidades de potência, energia, temperatura e caudal</p>
+                <a href="#unitConverter" class="btn btn-primary">
+                  <i class="fas fa-calculator me-2"></i>Converter
                 </a>
               </div>
             </div>
@@ -478,12 +511,33 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Isolamento Térmico</label>
+                      <label class="form-label">
+                        Isolamento Térmico
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Bom: Paredes duplas com isolamento, janelas duplas; Médio: Construção padrão; Fraco: Paredes simples, janelas antigas"></i>
+                      </label>
                       <select class="form-control" id="isolamento" required>
                         <option value="">Selecione...</option>
                         <option value="bom">Bom (Edifício recente)</option>
                         <option value="medio">Médio (Edifício padrão)</option>
                         <option value="fraco">Fraco (Edifício antigo)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">
+                        Zona Climática de Verão (Portugal)
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="V3: Porto, Braga, Viana (mais fresco); V2: Lisboa, Coimbra, Leiria (moderado); V1: Faro, Évora, Beja, Interior (mais quente)"></i>
+                      </label>
+                      <select class="form-control" id="zonaVerao" required>
+                        <option value="">Selecione...</option>
+                        <option value="V3">V3 - Norte/Litoral (mais fresco)</option>
+                        <option value="V2" selected>V2 - Centro/Lisboa (moderado)</option>
+                        <option value="V1">V1 - Sul/Interior (mais quente)</option>
                       </select>
                     </div>
                   </div>
@@ -549,7 +603,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Zona Climática de Portugal</label>
+                      <label class="form-label">
+                        Zona Climática de Portugal
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="I1: Bragança, Guarda, Vila Real (mais frio); I2: Viseu, Castelo Branco, Portalegre; I3: Lisboa, Porto, Faro, toda a costa (temperado)"></i>
+                      </label>
                       <select class="form-control" id="zonaClimatica" required>
                         <option value="">Selecione...</option>
                         <option value="I1">I1 - Zona Mais Fria (Interior Norte/Centro)</option>
@@ -560,7 +619,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Tipo de Bomba de Calor</label>
+                      <label class="form-label">
+                        Tipo de Bomba de Calor
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Ar-Água: Extrai calor do ar exterior (mais económico); Água-Água: Usa água de furo (alta eficiência); Geotérmica: Extrai calor do solo (máxima eficiência)"></i>
+                      </label>
                       <select class="form-control" id="tipoBomba" required>
                         <option value="">Selecione...</option>
                         <option value="ar-agua">Ar-Água (Mais comum)</option>
@@ -571,7 +635,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Isolamento da Habitação</label>
+                      <label class="form-label">
+                        Isolamento da Habitação
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Excelente: Casa passiva, A+, isolamento >10cm; Bom: Pós-2006, janelas duplas; Médio: Padrão português; Fraco: Pré-1990, sem isolamento"></i>
+                      </label>
                       <select class="form-control" id="isolamentoHP" required>
                         <option value="">Selecione...</option>
                         <option value="excelente">Excelente (Casa Passiva/A+)</option>
@@ -602,7 +671,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Sistema de Distribuição</label>
+                      <label class="form-label">
+                        Sistema de Distribuição
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Piso Radiante: 35-45°C, máxima eficiência; Radiadores BT: 55°C, boa eficiência; Radiadores AT: 75°C, menor eficiência; Ventiloconvectores: ventiladores com água quente"></i>
+                      </label>
                       <select class="form-control" id="distribuicao" required>
                         <option value="">Selecione...</option>
                         <option value="piso-radiante">Piso Radiante</option>
@@ -689,7 +763,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Padrão de Consumo</label>
+                      <label class="form-label">
+                        Padrão de Consumo
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Baixo: Duches rápidos 5-10min, 30-40L/pessoa/dia; Médio: Uso normal, 50L/pessoa/dia; Alto: Banhos longos, 70L/pessoa/dia; Muito Alto: Uso intensivo, >80L/pessoa/dia"></i>
+                      </label>
                       <select class="form-control" id="padraoConsumo" required>
                         <option value="">Selecione...</option>
                         <option value="baixo">Baixo (Duches rápidos)</option>
@@ -806,6 +885,174 @@
       </div>
     </section>
 
+    <!-- ======= Pool Heat Pump Calculator Section ======= -->
+    <section class="calculator-section calculator-form" data-category="aquecimento">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="calculator-card">
+              <div class="text-center mb-4">
+                <div class="calculator-icon">
+                  <i class="fas fa-swimming-pool"></i>
+                </div>
+                <h3>Calculadora Bomba de Calor para Piscinas</h3>
+                <p class="text-muted">Dimensione a bomba de calor ideal para aquecimento da sua piscina</p>
+              </div>
+
+              <div class="info-text">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Informação:</strong> Esta calculadora considera as normas portuguesas e europeias para aquecimento de piscinas, incluindo perdas térmicas, zona climática e características da piscina.
+              </div>
+
+              <form id="poolHeatPumpCalculator">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h6 class="mb-3"><i class="fas fa-ruler-combined me-2"></i>Dimensões da Piscina</h6>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-label">Comprimento (m)</label>
+                      <input type="number" class="form-control" id="comprimentoPiscina" placeholder="Ex: 8" min="2" max="50" step="0.5" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-label">Largura (m)</label>
+                      <input type="number" class="form-control" id="larguraPiscina" placeholder="Ex: 4" min="2" max="25" step="0.5" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-label">Profundidade Média (m)</label>
+                      <input type="number" class="form-control" id="profundidadePiscina" placeholder="Ex: 1.5" min="0.8" max="3" step="0.1" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label">ou Volume Total (m³)</label>
+                      <input type="number" class="form-control" id="volumePiscina" placeholder="Deixe em branco se preencheu dimensões acima" min="10" max="500" step="1">
+                      <small class="text-muted">Se especificar o volume, as dimensões acima serão ignoradas</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">
+                        Tipo de Piscina
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Interior: Dentro de edifício; Exterior: Ao ar livre; Coberta: Com cobertura fixa ou telescópica"></i>
+                      </label>
+                      <select class="form-control" id="tipoPiscina" required>
+                        <option value="">Selecione...</option>
+                        <option value="interior">Interior (Aquecida)</option>
+                        <option value="exterior">Exterior (Ar livre)</option>
+                        <option value="coberta">Coberta (Com cobertura)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">
+                        Zona Climática
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="I1: Norte e Interior (mais frio); I2: Centro e Litoral; I3: Sul e Algarve (mais quente)"></i>
+                      </label>
+                      <select class="form-control" id="zonaClimaticaPiscina" required>
+                        <option value="">Selecione...</option>
+                        <option value="I1">I1 - Norte e Interior</option>
+                        <option value="I2">I2 - Centro e Litoral</option>
+                        <option value="I3">I3 - Sul e Algarve</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Temperatura Desejada da Água (°C)</label>
+                      <input type="number" class="form-control" id="temperaturaDesejada" placeholder="Ex: 28" min="24" max="32" value="28" required>
+                      <small class="text-muted">Recomendado: 26-28°C para lazer, 28-30°C para crianças</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Período de Utilização</label>
+                      <select class="form-control" id="periodoUtilizacao" required>
+                        <option value="">Selecione...</option>
+                        <option value="verao">Apenas Verão (Jun-Set)</option>
+                        <option value="primavera-verao">Primavera-Verão (Abr-Out)</option>
+                        <option value="todo-ano">Todo o Ano</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">
+                        Cobertura Térmica
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Cobertura térmica reduz perdas de calor em 50-70% e economiza energia significativamente"></i>
+                      </label>
+                      <select class="form-control" id="coberturaPiscina" required>
+                        <option value="">Selecione...</option>
+                        <option value="sim">Sim (Recomendado)</option>
+                        <option value="nao">Não</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">
+                        Exposição ao Vento
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Protegida: Muros/vedação alta; Moderada: Alguma proteção; Exposta: Sem proteção"></i>
+                      </label>
+                      <select class="form-control" id="exposicaoVento" required>
+                        <option value="">Selecione...</option>
+                        <option value="protegida">Protegida (Muros altos)</option>
+                        <option value="moderada">Moderada</option>
+                        <option value="exposta">Exposta (Sem proteção)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center mt-4">
+                  <button type="button" class="btn btn-calculate" onclick="calcularPiscinaBombaCalor()">
+                    <i class="fas fa-calculator me-2"></i>Calcular Bomba de Calor
+                  </button>
+                </div>
+              </form>
+
+              <div id="resultadoPoolHeatPump" class="result-card" style="display: none;">
+                <h4>Resultado do Dimensionamento</h4>
+                <div class="result-value" id="potenciaPoolHeatPump">-</div>
+                <div class="mb-3">
+                  <strong>Potência Recomendada da Bomba de Calor</strong>
+                </div>
+                <div class="row text-start">
+                  <div class="col-md-6">
+                    <h6><i class="fas fa-swimming-pool me-2"></i>Características da Piscina:</h6>
+                    <ul id="detalhesPoolHeatPump" class="list-unstyled">
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Recomendações:</h6>
+                    <ul id="recomendacoesPoolHeatPump" class="list-unstyled">
+                    </ul>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <h6><i class="fas fa-bolt me-2"></i>Consumo e Custos Operacionais:</h6>
+                  <p id="custosPoolHeatPump" class="mb-0"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ======= Caldeira Calculator Section ======= -->
     <section class="calculator-section calculator-form" data-category="aquecimento" style="background: #fff8f0;">
       <div class="container" data-aos="fade-up">
@@ -835,7 +1082,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Zona Climática de Portugal</label>
+                      <label class="form-label">
+                        Zona Climática de Portugal
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="I1: Bragança, Guarda, Vila Real (mais frio); I2: Viseu, Castelo Branco, Portalegre; I3: Lisboa, Porto, Faro, toda a costa (temperado)"></i>
+                      </label>
                       <select class="form-control" id="zonaClimaticaCaldeira" required>
                         <option value="">Selecione...</option>
                         <option value="I1">I1 - Zona Mais Fria (Interior Norte/Centro)</option>
@@ -846,7 +1098,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Tipo de Combustível</label>
+                      <label class="form-label">
+                        Tipo de Combustível
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Gás Natural: Rede pública, mais limpo; GPL: Botija/depósito, versátil; Gasóleo: Depósito próprio; Pellets: Biomassa, ecológico; Lenha: Tradicional, renovável"></i>
+                      </label>
                       <select class="form-control" id="tipoCombustivel" required>
                         <option value="">Selecione...</option>
                         <option value="gas-natural">Gás Natural</option>
@@ -859,7 +1116,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Sistema de Distribuição</label>
+                      <label class="form-label">
+                        Sistema de Distribuição
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Piso Radiante: 35-45°C, máxima eficiência; Radiadores BT: 55°C, caldeiras condensação; Radiadores AT: 75°C, caldeiras tradicionais; Ventiloconvectores: aquecimento rápido"></i>
+                      </label>
                       <select class="form-control" id="sistemaDistribuicao" required>
                         <option value="">Selecione...</option>
                         <option value="piso-radiante">Piso Radiante (35-45°C)</option>
@@ -871,7 +1133,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Isolamento da Habitação</label>
+                      <label class="form-label">
+                        Isolamento da Habitação
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Excelente: Casa passiva, A+, isolamento >10cm; Bom: Pós-2006, janelas duplas; Médio: Padrão português; Fraco: Pré-1990, sem isolamento"></i>
+                      </label>
                       <select class="form-control" id="isolamentoCaldeira" required>
                         <option value="">Selecione...</option>
                         <option value="excelente">Excelente (Casa Passiva/A+)</option>
@@ -991,7 +1258,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Objetivo do Sistema</label>
+                      <label class="form-label">
+                        Objetivo do Sistema
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Aquecimento: Sistema convencional, água 35-45°C; Misto: Sistema reversível, aquece e arrefece, requer bomba de calor especial e controlo de condensação"></i>
+                      </label>
                       <select class="form-control" id="objetivoPiso" required>
                         <option value="">Selecione...</option>
                         <option value="aquecimento">Apenas Aquecimento</option>
@@ -1001,7 +1273,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Tipo de Pavimento</label>
+                      <label class="form-label">
+                        Tipo de Pavimento
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="Cerâmico/Pedra: Melhor condutividade térmica; Madeira/Laminado: Isolam mais, menos eficientes; Vinílico/LVT: Boa condutividade; Microcimento: Excelente transmissão de calor"></i>
+                      </label>
                       <select class="form-control" id="tipoPavimento" required>
                         <option value="">Selecione...</option>
                         <option value="ceramico">Cerâmico/Porcelânico</option>
@@ -1015,7 +1292,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Isolamento do Pavimento</label>
+                      <label class="form-label">
+                        Isolamento do Pavimento
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="XPS: Poliestireno extrudido (melhor); EPS: Poliestireno expandido (esferovite). Espessura mínima 30mm recomendada. Sem isolamento: perdas de calor para baixo, maior consumo"></i>
+                      </label>
                       <select class="form-control" id="isolamentoPavimento" required>
                         <option value="">Selecione...</option>
                         <option value="excelente">Excelente (XPS 50mm+)</option>
@@ -1039,7 +1321,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-label">Zona Climática</label>
+                      <label class="form-label">
+                        Zona Climática
+                        <i class="fas fa-info-circle text-info" style="cursor: help;"
+                           data-bs-toggle="tooltip" data-bs-placement="top"
+                           title="I1: Bragança, Guarda, Vila Real (mais frio); I2: Viseu, Castelo Branco, Portalegre; I3: Lisboa, Porto, Faro, toda a costa (temperado)"></i>
+                      </label>
                       <select class="form-control" id="zonaClimaticaPiso" required>
                         <option value="">Selecione...</option>
                         <option value="I1">I1 - Interior Norte/Centro</option>
@@ -1080,6 +1367,123 @@
                   <p id="parametrosInstalacao" class="mb-0"></p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Unit Converter Section ======= -->
+    <section id="unitConverter" class="calculator-section calculator-form" data-category="conversor" style="background: #f5f5f5;">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="calculator-card">
+              <div class="text-center mb-4">
+                <div class="calculator-icon">
+                  <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Conversor de Unidades AVAC</h3>
+                <p class="text-muted">Conversão instantânea entre unidades técnicas</p>
+              </div>
+
+              <form>
+                <!-- Category Selection -->
+                <div class="row mb-4">
+                  <div class="col-12">
+                    <label class="form-label"><strong>Categoria de Conversão</strong></label>
+                    <select class="form-select form-select-lg" id="converterCategory" onchange="updateConverterUnits()">
+                      <option value="potencia">Potência (kW, BTU/h, CV, HP, Kcal/h)</option>
+                      <option value="energia">Energia (kWh, MWh, BTU, Kcal, J)</option>
+                      <option value="temperatura">Temperatura (°C, °F, K)</option>
+                      <option value="caudal">Caudal (m³/h, L/min, L/h, GPM)</option>
+                      <option value="pressao">Pressão (Bar, PSI, kPa, atm)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Conversion Input -->
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label">De:</label>
+                    <div class="input-group input-group-lg">
+                      <input type="number" class="form-control" id="fromValue" placeholder="0" oninput="converterUnidades()" step="any">
+                      <select class="form-select" id="fromUnit" onchange="converterUnidades()" style="max-width: 150px;">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Para:</label>
+                    <div class="input-group input-group-lg">
+                      <input type="number" class="form-control" id="toValue" placeholder="0" readonly style="background-color: #e9ecef;">
+                      <select class="form-select" id="toUnit" onchange="converterUnidades()" style="max-width: 150px;">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Swap Button -->
+                <div class="text-center mb-4">
+                  <button type="button" class="btn btn-outline-primary" onclick="swapUnits()">
+                    <i class="fas fa-sync-alt me-2"></i>Inverter Unidades
+                  </button>
+                </div>
+
+                <!-- Conversion Info -->
+                <div id="conversionInfo" class="alert alert-info" style="display: none;">
+                  <i class="fas fa-info-circle me-2"></i>
+                  <span id="conversionFormula"></span>
+                </div>
+
+                <!-- Common Conversions Reference -->
+                <div class="mt-4">
+                  <h5 class="mb-3"><i class="fas fa-book me-2"></i>Conversões Comuns AVAC</h5>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="card bg-light">
+                        <div class="card-body p-3">
+                          <h6 class="card-title text-primary mb-2">Potência</h6>
+                          <small class="d-block">1 kW = 3412.14 BTU/h</small>
+                          <small class="d-block">1 kW = 860 Kcal/h</small>
+                          <small class="d-block">1 kW = 1.36 CV</small>
+                          <small class="d-block">1 kW = 1.34 HP</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card bg-light">
+                        <div class="card-body p-3">
+                          <h6 class="card-title text-primary mb-2">Temperatura</h6>
+                          <small class="d-block">°C para °F: (°C × 9/5) + 32</small>
+                          <small class="d-block">°F para °C: (°F - 32) × 5/9</small>
+                          <small class="d-block">°C para K: °C + 273.15</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card bg-light">
+                        <div class="card-body p-3">
+                          <h6 class="card-title text-primary mb-2">Caudal</h6>
+                          <small class="d-block">1 m³/h = 16.67 L/min</small>
+                          <small class="d-block">1 m³/h = 4.40 GPM</small>
+                          <small class="d-block">1 L/min = 0.26 GPM</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card bg-light">
+                        <div class="card-body p-3">
+                          <h6 class="card-title text-primary mb-2">Pressão</h6>
+                          <small class="d-block">1 Bar = 14.50 PSI</small>
+                          <small class="d-block">1 Bar = 100 kPa</small>
+                          <small class="d-block">1 atm = 1.013 Bar</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
             </div>
           </div>
         </div>
@@ -1235,18 +1639,41 @@
       const exposicaoSolar = document.getElementById('exposicaoSolar').value;
       const pessoas = parseInt(document.getElementById('pessoas').value);
       const isolamento = document.getElementById('isolamento').value;
+      const zonaVerao = document.getElementById('zonaVerao').value;
 
       // Validar inputs
-      if (!area || !altura || !tipoAmbiente || !exposicaoSolar || !pessoas || !isolamento) {
+      if (!area || !altura || !tipoAmbiente || !exposicaoSolar || !pessoas || !isolamento || !zonaVerao) {
         alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Validar intervalos
+      if (area < 1 || area > 500) {
+        alert('A área deve estar entre 1 e 500 m²');
+        return;
+      }
+
+      if (altura < 2.0 || altura > 5.0) {
+        alert('A altura do teto deve estar entre 2.0 e 5.0 metros');
+        return;
+      }
+
+      if (pessoas < 1 || pessoas > 20) {
+        alert('O número de pessoas deve estar entre 1 e 20');
         return;
       }
 
       // Cálculo base: volume do espaço
       const volume = area * altura;
-      
-      // Fator base para Portugal (50-70 W/m²)
-      let fatorBase = 90; // W/m²
+
+      // Fator base por zona climática de verão (Portugal SCE)
+      const fatoresZonaVerao = {
+        'V1': 90,  // Sul/Interior - mais quente (Beja, Évora, interior Alentejo)
+        'V2': 80,  // Centro/Lisboa - moderado
+        'V3': 70   // Norte/Litoral - mais fresco (Porto, Braga, costa)
+      };
+
+      let fatorBase = fatoresZonaVerao[zonaVerao]; // W/m²
 
       // Ajustes por tipo de ambiente
       const fatoresAmbiente = {
@@ -1415,6 +1842,17 @@
         return;
       }
 
+      // Validar intervalos
+      if (area < 1 || area > 500) {
+        alert('A área deve estar entre 1 e 500 m²');
+        return;
+      }
+
+      if (ocupantes < 1 || ocupantes > 20) {
+        alert('O número de ocupantes deve estar entre 1 e 20');
+        return;
+      }
+
       // Temperaturas exteriores de projeto por zona climática (°C)
       const temperaturasExterior = {
         'I1': -3.0,  // Interior Norte/Centro - mais frio
@@ -1529,7 +1967,7 @@
 
       // Eficiência e economia
       const consumoAnualEstimado = (potenciaEletrica * 1400) / 1000; // MWh/ano (1400h equivalentes)
-      const custosAnuais = consumoAnualEstimado * 0.15; // €/kWh
+      const custosAnuais = consumoAnualEstimado * 0.19; // €/kWh (preço médio PT 2025)
       const economiaVsGas = custosAnuais * 0.4; // 40% economia vs gás
 
       let eficiencia = `Consumo estimado: ${consumoAnualEstimado.toFixed(0)} MWh/ano (≈${Math.round(custosAnuais)}€/ano). `;
@@ -1584,12 +2022,18 @@
         return;
       }
 
+      // Validar intervalos
+      if (ocupantes < 1 || ocupantes > 20) {
+        alert('O número de ocupantes deve estar entre 1 e 20');
+        return;
+      }
+
       // Consumo base por pessoa em litros/dia a 40°C
       const consumoBasePorPessoa = {
-        'baixo': 35,     // Duches rápidos
-        'medio': 50,     // Uso normal
-        'alto': 70,      // Banhos longos
-        'muito-alto': 100 // Uso intensivo
+        'baixo': 40,     // Duches rápidos (LNEC mínimo)
+        'medio': 60,     // Uso normal (LNEC recomendado)
+        'alto': 80,      // Banhos longos
+        'muito-alto': 120 // Uso intensivo
       };
 
       // Fatores por tipo de habitação
@@ -1774,7 +2218,7 @@
       const potenciaMedia = capacidadeFinal <= 100 ? 1.5 : capacidadeFinal <= 200 ? 2.2 : 3.0; // kW
       const horasFuncionamentoDia = Math.min(8, Math.max(2, consumoDiario / 20)); // Estimativa
       const consumoMensal = (potenciaMedia * horasFuncionamentoDia * 30) / 1000; // MWh
-      const custoMensal = consumoMensal * 150; // €/MWh (preço médio)
+      const custoMensal = consumoMensal * 190; // €/MWh (preço médio PT 2025)
 
       let consumoEnergetico = `Potência estimada: ${potenciaMedia} kW. `;
       consumoEnergetico += `Consumo mensal: ${consumoMensal.toFixed(1)} MWh (≈${Math.round(custoMensal)}€/mês). `;
@@ -1823,9 +2267,281 @@
       document.getElementById('resultadoTermo').style.display = 'block';
       
       // Scroll para o resultado
-      document.getElementById('resultadoTermo').scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
+      document.getElementById('resultadoTermo').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+
+    // Pool Heat Pump Calculator Function
+    function calcularPiscinaBombaCalor() {
+      // Obter valores do formulário
+      const comprimento = parseFloat(document.getElementById('comprimentoPiscina').value);
+      const largura = parseFloat(document.getElementById('larguraPiscina').value);
+      const profundidade = parseFloat(document.getElementById('profundidadePiscina').value);
+      let volumeEspecificado = parseFloat(document.getElementById('volumePiscina').value);
+      const tipoPiscina = document.getElementById('tipoPiscina').value;
+      const zonaClimatica = document.getElementById('zonaClimaticaPiscina').value;
+      const temperaturaDesejada = parseFloat(document.getElementById('temperaturaDesejada').value);
+      const periodoUtilizacao = document.getElementById('periodoUtilizacao').value;
+      const coberturaPiscina = document.getElementById('coberturaPiscina').value;
+      const exposicaoVento = document.getElementById('exposicaoVento').value;
+
+      // Calcular volume se não especificado
+      let volume;
+      if (volumeEspecificado && !isNaN(volumeEspecificado)) {
+        volume = volumeEspecificado;
+      } else {
+        if (!comprimento || !largura || !profundidade) {
+          alert('Por favor, preencha as dimensões da piscina ou especifique o volume total.');
+          return;
+        }
+        volume = comprimento * largura * profundidade;
+      }
+
+      // Validar outros campos
+      if (!tipoPiscina || !zonaClimatica || !temperaturaDesejada || !periodoUtilizacao || !coberturaPiscina || !exposicaoVento) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Validar intervalos
+      if (volume < 10 || volume > 500) {
+        alert('O volume da piscina deve estar entre 10 e 500 m³');
+        return;
+      }
+
+      if (temperaturaDesejada < 24 || temperaturaDesejada > 32) {
+        alert('A temperatura desejada deve estar entre 24 e 32°C');
+        return;
+      }
+
+      // Temperaturas ambientes médias por zona climática e período (Portugal)
+      const temperaturasAmbiente = {
+        'I1': { 'verao': 20, 'primavera-verao': 16, 'todo-ano': 12 },
+        'I2': { 'verao': 22, 'primavera-verao': 18, 'todo-ano': 14 },
+        'I3': { 'verao': 25, 'primavera-verao': 20, 'todo-ano': 16 }
+      };
+
+      const tempAmbiente = temperaturasAmbiente[zonaClimatica][periodoUtilizacao];
+
+      // Calcular diferencial de temperatura
+      const deltaT = temperaturaDesejada - tempAmbiente;
+
+      // Fatores de perda de calor por tipo de piscina (W/m²)
+      const fatoresPerdaTipo = {
+        'interior': 150,    // Menores perdas (ambiente controlado)
+        'coberta': 250,     // Perdas moderadas
+        'exterior': 400     // Maiores perdas (evaporação, convecção, radiação)
+      };
+
+      // Ajuste por exposição ao vento (fator multiplicador)
+      const fatoresVento = {
+        'protegida': 0.8,
+        'moderada': 1.0,
+        'exposta': 1.3
+      };
+
+      // Ajuste por cobertura térmica (reduz perdas)
+      const fatorCobertura = coberturaPiscina === 'sim' ? 0.4 : 1.0; // 60% de redução com cobertura
+
+      // Ajuste por período de utilização (fator de segurança)
+      const fatoresPeriodo = {
+        'verao': 1.0,           // Condições favoráveis
+        'primavera-verao': 1.2, // Temperaturas variáveis
+        'todo-ano': 1.5         // Condições adversas no inverno
+      };
+
+      // Calcular área da superfície da piscina
+      let areaPiscina;
+      if (volumeEspecificado && !isNaN(volumeEspecificado)) {
+        // Estimar área baseada no volume (assumindo profundidade média de 1.5m)
+        areaPiscina = volume / 1.5;
+      } else {
+        areaPiscina = comprimento * largura;
+      }
+
+      // Calcular perdas de calor totais (kW)
+      let perdasCalor = (areaPiscina * fatoresPerdaTipo[tipoPiscina] * fatoresVento[exposicaoVento] * fatorCobertura) / 1000;
+
+      // Tempo desejado para aquecimento inicial (horas) - 24-48h típico
+      const tempoAquecimento = tipoPiscina === 'interior' ? 24 : 36;
+
+      // Capacidade térmica da água: 1.16 Wh/L·°C ou 1.16 kWh/m³·°C
+      const capacidadeTermicaAgua = 1.16; // kWh/m³·°C
+
+      // Energia necessária para aquecer a piscina do zero
+      const energiaAquecimentoInicial = volume * capacidadeTermicaAgua * deltaT;
+
+      // Potência necessária para aquecimento inicial
+      const potenciaAquecimentoInicial = energiaAquecimentoInicial / tempoAquecimento;
+
+      // Potência necessária para compensar perdas contínuas
+      const potenciaCompensacaoPerdas = perdasCalor * fatoresPeriodo[periodoUtilizacao];
+
+      // Potência total necessária (maior dos dois valores + margem de segurança)
+      let potenciaNecessaria = Math.max(potenciaAquecimentoInicial, potenciaCompensacaoPerdas) * 1.15; // 15% margem
+
+      // COP típico de bombas de calor para piscinas (5.0-6.0 em condições normais)
+      const COPBombaCalor = tipoPiscina === 'interior' ? 5.5 :
+                            periodoUtilizacao === 'verao' ? 5.8 : 5.0;
+
+      // Arredondar para potências comerciais comuns
+      let potenciaRecomendada;
+      if (potenciaNecessaria <= 6) {
+        potenciaRecomendada = 5;
+      } else if (potenciaNecessaria <= 9) {
+        potenciaRecomendada = 8;
+      } else if (potenciaNecessaria <= 12) {
+        potenciaRecomendada = 10;
+      } else if (potenciaNecessaria <= 16) {
+        potenciaRecomendada = 15;
+      } else if (potenciaNecessaria <= 19) {
+        potenciaRecomendada = 17;
+      } else if (potenciaNecessaria <= 24) {
+        potenciaRecomendada = 22;
+      } else if (potenciaNecessaria <= 28) {
+        potenciaRecomendada = 25;
+      } else {
+        potenciaRecomendada = Math.ceil(potenciaNecessaria / 5) * 5;
+      }
+
+      // Calcular tempo real de aquecimento com a potência recomendada
+      const tempoAquecimentoReal = energiaAquecimentoInicial / potenciaRecomendada;
+
+      // Exibir resultado
+      document.getElementById('potenciaPoolHeatPump').textContent = potenciaRecomendada + ' kW';
+
+      // Gerar detalhes
+      const detalhes = [];
+      detalhes.push(`Volume da piscina: ${volume.toFixed(1)} m³`);
+      if (!volumeEspecificado || isNaN(volumeEspecificado)) {
+        detalhes.push(`Dimensões: ${comprimento}m × ${largura}m × ${profundidade}m`);
+      }
+      detalhes.push(`Área superficial: ${areaPiscina.toFixed(1)} m²`);
+      detalhes.push(`Diferencial de temperatura: ${deltaT.toFixed(1)}°C`);
+      detalhes.push(`Tempo de aquecimento inicial: ${tempoAquecimentoReal.toFixed(1)} horas`);
+      detalhes.push(`COP estimado: ${COPBombaCalor.toFixed(1)}`);
+      detalhes.push(`Perdas térmicas: ${perdasCalor.toFixed(2)} kW`);
+
+      // Gerar recomendações
+      const recomendacoes = [];
+
+      // Recomendações por tamanho
+      if (volume < 30) {
+        recomendacoes.push('<strong>Piscina Pequena (< 30m³):</strong> Modelos de 5-8 kW são adequados');
+      } else if (volume < 60) {
+        recomendacoes.push('<strong>Piscina Média (30-60m³):</strong> Modelos de 10-15 kW são adequados');
+      } else {
+        recomendacoes.push('<strong>Piscina Grande (> 60m³):</strong> Modelos de 17-25 kW são adequados');
+      }
+
+      // Recomendações específicas
+      if (coberturaPiscina === 'nao') {
+        recomendacoes.push('<strong>ALTAMENTE RECOMENDADO:</strong> Instalar cobertura térmica - reduz consumo em 50-70%');
+        recomendacoes.push('Cobertura térmica pode reduzir a potência necessária em até 60%');
+      } else {
+        recomendacoes.push('Cobertura térmica: Excelente escolha! Mantém a temperatura e reduz custos');
+      }
+
+      if (exposicaoVento === 'exposta') {
+        recomendacoes.push('Piscina exposta ao vento: Considere instalar quebra-ventos ou vedação');
+      }
+
+      if (tipoPiscina === 'exterior' && periodoUtilizacao === 'todo-ano') {
+        recomendacoes.push('Uso anual em exterior: Modelo inverter para eficiência em baixas temperaturas');
+        recomendacoes.push('Considere bomba de calor de alta temperatura ou sistema auxiliar para inverno');
+      }
+
+      if (temperaturaDesejada > 29) {
+        recomendacoes.push('Temperatura elevada aumenta consumo significativamente - cada 1°C = +10-15% consumo');
+      }
+
+      if (volume > 80) {
+        recomendacoes.push('Grande volume: Avalie sistema de controlo automático com sonda de temperatura');
+        recomendacoes.push('Considere bomba de circulação eficiente (classe A)');
+      }
+
+      if (periodoUtilizacao === 'verao') {
+        recomendacoes.push('Uso sazonal: Menor investimento em potência pode ser adequado');
+      }
+
+      // Adicionar dica sobre isolamento
+      if (tipoPiscina === 'exterior') {
+        recomendacoes.push('Para piscinas novas: Considere isolamento térmico nas paredes e fundo');
+      }
+
+      // Calcular custos operacionais
+      const horasOperacaoDia = tipoPiscina === 'interior' ? 12 :
+                                periodoUtilizacao === 'verao' ? 8 : 10;
+
+      const diasOperacaoMes = periodoUtilizacao === 'verao' ? 30 :
+                              periodoUtilizacao === 'primavera-verao' ? 30 : 30;
+
+      const mesesOperacao = periodoUtilizacao === 'verao' ? 4 :
+                            periodoUtilizacao === 'primavera-verao' ? 7 : 12;
+
+      // Consumo elétrico considerando COP
+      const potenciaEletricaMedia = potenciaCompensacaoPerdas / COPBombaCalor;
+      const consumoMensal = (potenciaEletricaMedia * horasOperacaoDia * diasOperacaoMes) / 1000; // MWh
+      const consumoAnual = consumoMensal * mesesOperacao;
+
+      const precoEnergia = 0.19; // €/kWh (preço médio PT 2025)
+      const custoMensal = consumoMensal * 1000 * precoEnergia;
+      const custoAnual = consumoAnual * 1000 * precoEnergia;
+
+      // Economia com cobertura
+      let textoEconomia = '';
+      if (coberturaPiscina === 'nao') {
+        const economiaComCobertura = custoAnual * 0.6; // 60% economia
+        textoEconomia = ` Com cobertura térmica economizaria ≈${Math.round(economiaComCobertura)}€/ano.`;
+      }
+
+      let custoOperacional = `COP ${COPBombaCalor.toFixed(1)} (eficiência energética excelente). `;
+      custoOperacional += `Consumo estimado: ${consumoMensal.toFixed(2)} MWh/mês (≈${Math.round(custoMensal)}€/mês). `;
+      custoOperacional += `Custo anual estimado: ≈${Math.round(custoAnual)}€/ano.`;
+      custoOperacional += textoEconomia;
+      custoOperacional += ` Bomba de calor é 4-5× mais eficiente que aquecimento elétrico direto.`;
+
+      // Preencher detalhes
+      const listaDetalhes = document.getElementById('detalhesPoolHeatPump');
+      listaDetalhes.innerHTML = '';
+      detalhes.forEach(det => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-swimming-pool text-primary me-2"></i>${det}`;
+        listaDetalhes.appendChild(li);
+      });
+
+      // Preencher recomendações
+      const listaRecomendacoes = document.getElementById('recomendacoesPoolHeatPump');
+      listaRecomendacoes.innerHTML = '';
+      recomendacoes.forEach(rec => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check text-success me-2"></i>${rec}`;
+        listaRecomendacoes.appendChild(li);
+      });
+
+      // Adicionar nota técnica
+      const liNotaTecnica = document.createElement('li');
+      liNotaTecnica.innerHTML = `
+        <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 5px;">
+          <i class="fas fa-info-circle me-2"></i><strong>Nota Técnica:</strong>
+          Dimensionamento baseado em normas europeias para aquecimento de piscinas.
+          COP (Coefficient of Performance) indica a eficiência: COP 5.5 significa que
+          para cada 1 kW elétrico consumido, a bomba fornece 5.5 kW térmicos.
+        </div>
+      `;
+      listaRecomendacoes.appendChild(liNotaTecnica);
+
+      document.getElementById('custosPoolHeatPump').textContent = custoOperacional;
+
+      // Mostrar resultado
+      document.getElementById('resultadoPoolHeatPump').style.display = 'block';
+
+      // Scroll para o resultado
+      document.getElementById('resultadoPoolHeatPump').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
       });
     }
 
@@ -1844,6 +2560,17 @@
       // Validar inputs
       if (!area || !zonaClimatica || !tipoCombustivel || !sistemaDistribuicao || !isolamento || !numerozonas || !aguasSanitarias || !ocupantes) {
         alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Validar intervalos
+      if (area < 1 || area > 500) {
+        alert('A área deve estar entre 1 e 500 m²');
+        return;
+      }
+
+      if (ocupantes < 1 || ocupantes > 20) {
+        alert('O número de ocupantes deve estar entre 1 e 20');
         return;
       }
 
@@ -1925,7 +2652,7 @@
 
       // Consumo e custos
       const consumoAnualEstimado = (potenciaTotal * 1400) / 1000; // MWh/ano (1400h equivalentes)
-      const custosAnuais = consumoAnualEstimado * 0.15; // €/kWh
+      const custosAnuais = consumoAnualEstimado * 0.19; // €/kWh (preço médio PT 2025)
       const economiaVsGas = custosAnuais * 0.4; // 40% economia vs gás
 
       let custosCaldeira = `Consumo estimado: ${consumoAnualEstimado.toFixed(0)} MWh/ano (≈${Math.round(custosAnuais)}€/ano). `;
@@ -1976,6 +2703,12 @@
       // Validar inputs
       if (!area || !tipoAmbiente || !objetivoPiso || !tipoPavimento || !isolamentoPavimento || !localizacaoPavimento || !zonaClimatica) {
         alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Validar intervalos
+      if (area < 1 || area > 500) {
+        alert('A área deve estar entre 1 e 500 m²');
         return;
       }
 
@@ -2156,10 +2889,236 @@
       document.getElementById('resultadoPisoRadiante').style.display = 'block';
       
       // Scroll para o resultado
-      document.getElementById('resultadoPisoRadiante').scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
+      document.getElementById('resultadoPisoRadiante').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
       });
+    }
+
+    // ===== Unit Converter Functions =====
+
+    // Conversion factors to base units
+    const conversionFactors = {
+      potencia: {
+        'kW': 1,
+        'BTU/h': 0.000293071,
+        'CV': 0.73549875,
+        'HP': 0.7457,
+        'Kcal/h': 0.001163
+      },
+      energia: {
+        'kWh': 1,
+        'MWh': 1000,
+        'BTU': 0.000293071,
+        'Kcal': 0.001163,
+        'J': 0.000000277778
+      },
+      temperatura: {
+        'C': null, // Special handling
+        'F': null, // Special handling
+        'K': null  // Special handling
+      },
+      caudal: {
+        'm³/h': 1,
+        'L/min': 0.06,
+        'L/h': 0.001,
+        'GPM': 0.227124
+      },
+      pressao: {
+        'Bar': 1,
+        'PSI': 0.0689476,
+        'kPa': 0.01,
+        'atm': 1.01325
+      }
+    };
+
+    // Unit labels
+    const unitLabels = {
+      potencia: {
+        'kW': 'kW (Kilowatt)',
+        'BTU/h': 'BTU/h',
+        'CV': 'CV (Cavalo-vapor)',
+        'HP': 'HP (Horse Power)',
+        'Kcal/h': 'Kcal/h'
+      },
+      energia: {
+        'kWh': 'kWh (Kilowatt-hora)',
+        'MWh': 'MWh (Megawatt-hora)',
+        'BTU': 'BTU',
+        'Kcal': 'Kcal (Quilocaloria)',
+        'J': 'J (Joule)'
+      },
+      temperatura: {
+        'C': '°C (Celsius)',
+        'F': '°F (Fahrenheit)',
+        'K': 'K (Kelvin)'
+      },
+      caudal: {
+        'm³/h': 'm³/h',
+        'L/min': 'L/min (Litros/min)',
+        'L/h': 'L/h (Litros/hora)',
+        'GPM': 'GPM (Galões/min)'
+      },
+      pressao: {
+        'Bar': 'Bar',
+        'PSI': 'PSI',
+        'kPa': 'kPa (Kilopascal)',
+        'atm': 'atm (Atmosfera)'
+      }
+    };
+
+    // Initialize converter on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateConverterUnits();
+    });
+
+    // Update unit dropdowns based on selected category
+    function updateConverterUnits() {
+      const category = document.getElementById('converterCategory').value;
+      const fromUnit = document.getElementById('fromUnit');
+      const toUnit = document.getElementById('toUnit');
+
+      // Clear existing options
+      fromUnit.innerHTML = '';
+      toUnit.innerHTML = '';
+
+      // Get units for selected category
+      const units = Object.keys(conversionFactors[category]);
+
+      // Populate dropdowns
+      units.forEach((unit, index) => {
+        const option1 = document.createElement('option');
+        option1.value = unit;
+        option1.textContent = unitLabels[category][unit];
+        fromUnit.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.value = unit;
+        option2.textContent = unitLabels[category][unit];
+        toUnit.appendChild(option2);
+      });
+
+      // Set different default units for "to"
+      if (units.length > 1) {
+        toUnit.selectedIndex = 1;
+      }
+
+      // Reset values
+      document.getElementById('fromValue').value = '';
+      document.getElementById('toValue').value = '';
+      document.getElementById('conversionInfo').style.display = 'none';
+    }
+
+    // Main conversion function
+    function converterUnidades() {
+      const category = document.getElementById('converterCategory').value;
+      const fromValue = parseFloat(document.getElementById('fromValue').value);
+      const fromUnit = document.getElementById('fromUnit').value;
+      const toUnit = document.getElementById('toUnit').value;
+
+      // Clear result if no value
+      if (!fromValue && fromValue !== 0) {
+        document.getElementById('toValue').value = '';
+        document.getElementById('conversionInfo').style.display = 'none';
+        return;
+      }
+
+      let result;
+
+      // Special handling for temperature
+      if (category === 'temperatura') {
+        result = convertTemperature(fromValue, fromUnit, toUnit);
+      } else {
+        // Convert to base unit, then to target unit
+        const factors = conversionFactors[category];
+        const baseValue = fromValue * factors[fromUnit];
+        result = baseValue / factors[toUnit];
+      }
+
+      // Display result with appropriate precision
+      const precision = Math.abs(result) < 0.01 ? 6 : Math.abs(result) < 1 ? 4 : 2;
+      document.getElementById('toValue').value = result.toFixed(precision);
+
+      // Show conversion info
+      showConversionInfo(category, fromValue, fromUnit, result, toUnit);
+    }
+
+    // Temperature conversion (special case)
+    function convertTemperature(value, fromUnit, toUnit) {
+      let celsius;
+
+      // Convert to Celsius first
+      if (fromUnit === 'C') {
+        celsius = value;
+      } else if (fromUnit === 'F') {
+        celsius = (value - 32) * 5/9;
+      } else if (fromUnit === 'K') {
+        celsius = value - 273.15;
+      }
+
+      // Convert from Celsius to target unit
+      if (toUnit === 'C') {
+        return celsius;
+      } else if (toUnit === 'F') {
+        return (celsius * 9/5) + 32;
+      } else if (toUnit === 'K') {
+        return celsius + 273.15;
+      }
+    }
+
+    // Show conversion formula/info
+    function showConversionInfo(category, fromValue, fromUnit, toValue, toUnit) {
+      const infoDiv = document.getElementById('conversionInfo');
+      const formulaSpan = document.getElementById('conversionFormula');
+
+      let infoText = '';
+
+      if (category === 'temperatura') {
+        if (fromUnit === 'C' && toUnit === 'F') {
+          infoText = `Fórmula: (${fromValue}°C × 9/5) + 32 = ${toValue.toFixed(2)}°F`;
+        } else if (fromUnit === 'F' && toUnit === 'C') {
+          infoText = `Fórmula: (${fromValue}°F - 32) × 5/9 = ${toValue.toFixed(2)}°C`;
+        } else if (fromUnit === 'C' && toUnit === 'K') {
+          infoText = `Fórmula: ${fromValue}°C + 273.15 = ${toValue.toFixed(2)}K`;
+        } else if (fromUnit === 'K' && toUnit === 'C') {
+          infoText = `Fórmula: ${fromValue}K - 273.15 = ${toValue.toFixed(2)}°C`;
+        } else {
+          infoText = `${fromValue} ${unitLabels[category][fromUnit]} = ${toValue.toFixed(2)} ${unitLabels[category][toUnit]}`;
+        }
+      } else {
+        const factor = (toValue / fromValue).toFixed(6);
+        infoText = `Fator de conversão: 1 ${unitLabels[category][fromUnit]} = ${factor} ${unitLabels[category][toUnit]}`;
+      }
+
+      formulaSpan.textContent = infoText;
+      infoDiv.style.display = 'block';
+    }
+
+    // Swap from and to units
+    function swapUnits() {
+      const fromUnit = document.getElementById('fromUnit');
+      const toUnit = document.getElementById('toUnit');
+      const fromValue = document.getElementById('fromValue');
+      const toValue = document.getElementById('toValue');
+
+      // Swap unit selections
+      const tempUnit = fromUnit.value;
+      fromUnit.value = toUnit.value;
+      toUnit.value = tempUnit;
+
+      // Swap values
+      const tempValue = fromValue.value;
+      fromValue.value = toValue.value;
+
+      // Clear result and recalculate
+      toValue.value = '';
+
+      // Recalculate if there's a value
+      if (fromValue.value) {
+        converterUnidades();
+      } else {
+        document.getElementById('conversionInfo').style.display = 'none';
+      }
     }
 
     // Filter functionality
@@ -2209,12 +3168,23 @@
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
+
+          // First, show all calculators (activate "Todas" filter)
+          const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+          if (allButton && !allButton.classList.contains('active')) {
+            allButton.click();
+          }
+
+          // Then scroll to target
           const target = document.querySelector(this.getAttribute('href'));
           if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
+            // Wait a bit for the filter to apply
+            setTimeout(() => {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }, 100);
           }
         });
       });
@@ -2226,6 +3196,12 @@
       easing: 'ease-in-out',
       once: true,
       mirror: false
+    });
+
+    // Initialize Bootstrap tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
     });
   </script>
 
