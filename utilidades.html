@@ -200,9 +200,14 @@
       transition: all 0.3s ease;
     }
     
-    .calculator-card.hide,
-    .calculator-form.hide {
+    .calculator-card.hide {
       display: none !important;
+    }
+
+    .calculator-form.hide {
+      position: absolute !important;
+      left: -9999px !important;
+      visibility: hidden !important;
     }
     
     /* Estilos para recomendações de produtos */
