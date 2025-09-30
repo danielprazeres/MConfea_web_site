@@ -3165,7 +3165,9 @@
       });
 
       // Smooth scroll for calculator links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      const calculatorLinks = document.querySelectorAll('.calculator-card a[href^="#"]');
+
+      calculatorLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
 
@@ -3173,8 +3175,9 @@
           const target = document.querySelector(targetId);
 
           if (target) {
-            // Find the parent section with data-category (form is inside section.calculator-form)
-            const targetSection = target.closest('section.calculator-form');
+            // Target might be a form or a section
+            // First try to find if target itself is a section
+            let targetSection = target.matches('section.calculator-form') ? target : target.closest('section.calculator-form');
 
             if (targetSection) {
               const targetCategory = targetSection.getAttribute('data-category');
@@ -3195,15 +3198,15 @@
               if (correspondingButton) {
                 correspondingButton.classList.add('active');
               }
-            }
 
-            // Scroll to target
-            setTimeout(() => {
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }, 100);
+              // Scroll to target after a brief delay
+              setTimeout(() => {
+                targetSection.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }, 100);
+            }
           }
         });
       });
