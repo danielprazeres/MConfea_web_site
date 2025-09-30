@@ -3212,11 +3212,20 @@
               // Scroll to target after a brief delay
               setTimeout(() => {
                 console.log('Scrolling to section');
-                targetSection.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
+                console.log('Window scroll before:', window.pageYOffset);
+                console.log('Section position:', targetSection.getBoundingClientRect());
+
+                // Scroll to top of section with offset for header
+                const yOffset = -100; // Offset for any fixed header
+                const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                console.log('Scrolling to Y position:', y);
+
+                window.scrollTo({
+                  top: y,
+                  behavior: 'smooth'
                 });
-              }, 100);
+              }, 200);
             } else {
               console.error('Could not find target section!');
             }
