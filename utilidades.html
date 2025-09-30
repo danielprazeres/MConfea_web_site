@@ -200,7 +200,8 @@
       transition: all 0.3s ease;
     }
     
-    .calculator-card.hide {
+    .calculator-card.hide,
+    .calculator-form.hide {
       display: none !important;
     }
     
@@ -413,7 +414,7 @@
     </section>
 
     <!-- ======= AC Calculator Section ======= -->
-    <section class="calculator-section">
+    <section class="calculator-section calculator-form" data-category="climatizacao">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
           <div class="col-lg-10">
@@ -520,7 +521,7 @@
     </section>
 
     <!-- ======= Heat Pump Calculator Section ======= -->
-    <section class="calculator-section" style="background: #f1f7ff;">
+    <section class="calculator-section calculator-form" data-category="aquecimento" style="background: #f1f7ff;">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
           <div class="col-lg-10">
@@ -660,7 +661,7 @@
     </section>
 
     <!-- ======= Termoacumulador Calculator Section ======= -->
-    <section class="calculator-section">
+    <section class="calculator-section calculator-form" data-category="aguas-sanitarias">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
           <div class="col-lg-10">
@@ -806,7 +807,7 @@
     </section>
 
     <!-- ======= Caldeira Calculator Section ======= -->
-    <section class="calculator-section" style="background: #fff8f0;">
+    <section class="calculator-section calculator-form" data-category="aquecimento" style="background: #fff8f0;">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
           <div class="col-lg-10">
@@ -948,7 +949,7 @@
     </section>
 
     <!-- ======= Piso Radiante Calculator Section ======= -->
-    <section class="calculator-section" style="background: #f0f8ff;">
+    <section class="calculator-section calculator-form" data-category="piso-radiante" style="background: #f0f8ff;">
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
           <div class="col-lg-10">
@@ -1227,16 +1228,6 @@
     };
 
     function calcularAC() {
-      // Verificar se a calculadora está visível
-      const acCard = document.querySelector('.calculator-card[data-category="climatizacao"]');
-      if (acCard && acCard.classList.contains('hide')) {
-        // Se estiver oculta, ativar a aba "Todas"
-        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allButton) {
-          allButton.click();
-        }
-      }
-      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('area').value);
       const altura = parseFloat(document.getElementById('altura').value);
@@ -1408,16 +1399,6 @@
 
     // Heat Pump Calculator Function
     function calcularBombaCalor() {
-      // Verificar se a calculadora está visível
-      const bombaCalorCard = document.querySelector('.calculator-card[data-category="aquecimento"]');
-      if (bombaCalorCard && bombaCalorCard.classList.contains('hide')) {
-        // Se estiver oculta, ativar a aba "Todas"
-        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allButton) {
-          allButton.click();
-        }
-      }
-      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaHP').value);
       const zonaClimatica = document.getElementById('zonaClimatica').value;
@@ -1587,15 +1568,6 @@
 
     // Termoacumulador Calculator Function
     function calcularTermoacumulador() {
-      // Verificar se a calculadora está visível
-      const termoCard = document.querySelector('.calculator-card[data-category="aguas-sanitarias"]');
-      if (termoCard && termoCard.classList.contains('hide')) {
-        // Se estiver oculta, ativar a aba "Todas"
-        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allButton) {
-          allButton.click();
-        }
-      }
       // Obter valores do formulário
       const ocupantes = parseInt(document.getElementById('ocupantesTermo').value);
       const padraoConsumo = document.getElementById('padraoConsumo').value;
@@ -1859,18 +1831,6 @@
 
     // Caldeira Calculator Function
     function calcularCaldeira() {
-      // Verificar se a calculadora está visível
-      const caldeiraCard = document.querySelectorAll('.calculator-card[data-category="aquecimento"]');
-      // A caldeira é o segundo card com categoria "aquecimento" 
-      const caldeiraSpecificCard = caldeiraCard[1];
-      if (caldeiraSpecificCard && caldeiraSpecificCard.classList.contains('hide')) {
-        // Se estiver oculta, ativar a aba "Todas"
-        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allButton) {
-          allButton.click();
-        }
-      }
-      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaCaldeira').value);
       const zonaClimatica = document.getElementById('zonaClimaticaCaldeira').value;
@@ -2002,222 +1962,8 @@
       });
     }
 
-    // Caldeira Calculator Function
-    function calcularCaldeira() {
-      // Verificar se a calculadora está visível
-      const caldeiraCard = document.querySelectorAll('.calculator-card[data-category="aquecimento"]');
-      // A caldeira é o segundo card com categoria "aquecimento" 
-      const caldeiraSpecificCard = caldeiraCard[1];
-      if (caldeiraSpecificCard && caldeiraSpecificCard.classList.contains('hide')) {
-        // Se estiver oculta, ativar a aba "Todas"
-        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allButton) {
-          allButton.click();
-        }
-      }
-      
-      // Obter valores do formulário
-      const area = parseFloat(document.getElementById('areaCaldeira').value);
-      const zonaClimatica = document.getElementById('zonaClimaticaCaldeira').value;
-      const tipoCombustivel = document.getElementById('tipoCombustivel').value;
-      const sistemaDistribuicao = document.getElementById('sistemaDistribuicao').value;
-      const isolamento = document.getElementById('isolamentoCaldeira').value;
-      const numeroZonas = document.getElementById('numerozonas').value;
-      const aguasSanitarias = document.getElementById('aguasSanitariasCaldeira').value;
-      const ocupantes = parseInt(document.getElementById('ocupantesCaldeira').value);
-
-      // Validar inputs
-      if (!area || !zonaClimatica || !tipoCombustivel || !sistemaDistribuicao || !isolamento || !numeroZonas || !aguasSanitarias || !ocupantes) {
-        alert('Por favor, preencha todos os campos.');
-        return;
-      }
-
-      // Fatores base por zona climática (W/m²)
-      const fatoresZona = {
-        'I1': 50,  // Zona mais fria
-        'I2': 40,  // Zona média
-        'I3': 30   // Zona mais quente
-      };
-
-      // Fatores de isolamento
-      const fatoresIsolamento = {
-        'excelente': 0.6,
-        'bom': 0.8,
-        'medio': 1.0,
-        'fraco': 1.4
-      };
-
-      // Fatores por sistema de distribuição (temperatura trabalho)
-      const fatoresDistribuicao = {
-        'piso-radiante': 0.85,     // 35-45°C - mais eficiente
-        'radiadores-bt': 1.0,     // 55°C - padrão
-        'radiadores-at': 1.15,    // 75°C - menos eficiente
-        'ventiloconvectores': 1.05
-      };
-
-      // Fatores por tipo de combustível (rendimento)
-      const fatoresCombustivel = {
-        'gas-natural': 0.95,     // Alto rendimento
-        'gas-propano': 0.95,     // Alto rendimento
-        'gasoleo': 0.90,         // Bom rendimento
-        'pellets': 0.85,         // Rendimento médio-alto
-        'lenha': 0.75            // Rendimento mais baixo
-      };
-
-      // Fator por número de zonas
-      const fatoresZonas = {
-        '1': 1.0,
-        '2': 1.1,
-        '3': 1.2,
-        '4+': 1.3
-      };
-
-      // Calcular necessidades de aquecimento
-      let necessidadesAquecimento = area * fatoresZona[zonaClimatica];
-      necessidadesAquecimento *= fatoresIsolamento[isolamento];
-      necessidadesAquecimento *= fatoresDistribuicao[sistemaDistribuicao];
-      necessidadesAquecimento *= fatoresZonas[numeroZonas];
-
-      // Converter para kW
-      necessidadesAquecimento = necessidadesAquecimento / 1000;
-
-      // Calcular necessidades de AQS se incluído
-      let necessidadesAQS = 0;
-      if (aguasSanitarias === 'sim' || aguasSanitarias === 'deposito') {
-        // Consumo base: 40L/dia por pessoa a 45°C
-        // Potência instantânea para AQS (considerando pico de demanda)
-        necessidadesAQS = ocupantes * 1.2; // kW (pico de demanda)
-      }
-
-      // Calcular potência total necessária
-      let potenciaTotal = necessidadesAquecimento;
-      
-      // Para caldeiras mistas, somar a maior necessidade (não simultânea 100%)
-      if (aguasSanitarias === 'sim') {
-        potenciaTotal = Math.max(necessidadesAquecimento, necessidadesAQS) + 
-                       Math.min(necessidadesAquecimento, necessidadesAQS) * 0.3;
-      } else if (aguasSanitarias === 'deposito') {
-        potenciaTotal = necessidadesAquecimento + necessidadesAQS * 0.5;
-      }
-
-      // Margem de segurança
-      potenciaTotal *= 1.15;
-
-      // Ajustar por rendimento do combustível
-      potenciaTotal = potenciaTotal / fatoresCombustivel[tipoCombustivel];
-
-      // Arredondar para potências comerciais comuns
-      let potenciaNominal = Math.ceil(potenciaTotal);
-      if (potenciaNominal <= 12) potenciaNominal = 12;
-      else if (potenciaNominal <= 18) potenciaNominal = 18;
-      else if (potenciaNominal <= 24) potenciaNominal = 24;
-      else if (potenciaNominal <= 30) potenciaNominal = 30;
-      else if (potenciaNominal <= 35) potenciaNominal = 35;
-      else potenciaNominal = Math.ceil(potenciaNominal / 5) * 5;
-
-      // Exibir resultado
-      document.getElementById('potenciaCaldeira').textContent = potenciaNominal + ' kW';
-
-      // Gerar detalhes técnicos
-      const detalhes = [];
-      detalhes.push(`Necessidades aquecimento: ${necessidadesAquecimento.toFixed(1)} kW`);
-      if (necessidadesAQS > 0) {
-        detalhes.push(`Necessidades AQS: ${necessidadesAQS.toFixed(1)} kW`);
-      }
-      detalhes.push(`Rendimento ${tipoCombustivel.replace('-', ' ')}: ${(fatoresCombustivel[tipoCombustivel] * 100).toFixed(0)}%`);
-      detalhes.push(`Sistema: ${sistemaDistribuicao.replace('-', ' ')}`);
-
-      // Gerar recomendações
-      const recomendacoes = [];
-
-      if (potenciaNominal >= 30) {
-        recomendacoes.push('Considere caldeira de condensação');
-      }
-
-      if (sistemaDistribuicao === 'radiadores-at') {
-        recomendacoes.push('Avalie substituição por radiadores baixa temperatura');
-      }
-
-      if (tipoCombustivel === 'gas-natural') {
-        recomendacoes.push('Óptima escolha - combustível mais eficiente');
-      }
-
-      if (numeroZonas === '4+') {
-        recomendacoes.push('Sistema de zonamento recomendado');
-      }
-
-      if (isolamento === 'fraco') {
-        recomendacoes.push('Priorize melhoria do isolamento térmico');
-      }
-
-      if (aguasSanitarias === 'sim') {
-        recomendacoes.push('Caldeira mista - solução compacta e eficiente');
-      }
-
-      // Custos operacionais estimados
-      const precosCombustivel = {
-        'gas-natural': 0.08,     // €/kWh
-        'gas-propano': 0.12,     // €/kWh
-        'gasoleo': 0.10,         // €/kWh
-        'pellets': 0.06,         // €/kWh
-        'lenha': 0.04            // €/kWh
-      };
-
-      const horasAno = 1400; // Horas equivalentes de funcionamento
-      const consumoAnual = (potenciaNominal * horasAno * 0.7) / 1000; // MWh/ano (fator carga 70%)
-      const custoAnual = consumoAnual * 1000 * precosCombustivel[tipoCombustivel]; // €/ano
-
-      let custos = `Consumo estimado: ${consumoAnual.toFixed(1)} MWh/ano. `;
-      custos += `Custo anual: ≈${Math.round(custoAnual)}€/ano com ${tipoCombustivel.replace('-', ' ')}. `;
-      
-      if (tipoCombustivel === 'gas-natural') {
-        custos += `Excelente relação custo/eficiência.`;
-      } else if (tipoCombustivel === 'pellets') {
-        custos += `Combustível renovável e económico.`;
-      }
-
-      // Preencher detalhes
-      const listaDetalhes = document.getElementById('detalhesCaldeira');
-      listaDetalhes.innerHTML = '';
-      detalhes.forEach(det => {
-        const li = document.createElement('li');
-        li.innerHTML = `<i class="fas fa-burn text-warning me-2"></i>${det}`;
-        listaDetalhes.appendChild(li);
-      });
-
-      // Preencher recomendações
-      const listaRecomendacoes = document.getElementById('recomendacoesCaldeira');
-      listaRecomendacoes.innerHTML = '';
-      recomendacoes.forEach(rec => {
-        const li = document.createElement('li');
-        li.innerHTML = `<i class="fas fa-check text-success me-2"></i>${rec}`;
-        listaRecomendacoes.appendChild(li);
-      });
-
-      document.getElementById('custosCaldeira').textContent = custos;
-
-      // Mostrar resultado
-      document.getElementById('resultadoCaldeira').style.display = 'block';
-      
-      // Scroll para o resultado
-      document.getElementById('resultadoCaldeira').scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
-      });
-    }
-
     // Piso Radiante Calculator Function - Versão Simplificada
     function calcularPisoRadiante() {
-      // Verificar se a calculadora está visível
-      const pisoRadianteCard = document.querySelector('.calculator-card[data-category="piso-radiante"]');
-      if (pisoRadianteCard && pisoRadianteCard.classList.contains('hide')) {
-        // Se estiver oculta, ativar a aba "Todas"
-        const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allButton) {
-          allButton.click();
-        }
-      }
-      
       // Obter valores do formulário
       const area = parseFloat(document.getElementById('areaPiso').value);
       const tipoAmbiente = document.getElementById('tipoAmbientePiso').value;
@@ -2420,6 +2166,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const calculatorCards = document.querySelectorAll('.calculator-card');
+      const calculatorForms = document.querySelectorAll('.calculator-form');
 
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -2430,16 +2177,28 @@
 
           const filterValue = this.getAttribute('data-filter');
 
+          // Filter cards
           calculatorCards.forEach(card => {
             if (filterValue === 'all') {
-              // Show all cards
               card.classList.remove('hide');
             } else {
-              // Show/hide based on category
               if (card.getAttribute('data-category') === filterValue) {
                 card.classList.remove('hide');
               } else {
                 card.classList.add('hide');
+              }
+            }
+          });
+
+          // Filter forms
+          calculatorForms.forEach(form => {
+            if (filterValue === 'all') {
+              form.classList.remove('hide');
+            } else {
+              if (form.getAttribute('data-category') === filterValue) {
+                form.classList.remove('hide');
+              } else {
+                form.classList.add('hide');
               }
             }
           });
