@@ -3169,16 +3169,35 @@
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
 
-          // First, show all calculators (activate "Todas" filter)
-          const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-          if (allButton && !allButton.classList.contains('active')) {
-            allButton.click();
-          }
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
 
-          // Then scroll to target
-          const target = document.querySelector(this.getAttribute('href'));
           if (target) {
-            // Wait a bit for the filter to apply
+            // Find the parent section with data-category
+            const targetSection = target.closest('.calculator-form');
+
+            if (targetSection) {
+              const targetCategory = targetSection.getAttribute('data-category');
+
+              // Hide all calculator forms first
+              const allForms = document.querySelectorAll('.calculator-form');
+              allForms.forEach(form => form.classList.add('hide'));
+
+              // Show only the target calculator form
+              targetSection.classList.remove('hide');
+
+              // Update filter buttons to show active state
+              const filterButtons = document.querySelectorAll('.filter-btn');
+              filterButtons.forEach(btn => btn.classList.remove('active'));
+
+              // Find and activate the corresponding filter button
+              const correspondingButton = document.querySelector(`.filter-btn[data-filter="${targetCategory}"]`);
+              if (correspondingButton) {
+                correspondingButton.classList.add('active');
+              }
+            }
+
+            // Scroll to target
             setTimeout(() => {
               target.scrollIntoView({
                 behavior: 'smooth',
