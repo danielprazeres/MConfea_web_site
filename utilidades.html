@@ -3173,14 +3173,14 @@
           const target = document.querySelector(targetId);
 
           if (target) {
-            // Find the parent section with data-category
-            const targetSection = target.closest('.calculator-form');
+            // Find the parent section with data-category (form is inside section.calculator-form)
+            const targetSection = target.closest('section.calculator-form');
 
             if (targetSection) {
               const targetCategory = targetSection.getAttribute('data-category');
 
               // Hide all calculator forms first
-              const allForms = document.querySelectorAll('.calculator-form');
+              const allForms = document.querySelectorAll('section.calculator-form');
               allForms.forEach(form => form.classList.add('hide'));
 
               // Show only the target calculator form
