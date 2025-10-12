@@ -3125,46 +3125,36 @@
       const filterButtons = document.querySelectorAll('.filter-btn');
       const calculatorCards = document.querySelectorAll('.calculator-card');
       const calculatorForms = document.querySelectorAll('.calculator-form');
+      let currentFilter = 'all';
+
+      function applyFilter(filterValue, { updateButtons = true } = {}) {
+        currentFilter = filterValue;
+
+        if (updateButtons) {
+          filterButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-filter') === filterValue);
+          });
+        }
+
+        calculatorCards.forEach(card => {
+          const matches = filterValue === 'all' || card.getAttribute('data-category') === filterValue;
+          card.classList.toggle('hide', !matches);
+        });
+
+        calculatorForms.forEach(section => {
+          const matches = filterValue === 'all' || section.getAttribute('data-category') === filterValue;
+          section.style.display = matches ? 'block' : 'none';
+        });
+
+        setTimeout(() => {
+          AOS.refresh();
+        }, 100);
+      }
 
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          // Add active class to clicked button
-          this.classList.add('active');
-
           const filterValue = this.getAttribute('data-filter');
-
-          // Filter cards and forms
-          calculatorCards.forEach(card => {
-            if (filterValue === 'all') {
-              card.classList.remove('hide');
-            } else {
-              if (card.getAttribute('data-category') === filterValue) {
-                card.classList.remove('hide');
-              } else {
-                card.classList.add('hide');
-              }
-            }
-          });
-
-          // Filter calculator forms
-          calculatorForms.forEach(form => {
-            if (filterValue === 'all') {
-              form.style.display = 'block';
-            } else {
-              if (form.getAttribute('data-category') === filterValue) {
-                form.style.display = 'block';
-              } else {
-                form.style.display = 'none';
-              }
-            }
-          });
-
-          // Reinitialize AOS for visible elements
-          setTimeout(() => {
-            AOS.refresh();
-          }, 100);
+          applyFilter(filterValue);
         });
       });
 
@@ -3179,12 +3169,27 @@
           const target = document.querySelector(targetId);
 
           if (target) {
-            // Ensure the target is visible first
+            const targetSection = target.closest('.calculator-form');
+            const targetCategory = targetSection ? targetSection.getAttribute('data-category') : null;
+
+            if (targetCategory) {
+              if (currentFilter !== targetCategory) {
+                applyFilter(targetCategory);
+              } else if (targetSection.style.display === 'none') {
+                applyFilter(targetCategory, { updateButtons: false });
+              }
+            } else if (currentFilter !== 'all') {
+              applyFilter('all');
+            }
+
+            if (targetSection && targetSection.style.display === 'none') {
+              targetSection.style.display = 'block';
+            }
+
             target.style.display = 'block';
-            
-            // Wait a moment for display to take effect
+
+            // Wait a moment for display to take effect before scrolling
             setTimeout(() => {
-              // Simple scroll to target with offset
               const yOffset = -100; // Offset for any fixed header
               const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
