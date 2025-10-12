@@ -3123,9 +3123,10 @@
     // Filter functionality
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.filter-btn');
-      const calculatorCards = document.querySelectorAll('.calculator-card');
-      const calculatorForms = document.querySelectorAll('.calculator-form');
-      let currentFilter = 'all';
+      const calculatorCards = document.querySelectorAll('.calculator-card[data-category]');
+      const calculatorSections = document.querySelectorAll('.calculator-form');
+      const defaultFilterButton = document.querySelector('.filter-btn.active');
+      let currentFilter = defaultFilterButton ? defaultFilterButton.getAttribute('data-filter') : 'all';
 
       function applyFilter(filterValue, { updateButtons = true } = {}) {
         currentFilter = filterValue;
@@ -3141,14 +3142,16 @@
           card.classList.toggle('hide', !matches);
         });
 
-        calculatorForms.forEach(section => {
+        calculatorSections.forEach(section => {
           const matches = filterValue === 'all' || section.getAttribute('data-category') === filterValue;
           section.style.display = matches ? 'block' : 'none';
         });
 
-        setTimeout(() => {
-          AOS.refresh();
-        }, 100);
+        if (typeof AOS !== 'undefined') {
+          setTimeout(() => {
+            AOS.refresh();
+          }, 100);
+        }
       }
 
       filterButtons.forEach(button => {
@@ -3159,7 +3162,7 @@
       });
 
       // Smooth scroll for calculator links
-      const calculatorLinks = document.querySelectorAll('.calculator-card a[href^="#"]');
+      const calculatorLinks = document.querySelectorAll('.calculator-card[data-category] a[href^="#"]');
 
       calculatorLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -3168,39 +3171,43 @@
           const targetId = this.getAttribute('href');
           const target = document.querySelector(targetId);
 
-          if (target) {
-            const targetSection = target.closest('.calculator-form');
-            const targetCategory = targetSection ? targetSection.getAttribute('data-category') : null;
-
-            if (targetCategory) {
-              if (currentFilter !== targetCategory) {
-                applyFilter(targetCategory);
-              } else if (targetSection.style.display === 'none') {
-                applyFilter(targetCategory, { updateButtons: false });
-              }
-            } else if (currentFilter !== 'all') {
-              applyFilter('all');
-            }
-
-            if (targetSection && targetSection.style.display === 'none') {
-              targetSection.style.display = 'block';
-            }
-
-            target.style.display = 'block';
-
-            // Wait a moment for display to take effect before scrolling
-            setTimeout(() => {
-              const yOffset = -100; // Offset for any fixed header
-              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-              window.scrollTo({
-                top: y,
-                behavior: 'smooth'
-              });
-            }, 50);
+          if (!target) {
+            return;
           }
+
+          const targetSection = target.closest('.calculator-form');
+          const targetCategory = targetSection ? targetSection.getAttribute('data-category') : null;
+
+          if (targetCategory) {
+            if (currentFilter !== targetCategory) {
+              applyFilter(targetCategory);
+            } else if (targetSection.style.display === 'none') {
+              applyFilter(targetCategory, { updateButtons: false });
+            }
+          } else if (currentFilter !== 'all') {
+            applyFilter('all');
+          }
+
+          // Ensure the section is visible before scrolling
+          if (targetSection && targetSection.style.display === 'none') {
+            targetSection.style.display = 'block';
+          }
+
+          // Wait a moment for display to take effect before scrolling
+          setTimeout(() => {
+            const yOffset = -100; // Offset for any fixed header
+            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            window.scrollTo({
+              top: y,
+              behavior: 'smooth'
+            });
+          }, 50);
         });
       });
+
+      // Normalize initial state to avoid residual inline styles
+      applyFilter(currentFilter, { updateButtons: false });
     });
 
     // Inicializar AOS
