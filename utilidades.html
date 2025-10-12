@@ -3160,6 +3160,11 @@
               }
             }
           });
+
+          // Reinitialize AOS for visible elements
+          setTimeout(() => {
+            AOS.refresh();
+          }, 100);
         });
       });
 
@@ -3174,14 +3179,20 @@
           const target = document.querySelector(targetId);
 
           if (target) {
-            // Simple scroll to target with offset
-            const yOffset = -100; // Offset for any fixed header
-            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            // Ensure the target is visible first
+            target.style.display = 'block';
+            
+            // Wait a moment for display to take effect
+            setTimeout(() => {
+              // Simple scroll to target with offset
+              const yOffset = -100; // Offset for any fixed header
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-            window.scrollTo({
-              top: y,
-              behavior: 'smooth'
-            });
+              window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+              });
+            }, 50);
           }
         });
       });
