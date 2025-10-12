@@ -3135,7 +3135,7 @@
 
           const filterValue = this.getAttribute('data-filter');
 
-          // Filter cards only - forms are always visible
+          // Filter cards and forms
           calculatorCards.forEach(card => {
             if (filterValue === 'all') {
               card.classList.remove('hide');
@@ -3144,6 +3144,19 @@
                 card.classList.remove('hide');
               } else {
                 card.classList.add('hide');
+              }
+            }
+          });
+
+          // Filter calculator forms
+          calculatorForms.forEach(form => {
+            if (filterValue === 'all') {
+              form.style.display = 'block';
+            } else {
+              if (form.getAttribute('data-category') === filterValue) {
+                form.style.display = 'block';
+              } else {
+                form.style.display = 'none';
               }
             }
           });
