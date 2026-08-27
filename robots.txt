@@ -25,7 +25,7 @@ Disallow: /README.md
 Disallow: /Readme.txt
 
 # Sitemap
-Sitemap: https://mconfa.pt/sitemap.xml
+Sitemap: https://mconfea.com/sitemap.xml
 
 # Crawl-delay para ser respeitoso com os servidores
 Crawl-delay: 1 
