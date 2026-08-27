@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>M Conf&A — Pré-visualização do novo design</title>
+
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-carousel/hero-carousel-1.webp" fetchpriority="high">
+
+  <script type="importmap">
+  { "imports": { "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.18/+esm" } }
+  </script>
+
+  <style>
+    /* ============ Reset & tokens ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font: inherit; border: none; background: none; }
+    a { text-decoration: none; color: inherit; }
+    :focus-visible { outline: 2px solid #16697A; outline-offset: 2px; }
+
+    :root {
+      --paper: #F7F5F0;
+      --paper-2: #F2EFE8;
+      --ink: #10262B;
+      --ink-deep: #0B1B1F;
+      --teal: #16697A;
+      --copper: #B9772E;
+      --copper-light: #D9A45B;
+      --body: #2A3B40;
+      --muted: #4A5A5F;
+      --faint: #7A8A8F;
+      --hairline: #E4DFD5;
+      --on-dark: #F7F5F0;
+      --on-dark-muted: #A8B8BC;
+      --r-card: 1.5rem;
+      --r-sm: 4px;
+    }
+
+    /* Grelha rem adaptativa */
+    html { font-size: 16px; }
+    @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
+    @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
+    @media (max-width: 1024px) { html { font-size: 1.5625vw; } }
+    @media (max-width: 640px)  { html { font-size: 4.444444vw; } }
+
+    html.locked { position: relative; overflow: hidden; height: 100%; }
+
+    body {
+      min-height: 100vh;
+      background: #FFFFFF;
+      color: var(--body);
+      font-family: "Hanken Grotesk", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .display { font-family: "Bricolage Grotesque", Georgia, sans-serif; color: var(--ink); }
+
+    main { width: 100%; overflow-x: clip; padding: 0.5rem; }
+    @media (min-width: 640px) { main { padding: 0.75rem; } }
+
+    /* ============ Primitivas de reveal ============ */
+    .clip { overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+    .clip > span { display: block; transform: translateY(115%); opacity: 0; }
+    .clip.on > span { transform: translateY(0); opacity: 1; transition: transform var(--d,950ms) cubic-bezier(0.16,1,0.3,1) var(--dl,0ms), opacity var(--d,950ms) cubic-bezier(0.16,1,0.3,1) var(--dl,0ms); }
+    .rise { opacity: 0; transform: translateY(28px); }
+    .rise.on { opacity: 1; transform: translateY(0); transition: transform 900ms cubic-bezier(0.22,1,0.36,1) var(--dl,0ms), opacity 900ms cubic-bezier(0.22,1,0.36,1) var(--dl,0ms); }
+    @media (prefers-reduced-motion: reduce) {
+      .clip > span, .rise { transform: none !important; opacity: 1 !important; transition: none !important; }
+      #loader { display: none !important; }
+    }
+
+    /* ============ Loader ============ */
+    #loader {
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--ink); color: var(--on-dark);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      transition: transform 850ms cubic-bezier(0.65,0,0.35,1);
+    }
+    #loader.exit { transform: translateY(-105%); }
+    #loader .mark { display: flex; align-items: center; gap: 0.75rem; opacity: 0; transform: translateY(16px); transition: all 700ms cubic-bezier(0.22,1,0.36,1) 100ms; }
+    #loader.in .mark { opacity: 1; transform: translateY(0); }
+    #loader .mark img { height: 2.4rem; width: 2.4rem; object-fit: contain; background: var(--paper); border-radius: 8px; padding: 3px; }
+    #loader .mark span { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: 0.18em; text-transform: uppercase; }
+    #loader .track { width: 10rem; height: 2px; border-radius: 99px; background: rgba(247,245,240,0.2); overflow: hidden; }
+    #loader .fill { height: 100%; width: 100%; background: var(--copper-light); transform: scaleX(0); transform-origin: left; }
+    #loader.in .fill { transform: scaleX(1); transition: transform 1280ms cubic-bezier(0.65,0,0.35,1) 120ms; }
+
+    /* ============ Hero ============ */
+    .hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      border-radius: var(--r-card);
+      background: var(--ink);
+      color: var(--on-dark);
+      min-height: 36rem; height: calc(100svh - 1rem);
+      display: flex; flex-direction: column;
+    }
+    @media (min-width: 640px) { .hero { height: calc(100svh - 1.5rem); } }
+    .hero .plate { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+    .hero .plate .shift { position: absolute; left: 0; right: 0; top: -16%; height: 132%; will-change: transform; }
+    .hero .plate img { width: 100%; height: 100%; object-fit: cover; }
+    .hero .plate::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(16,38,43,0.68), rgba(16,38,43,0.38) 45%, rgba(16,38,43,0.82));
+    }
+    .hero .rule { position: absolute; left: 0; top: 0; bottom: 0; width: 7px; background: var(--copper); z-index: 1; }
+
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.5rem 0; font-size: 0.8rem; }
+    @media (min-width: 640px) { .topbar { padding: 1.8rem 2.5rem 0; } }
+    .topbar .brand { display: flex; align-items: center; gap: 0.7rem; }
+    .topbar .brand img { height: 2.4rem; width: 2.4rem; object-fit: contain; background: rgba(247,245,240,0.92); border-radius: 8px; padding: 2px; }
+    .topbar .brand b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+    @media (max-width: 640px) { .topbar .brand b { display: none; } .topbar .cta { padding: 0.6rem 1rem; font-size: 0.72rem; white-space: nowrap; } }
+    .topbar nav { display: none; gap: 1.9rem; font-weight: 600; }
+    @media (min-width: 1024px) { .topbar nav { display: flex; } }
+    .topbar nav a { color: rgba(247,245,240,0.85); transition: color 200ms; }
+    .topbar nav a:hover { color: #fff; }
+    .topbar .cta { padding: 0.7rem 1.4rem; border-radius: var(--r-sm); background: rgba(247,245,240,0.14); border: 1px solid rgba(247,245,240,0.25); color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; backdrop-filter: blur(8px); transition: background 220ms; }
+    .topbar .cta:hover { background: rgba(247,245,240,0.28); }
+
+    .hero .title { padding: 0 1.5rem; margin-top: auto; }
+    @media (min-width: 640px) { .hero .title { padding: 0 2.5rem; } }
+    .hero .kicker { display: flex; align-items: center; gap: 0.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; color: var(--copper-light); margin-bottom: 1.3rem; }
+    .hero .kicker::before { content: ""; width: 1.8rem; height: 2px; background: var(--copper-light); }
+    .hero h1 { font-size: clamp(2.6rem, 7.2vw, 6.4rem); font-weight: 700; line-height: 0.98; letter-spacing: -0.025em; text-transform: uppercase; color: #fff; }
+    .hero h1 .word { display: inline-block; }
+
+    .hero .bottom {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      padding: 2rem 1.5rem 2rem;
+    }
+    @media (min-width: 640px) { .hero .bottom { flex-direction: row; align-items: flex-end; justify-content: space-between; padding: 2.4rem 2.5rem 2.4rem; } }
+    .hero .sub { font-size: 1.1rem; line-height: 1.6; color: rgba(247,245,240,0.85); max-width: 30rem; }
+    .hero .actions { display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.95rem 1.9rem; border-radius: var(--r-sm); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.02em; transition: transform 250ms cubic-bezier(0.22,1,0.36,1), background 220ms, box-shadow 250ms; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn svg { transition: transform 300ms cubic-bezier(0.22,1,0.36,1); }
+    .btn:hover svg { transform: translateX(5px); }
+    .btn-teal { background: var(--teal); color: #fff; box-shadow: 0 10px 26px rgba(11,27,31,0.35); }
+    .btn-teal:hover { background: #1A7A8D; }
+    .btn-ghost { border: 1.5px solid rgba(247,245,240,0.55); color: #fff; }
+    .btn-ghost:hover { background: rgba(247,245,240,0.12); }
+    .btn-copper { background: var(--copper); color: #fff; }
+    .btn-copper:hover { background: #C98536; }
+    .btn-ink { background: var(--ink); color: var(--on-dark); }
+    .btn-ink:hover { background: #1B3A42; }
+
+    .glass {
+      width: 15rem; max-width: 100%;
+      border: 1px solid rgba(247,245,240,0.2); background: rgba(11,27,31,0.55);
+      backdrop-filter: blur(10px); border-radius: 0.9rem; padding: 1.1rem 1.2rem;
+      display: flex; flex-direction: column; gap: 0.45rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+    .glass .lbl { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; color: var(--copper-light); }
+    .glass .val { font-family: "Bricolage Grotesque", sans-serif; font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
+    .glass .val small { font-size: 1rem; font-weight: 600; color: var(--on-dark-muted); }
+    .glass .cap { font-size: 0.78rem; color: var(--on-dark-muted); }
+    .glass a { font-size: 0.8rem; font-weight: 700; color: var(--copper-light); margin-top: 0.3rem; }
+    .glass a:hover { color: #fff; }
+
+    /* ============ Bandas claras ============ */
+    section.band { background: var(--paper); border-radius: var(--r-card); margin-top: 0.75rem; padding: 4.5rem 1.5rem; }
+    section.band.alt { background: var(--paper-2); }
+    section.band.dark { background: var(--ink); color: var(--on-dark); }
+    @media (min-width: 640px) { section.band { padding: 5.5rem 2.5rem; } }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper); }
+    .eyebrow::before { content: ""; width: 1.8rem; height: 2px; background: var(--copper); }
+    .dark .eyebrow { color: var(--copper-light); }
+    .dark .eyebrow::before { background: var(--copper-light); }
+    .h2 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; margin-top: 1rem; }
+    .dark .h2, .dark h3 { color: var(--on-dark); }
+    .sect-head { display: flex; flex-direction: column; gap: 0; }
+    .sect-head.split { flex-direction: column; gap: 1.2rem; }
+    @media (min-width: 768px) { .sect-head.split { flex-direction: row; justify-content: space-between; align-items: flex-end; } }
+    .sect-head .side { font-size: 0.95rem; color: var(--muted); max-width: 24rem; line-height: 1.6; }
+
+    /* Marcas */
+    .marcas { display: flex; align-items: center; gap: 2.6rem; flex-wrap: wrap; padding: 1.6rem 1.5rem; background: var(--paper-2); border-radius: var(--r-card); margin-top: 0.75rem; }
+    @media (min-width: 640px) { .marcas { padding: 1.6rem 2.5rem; } }
+    .marcas .l { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; color: var(--faint); }
+    .marcas b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.25rem; color: #9AA8AC; letter-spacing: 0.04em; }
+    .marcas span { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; color: #9AA8AC; }
+
+    /* Serviços */
+    .rows { margin-top: 3rem; border-bottom: 1px solid var(--hairline); }
+    .row { display: flex; align-items: center; gap: 1.6rem; padding: 1.5rem 0.4rem; border-top: 1px solid var(--hairline); color: inherit; }
+    .row .num { font-family: "Bricolage Grotesque", sans-serif; width: 2.4rem; font-size: 0.9rem; font-weight: 600; color: var(--copper); flex-shrink: 0; }
+    .row h3 { font-size: clamp(1.15rem, 1.8vw, 1.6rem); font-weight: 700; width: 24rem; max-width: 42%; }
+    .row p { flex: 1; font-size: 0.92rem; color: var(--muted); line-height: 1.55; display: none; }
+    @media (min-width: 768px) { .row p { display: block; } }
+    .row .arr { width: 2.75rem; height: 2.75rem; border: 1px solid var(--hairline); border-radius: 99px; display: grid; place-items: center; flex-shrink: 0; color: var(--ink); opacity: 0.55; transition: transform 300ms cubic-bezier(0.22,1,0.36,1), opacity 300ms, background 300ms, color 300ms; }
+    .row:hover .arr { transform: translateX(8px); opacity: 1; background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+    .row:hover h3 { color: var(--teal); }
+    .row h3 { transition: color 250ms; }
+
+    /* Como trabalhamos */
+    .quad { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-top: 3rem; }
+    @media (min-width: 768px) { .quad { grid-template-columns: 1fr 1fr; } }
+    .quad article { background: #fff; border: 1px solid var(--hairline); padding: 1.8rem 2rem; border-radius: 0.75rem; transition: transform 350ms cubic-bezier(0.22,1,0.36,1), box-shadow 350ms; }
+    .quad article:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(16,38,43,0.12); }
+    .quad h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .quad p { font-size: 0.92rem; line-height: 1.65; color: var(--muted); }
+
+    /* Calculadoras (dark) */
+    .calc { display: flex; flex-direction: column; gap: 2.5rem; }
+    @media (min-width: 1024px) { .calc { flex-direction: row; align-items: center; gap: 4rem; } }
+    .calc .txt { flex: 1; }
+    .calc .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; max-width: 34rem; }
+    .calc .chips span { padding: 0.5rem 1.1rem; border: 1px solid rgba(247,245,240,0.25); border-radius: 99px; font-size: 0.82rem; color: #D6E0E2; transition: background 220ms, border-color 220ms; }
+    .calc .chips span:hover { background: rgba(247,245,240,0.1); border-color: rgba(247,245,240,0.5); }
+    .calc .panel { width: 100%; max-width: 26rem; background: var(--ink-deep); border: 1px solid rgba(217,164,91,0.3); padding: 2.1rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 0.75rem; }
+    .calc .panel .lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; color: var(--faint); }
+    .calc .panel .big { display: flex; align-items: baseline; gap: 0.6rem; }
+    .calc .panel .big b { font-family: "Bricolage Grotesque", sans-serif; font-size: 3.6rem; font-weight: 800; color: var(--copper-light); line-height: 1; }
+    .calc .panel .big span { font-size: 1.2rem; color: var(--on-dark-muted); }
+    .calc .panel .kv { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--on-dark-muted); padding-top: 0.7rem; border-top: 1px solid rgba(247,245,240,0.12); }
+    .calc .panel .kv b { color: var(--on-dark); font-weight: 700; }
+
+    /* Produtos */
+    .prods { display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin-top: 3rem; }
+    @media (min-width: 768px) { .prods { grid-template-columns: repeat(3, 1fr); } }
+    .prod { background: #fff; border: 1px solid var(--hairline); border-radius: 0.75rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 350ms cubic-bezier(0.22,1,0.36,1), box-shadow 350ms; color: inherit; }
+    .prod:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(16,38,43,0.14); }
+    .prod .ph { height: 15rem; padding: 1.4rem; }
+    .prod .ph img { height: 100%; width: 100%; object-fit: contain; transition: transform 450ms cubic-bezier(0.22,1,0.36,1); }
+    .prod:hover .ph img { transform: scale(1.05); }
+    .prod .inf { border-top: 1px solid var(--hairline); padding: 1.3rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .prod .cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; color: var(--copper); }
+    .prod h3 { font-size: 1.2rem; font-weight: 700; }
+    .prod .det { font-size: 0.85rem; color: var(--muted); }
+
+    /* Orçamento */
+    .quote { display: flex; flex-direction: column; gap: 2.5rem; }
+    @media (min-width: 1024px) { .quote { flex-direction: row; gap: 4.5rem; } }
+    .quote .txt { flex: 1; }
+    .quote ul { list-style: none; padding: 0; margin-top: 1.6rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .quote li { display: flex; gap: 0.8rem; align-items: center; font-size: 0.95rem; }
+    .quote li svg { flex-shrink: 0; }
+    .quote form { width: 100%; max-width: 32rem; background: #fff; border: 1px solid var(--hairline); border-radius: 0.75rem; padding: 2.2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .quote label { font-size: 0.78rem; font-weight: 700; color: var(--ink); display: flex; flex-direction: column; gap: 0.45rem; }
+    .quote input, .quote textarea { font: inherit; font-size: 0.92rem; color: var(--body); border: 1.5px solid var(--hairline); border-radius: 0.5rem; padding: 0.8rem 0.95rem; background: var(--paper); transition: border-color 200ms, box-shadow 200ms; width: 100%; }
+    .quote input:focus, .quote textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px rgba(22,105,122,0.14); }
+    .quote .duo { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 640px) { .quote .duo { grid-template-columns: 1fr 1fr; } }
+    .quote button { justify-content: center; }
+    .quote .note { font-size: 0.78rem; color: var(--faint); text-align: center; }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 2rem; margin-top: 3.5rem; }
+    @media (min-width: 1024px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+    .stat { border-top: 1px solid rgba(247,245,240,0.2); padding-top: 1.2rem; }
+    .stat b { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(2.6rem, 4.6vw, 4.2rem); font-weight: 700; color: var(--on-dark); letter-spacing: -0.02em; line-height: 1; }
+    .stat span { display: block; font-size: 0.9rem; color: rgba(247,245,240,0.65); margin-top: 0.7rem; }
+
+    /* Blog */
+    .posts { display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin-top: 3rem; }
+    @media (min-width: 768px) { .posts { grid-template-columns: repeat(3, 1fr); } }
+    .post { display: flex; flex-direction: column; gap: 1rem; color: inherit; }
+    .post .ph { height: 13rem; overflow: hidden; border-radius: 0.75rem; background: var(--ink); }
+    .post .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms cubic-bezier(0.22,1,0.36,1); }
+    .post:hover .ph img { transform: scale(1.05); }
+    .post .cat { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: var(--copper); }
+    .post h3 { font-size: 1.3rem; font-weight: 700; line-height: 1.28; transition: color 250ms; }
+    .post:hover h3 { color: var(--teal); }
+
+    /* Footer */
+    footer.band { background: var(--ink); color: var(--on-dark); border-radius: var(--r-card); margin-top: 0.75rem; padding: 4rem 1.5rem 2.2rem; }
+    @media (min-width: 640px) { footer.band { padding: 4.5rem 2.5rem 2.4rem; } }
+    .foot-cta { border-bottom: 1px solid rgba(247,245,240,0.14); padding-bottom: 3rem; display: flex; flex-direction: column; gap: 1.6rem; }
+    @media (min-width: 640px) { .foot-cta { flex-direction: row; justify-content: space-between; align-items: flex-end; } }
+    .foot-cta .h2 { color: var(--on-dark); font-size: clamp(2.4rem, 4.4vw, 4rem); }
+    .foot-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; padding: 3rem 0; }
+    @media (min-width: 768px) { .foot-grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; } }
+    .foot-grid .brandcol { display: flex; flex-direction: column; gap: 1rem; max-width: 22rem; }
+    .foot-grid .brandcol .b { display: flex; align-items: center; gap: 0.7rem; }
+    .foot-grid .brandcol img { height: 2.4rem; width: 2.4rem; object-fit: contain; background: var(--paper); border-radius: 7px; padding: 2px; }
+    .foot-grid .brandcol b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    .foot-grid p { font-size: 0.88rem; line-height: 1.65; color: var(--on-dark-muted); }
+    .foot-grid h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; color: rgba(247,245,240,0.5); text-transform: uppercase; margin-bottom: 1rem; font-family: "Hanken Grotesk", sans-serif; }
+    .foot-grid ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.9rem; }
+    .foot-grid ul a { color: rgba(247,245,240,0.8); transition: color 200ms; }
+    .foot-grid ul a:hover { color: var(--copper-light); }
+    .foot-grid address { font-style: normal; font-size: 0.9rem; color: rgba(247,245,240,0.8); display: flex; flex-direction: column; gap: 0.7rem; }
+    .wapill { display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 0.6rem; align-self: flex-start; padding: 0.75rem 1.5rem; border-radius: var(--r-sm); background: #1FAF53; color: #fff; font-weight: 700; font-size: 0.85rem; transition: transform 250ms, background 220ms; }
+    .wapill:hover { transform: translateY(-2px); background: #23C05D; }
+    .foot-bar { border-top: 1px solid rgba(247,245,240,0.14); padding-top: 1.6rem; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.82rem; color: rgba(247,245,240,0.55); }
+    @media (min-width: 640px) { .foot-bar { flex-direction: row; justify-content: space-between; align-items: center; } }
+
+    .preview-tag { position: fixed; left: 50%; transform: translateX(-50%); bottom: 0.9rem; z-index: 60; background: var(--ink); color: var(--copper-light); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.5rem 1.1rem; border-radius: 99px; box-shadow: 0 10px 26px rgba(0,0,0,0.35); opacity: 0.92; pointer-events: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <div class="mark"><img src="assets/img/logo.png" alt=""><span>M Conf&amp;A</span></div>
+    <div class="track"><div class="fill"></div></div>
+  </div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="plate"><div class="shift" data-parallax><img src="assets/img/hero-carousel/hero-carousel-1.webp" alt="Casa com automação e climatização inteligente" fetchpriority="high"></div></div>
+      <div class="rule"></div>
+
+      <header class="topbar">
+        <div class="brand"><img src="assets/img/logo.png" alt="M Conf&A"><b>M Conf&amp;A</b></div>
+        <nav>
+          <a href="about.html">Sobre</a>
+          <a href="services.html">Serviços</a>
+          <a href="produtos.html">Produtos</a>
+          <a href="utilidades.html">Utilidades</a>
+          <a href="blog.html">Blog</a>
+        </nav>
+        <a class="cta" href="contact.html">Pedir orçamento</a>
+      </header>
+
+      <div class="title">
+        <div class="kicker" data-gate style="opacity:0; transition: opacity 700ms 200ms;">VALE DE CAMBRA · AVEIRO</div>
+        <h1 id="heroTitle" aria-label="A sua casa, à temperatura certa."></h1>
+      </div>
+
+      <div class="bottom">
+        <div>
+          <p class="sub rise" data-gate-rise style="--dl:550ms;">Climatização, energia solar e automação residencial — do dimensionamento à manutenção, com uma só equipa.</p>
+          <div class="actions rise" data-gate-rise style="--dl:700ms;">
+            <a class="btn btn-teal" href="utilidades.html">Calcular a minha potência
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-ghost" href="services.html">Ver serviços</a>
+          </div>
+        </div>
+        <div class="glass rise" data-gate-rise style="--dl:850ms;">
+          <div class="lbl">EXEMPLO · QUARTO 20 M²</div>
+          <div class="val">1,9 <small>kW</small></div>
+          <div class="cap">Equipamento sugerido: 9 000 BTU/h · zona V2</div>
+          <a href="utilidades.html">Fazer o meu cálculo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARCAS ============ -->
+    <div class="marcas rise" data-inview>
+      <span class="l">MARCAS E CERTIFICAÇÕES</span>
+      <b>ARISTON</b><b>ZANTIA</b>
+      <span>INSTALAÇÃO CERTIFICADA</span>
+      <span>ORÇAMENTO GRÁTIS</span>
+    </div>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section class="band" id="servicos">
+      <div class="sect-head split">
+        <div>
+          <div class="eyebrow rise" data-inview>O QUE FAZEMOS</div>
+          <h2 class="h2"><span class="clip" data-lines><span>Sete ofícios,</span></span><span class="clip" data-lines style="--dl:120ms;"><span>uma equipa</span></span></h2>
+        </div>
+        <div class="side rise" data-inview style="--dl:150ms;">Da climatização à impressão 3D — tudo o que a sua casa precisa, sem coordenar três empresas diferentes.</div>
+      </div>
+      <div class="rows">
+        <a class="row rise" data-inview style="--dl:0ms;" href="services.html"><span class="num">01</span><h3>Climatização e Conforto</h3><p>Instalação e manutenção de aquecimento e ar-condicionado, o ano todo.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="row rise" data-inview style="--dl:70ms;" href="services.html"><span class="num">02</span><h3>Energia Solar</h3><p>Reduzir custos e impacto ambiental, com máxima eficiência energética.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="row rise" data-inview style="--dl:140ms;" href="services.html"><span class="num">03</span><h3>Automação Doméstica</h3><p>Conforto e segurança controlados pelo toque de um botão.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="row rise" data-inview style="--dl:210ms;" href="services.html"><span class="num">04</span><h3>Reparos e Remodelações</h3><p>Remodelações completas com acabamento duradouro.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="row rise" data-inview style="--dl:280ms;" href="services.html"><span class="num">05</span><h3>Canalização e Elétrica</h3><p>Infraestrutura eficiente, segura e em conformidade.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="row rise" data-inview style="--dl:350ms;" href="services.html"><span class="num">06</span><h3>Manutenção de Piscinas</h3><p>Piscina pronta em segurança, durante todo o ano.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="row rise" data-inview style="--dl:420ms;" href="services.html"><span class="num">07</span><h3>Impressão 3D</h3><p>Estruturas duráveis e personalizadas, com sustentabilidade.</p><span class="arr"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+    </section>
+
+    <!-- ============ COMO TRABALHAMOS ============ -->
+    <section class="band alt">
+      <div class="eyebrow rise" data-inview>COMO TRABALHAMOS</div>
+      <h2 class="h2"><span class="clip" data-lines><span>Do plano à entrega,</span></span><span class="clip" data-lines style="--dl:120ms;"><span>sem sobressaltos</span></span></h2>
+      <div class="quad">
+        <article class="rise" data-inview style="--dl:0ms;"><h3>Experiência que edifica o futuro</h3><p>Entregamos projetos que aliam qualidade, rigor e prazos cumpridos — em casas novas e em remodelações.</p></article>
+        <article class="rise" data-inview style="--dl:90ms;"><h3>Serviços personalizados</h3><p>Cada projeto é diferente: adaptamos a solução ao espaço, ao orçamento e ao modo de vida de quem lá mora.</p></article>
+        <article class="rise" data-inview style="--dl:180ms;"><h3>Parceiro em todas as etapas</h3><p>Do planeamento à execução, o mesmo interlocutor acompanha cada fase — sem intermediários.</p></article>
+        <article class="rise" data-inview style="--dl:270ms;"><h3>Excelência e sustentabilidade</h3><p>Práticas sustentáveis em todos os projetos — pela estética, pela eficiência e pelo ambiente.</p></article>
+      </div>
+    </section>
+
+    <!-- ============ CALCULADORAS ============ -->
+    <section class="band dark" id="calculadoras">
+      <div class="calc">
+        <div class="txt">
+          <div class="eyebrow rise" data-inview>FERRAMENTAS GRATUITAS</div>
+          <h2 class="h2"><span class="clip" data-lines><span>Quantos BTU precisa</span></span><span class="clip" data-lines style="--dl:120ms;"><span>a sua sala?</span></span></h2>
+          <div class="chips rise" data-inview style="--dl:200ms;">
+            <span>Ar condicionado</span><span>Bomba de calor</span><span>Termoacumulador</span>
+            <span>Caldeira</span><span>Piso radiante</span><span>Piscina</span><span>Conversor</span>
+          </div>
+          <div class="rise" data-inview style="--dl:300ms; margin-top: 1.8rem;">
+            <a class="btn btn-copper" href="utilidades.html">Usar as calculadoras
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="panel rise" data-inview style="--dl:250ms;">
+          <div class="lbl">EXEMPLO · QUARTO 20 M² · ZONA V2</div>
+          <div class="big"><b data-count="1,9">0</b><span>kW</span></div>
+          <div class="kv"><span>Equipamento sugerido</span><b>9 000 BTU/h</b></div>
+          <div class="kv"><span>Classe recomendada</span><b>A++ ou superior</b></div>
+          <div class="kv"><span>Confirmação</span><b>Visita técnica</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUTOS ============ -->
+    <section class="band" id="produtos">
+      <div class="sect-head split">
+        <div>
+          <div class="eyebrow rise" data-inview>CATÁLOGO</div>
+          <h2 class="h2"><span class="clip" data-lines><span>Equipamentos que</span></span><span class="clip" data-lines style="--dl:120ms;"><span>instalamos</span></span></h2>
+        </div>
+        <a class="side rise" data-inview style="--dl:150ms; font-weight:700; color: var(--teal);" href="produtos.html">Ver os 23 produtos →</a>
+      </div>
+      <div class="prods">
+        <a class="prod rise" data-inview style="--dl:0ms;" href="produtos.html">
+          <div class="ph"><img src="assets/img/preview/prod-ac.jpg" alt="Ar condicionado Zantia Split AUSTIN" loading="lazy"></div>
+          <div class="inf"><span class="cat">AR CONDICIONADO · ZANTIA</span><h3>Split AUSTIN 12 000 BTU</h3><span class="det">A+++ · WiFi opcional · Gás R32</span></div>
+        </a>
+        <a class="prod rise" data-inview style="--dl:120ms;" href="produtos.html">
+          <div class="ph"><img src="assets/img/preview/prod-bc.jpg" alt="Bomba de calor Ariston Nuos Plus WiFi" loading="lazy"></div>
+          <div class="inf"><span class="cat">BOMBA DE CALOR · ARISTON</span><h3>Nuos Plus WiFi</h3><span class="det">Águas quentes sanitárias · Classe A+</span></div>
+        </a>
+        <a class="prod rise" data-inview style="--dl:240ms;" href="produtos.html">
+          <div class="ph"><img src="assets/img/preview/prod-termo.jpg" alt="Termoacumulador Ariston Lydos" loading="lazy"></div>
+          <div class="inf"><span class="cat">TERMOACUMULADOR · ARISTON</span><h3>Lydos Eco</h3><span class="det">80–100 L · Proteção WaterPlus</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ NÚMEROS ============ -->
+    <section class="band dark">
+      <div class="eyebrow rise" data-inview>EM NÚMEROS</div>
+      <h2 class="h2"><span class="clip" data-lines><span>Uma casa, uma equipa,</span></span><span class="clip" data-lines style="--dl:120ms;"><span>zero complicações</span></span></h2>
+      <dl class="stats">
+        <div class="stat rise" data-inview style="--dl:0ms;"><dd><b data-count="7">0</b><span>áreas de serviço</span></dd></div>
+        <div class="stat rise" data-inview style="--dl:110ms;"><dd><b data-count="23">0</b><span>equipamentos em catálogo</span></dd></div>
+        <div class="stat rise" data-inview style="--dl:220ms;"><dd><b data-count="6">0</b><span>calculadoras gratuitas</span></dd></div>
+        <div class="stat rise" data-inview style="--dl:330ms;"><dd><b data-count="2">0</b><span>marcas representadas</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ ORÇAMENTO ============ -->
+    <section class="band alt" id="orcamento">
+      <div class="quote">
+        <div class="txt">
+          <div class="eyebrow rise" data-inview>ORÇAMENTO GRÁTIS</div>
+          <h2 class="h2"><span class="clip" data-lines><span>Conte-nos</span></span><span class="clip" data-lines style="--dl:120ms;"><span>o seu projeto</span></span></h2>
+          <ul>
+            <li class="rise" data-inview style="--dl:150ms;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16697A" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Visita técnica para confirmar o dimensionamento</li>
+            <li class="rise" data-inview style="--dl:230ms;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16697A" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Proposta clara: equipamento, potência e trabalho incluído</li>
+            <li class="rise" data-inview style="--dl:310ms;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16697A" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Resposta por telefone, email ou WhatsApp</li>
+          </ul>
+        </div>
+        <form class="rise" data-inview style="--dl:200ms;" id="quoteForm" novalidate>
+          <div class="duo">
+            <label>Nome<input type="text" name="nome" placeholder="O seu nome" required></label>
+            <label>Telefone<input type="tel" name="telefone" placeholder="9XX XXX XXX"></label>
+          </div>
+          <label>Mensagem<textarea name="mensagem" rows="4" placeholder="Ex.: quero climatizar uma sala de 25 m² em Vale de Cambra…"></textarea></label>
+          <button type="submit" class="btn btn-ink">Enviar pelo WhatsApp
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <div class="note">Abre o WhatsApp com a sua mensagem pronta a enviar — sem formulários perdidos.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ BLOG ============ -->
+    <section class="band">
+      <div class="sect-head split">
+        <div>
+          <div class="eyebrow rise" data-inview>BLOG</div>
+          <h2 class="h2"><span class="clip" data-lines><span>Saber antes</span></span><span class="clip" data-lines style="--dl:120ms;"><span>de investir</span></span></h2>
+        </div>
+        <a class="side rise" data-inview style="--dl:150ms; font-weight:700; color: var(--teal);" href="blog.html">Todos os artigos →</a>
+      </div>
+      <div class="posts">
+        <a class="post rise" data-inview style="--dl:0ms;" href="blog-details.html">
+          <div class="ph"><img src="assets/img/hero-carousel/hero-carousel-2.webp" alt="Automação residencial" loading="lazy"></div>
+          <span class="cat">AUTOMAÇÃO</span><h3>Transforme sua Casa com Automação Residencial</h3>
+        </a>
+        <a class="post rise" data-inview style="--dl:120ms;" href="energia-solar.html">
+          <div class="ph"><img src="assets/img/hero-carousel/hero-carousel-3.webp" alt="Energia solar" loading="lazy"></div>
+          <span class="cat">ENERGIA SOLAR</span><h3>Energia Solar: Sustentabilidade e Economia ao Seu Alcance</h3>
+        </a>
+        <a class="post rise" data-inview style="--dl:240ms;" href="blog.html">
+          <div class="ph"><img src="assets/img/hero-carousel/hero-carousel-1.webp" alt="Climatização residencial" loading="lazy"></div>
+          <span class="cat">CLIMATIZAÇÃO</span><h3>Climatização Residencial: Conforto e Qualidade de Vida</h3>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="band">
+      <div class="foot-cta">
+        <div>
+          <div class="eyebrow rise" data-inview>COMEÇAR</div>
+          <p class="h2"><span class="clip" data-lines><span>Pronto para</span></span><span class="clip" data-lines style="--dl:120ms;"><span>o conforto?</span></span></p>
+        </div>
+        <div class="rise" data-inview style="--dl:150ms;">
+          <a class="btn btn-copper" href="contact.html">Pedir orçamento grátis
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-grid">
+        <div class="brandcol">
+          <div class="b"><img src="assets/img/logo.png" alt=""><b>M Conf&amp;A</b></div>
+          <p>Climatização, energia solar e automação residencial em Vale de Cambra, ao serviço da região de Aveiro.</p>
+        </div>
+        <nav><h4>Navegação</h4><ul>
+          <li><a href="about.html">Sobre</a></li><li><a href="services.html">Serviços</a></li>
+          <li><a href="produtos.html">Produtos</a></li><li><a href="utilidades.html">Utilidades</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul></nav>
+        <nav><h4>Serviços</h4><ul>
+          <li><a href="services.html">Climatização</a></li><li><a href="services.html">Energia solar</a></li>
+          <li><a href="services.html">Automação</a></li><li><a href="manutencao.html">Manutenção</a></li>
+        </ul></nav>
+        <div>
+          <h4>Contacto</h4>
+          <address>
+            <span>Rua da Escola de Macinhata, 300 · Vale de Cambra</span>
+            <a href="tel:+351913632248">+351 913 632 248</a>
+            <a href="mailto:geral@mconfea.com">geral@mconfea.com</a>
+          </address>
+          <a class="wapill" href="https://wa.me/351913632248?text=Olá! Vi o vosso site e gostaria de mais informações." target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="foot-bar">
+        <span>© M Conf&amp;A. Todos os direitos reservados.</span>
+        <span>Vale de Cambra · Aveiro · Portugal</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <div class="preview-tag">PRÉ-VISUALIZAÇÃO · NOVO DESIGN</div>
+
+  <script type="module">
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const htmlEl = document.documentElement;
+
+    /* ---------- Grelha adaptativa: escalar acima de 1920 ---------- */
+    function fitFont() {
+      const FONT_BASE = 16, BASE_W = 1920, COEF = 0.6666;
+      const reduction = ((BASE_W - innerWidth) / BASE_W) * 100 * COEF;
+      const size = FONT_BASE - (FONT_BASE * reduction) / 100;
+      if (size > FONT_BASE) htmlEl.style.fontSize = size + 'px';
+      else htmlEl.style.removeProperty('font-size');
+    }
+    fitFont(); addEventListener('resize', fitFont);
+
+    /* ---------- Smooth scroll (Lenis, com fallback nativo) ---------- */
+    let lenis = null;
+    if (!reduced) {
+      try {
+        const { default: Lenis } = await import('lenis');
+        lenis = new Lenis({ smoothWheel: true });
+        const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+        requestAnimationFrame(raf);
+      } catch (e) { /* sem CDN: scroll nativo */ }
+    }
+    const lockScroll = on => {
+      htmlEl.classList.toggle('locked', on);
+      if (lenis) on ? lenis.stop() : lenis.start();
+    };
+
+    /* ---------- Título do hero: reveal palavra a palavra ---------- */
+    const TITLE = 'A sua casa, à temperatura certa.';
+    const h1 = document.getElementById('heroTitle');
+    TITLE.split(' ').forEach((w, i) => {
+      const clip = document.createElement('span');
+      clip.className = 'clip word';
+      clip.style.setProperty('--d', '1100ms');
+      clip.style.setProperty('--dl', (i * 140) + 'ms');
+      const inner = document.createElement('span');
+      inner.textContent = w;
+      clip.appendChild(inner);
+      h1.appendChild(clip);
+      h1.appendChild(document.createTextNode(' '));
+    });
+
+    /* ---------- Loader ---------- */
+    const loader = document.getElementById('loader');
+    const MIN_VISIBLE = reduced ? 200 : 1400, MAX_VISIBLE = 2600, EXIT = reduced ? 0 : 850;
+    scrollTo(0, 0); lockScroll(true);
+    requestAnimationFrame(() => loader.classList.add('in'));
+
+    let started = false;
+    const reveal = () => {
+      if (started) return; started = true;
+      setTimeout(() => {
+        loader.classList.add('exit');
+        lockScroll(false);
+        // portas do hero
+        h1.querySelectorAll('.clip').forEach(c => c.classList.add('on'));
+        document.querySelectorAll('[data-gate]').forEach(el => el.style.opacity = '1');
+        document.querySelectorAll('[data-gate-rise]').forEach(el => el.classList.add('on'));
+        setTimeout(() => loader.remove(), EXIT + 50);
+      }, MIN_VISIBLE);
+    };
+    (document.readyState === 'complete') ? reveal() : addEventListener('load', reveal);
+    setTimeout(reveal, MAX_VISIBLE);
+
+    /* ---------- Reveals ao entrar no viewport ---------- */
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries) if (e.isIntersecting) {
+        const el = e.target;
+        el.classList.add('on');
+        el.querySelectorAll?.('.clip').forEach(c => c.classList.add('on'));
+        if (el.matches('.clip')) el.classList.add('on');
+        el.querySelectorAll?.('[data-count]').forEach(runCount);
+        if (el.hasAttribute?.('data-count')) runCount(el);
+        io.unobserve(el);
+      }
+    }, { threshold: 0.18 });
+    document.querySelectorAll('[data-inview], [data-lines]').forEach(el => io.observe(el));
+    document.querySelectorAll('section, footer, .marcas').forEach(sec => {
+      // contadores fora de .rise
+      sec.querySelectorAll('[data-count]').forEach(c => io.observe(c.closest('.rise') || c));
+    });
+
+    /* ---------- Contadores ---------- */
+    function runCount(el) {
+      if (el.dataset.done) return; el.dataset.done = '1';
+      const target = el.dataset.count;
+      const decimal = target.includes(',');
+      const num = parseFloat(target.replace(',', '.'));
+      const t0 = performance.now(), D = 1100;
+      const tick = now => {
+        const p = Math.min(1, (now - t0) / D);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const v = num * eased;
+        el.textContent = decimal ? v.toFixed(1).replace('.', ',') : Math.round(v);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      reduced ? (el.textContent = target) : requestAnimationFrame(tick);
+    }
+
+    /* ---------- Parallax do hero ---------- */
+    const plate = document.querySelector('[data-parallax]');
+    const hero = document.querySelector('.hero');
+    if (plate && !reduced) {
+      let target = 0, cur = 0;
+      const measure = () => {
+        const r = hero.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, -r.top / r.height));
+        target = progress * 12; // 0% -> 12%
+      };
+      const loop = () => {
+        cur += (target - cur) * 0.12; // mola simples
+        plate.style.transform = `translateY(${cur}%)`;
+        requestAnimationFrame(loop);
+      };
+      addEventListener('scroll', measure, { passive: true });
+      measure(); requestAnimationFrame(loop);
+    }
+
+    /* ---------- Formulário -> WhatsApp ---------- */
+    document.getElementById('quoteForm').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const f = new FormData(ev.target);
+      const nome = (f.get('nome') || '').toString().trim();
+      const msg = (f.get('mensagem') || '').toString().trim();
+      const texto = `Olá! Sou ${nome || '…'} e gostaria de um orçamento. ${msg}`.trim();
+      open('https://wa.me/351913632248?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
