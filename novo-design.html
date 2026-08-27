@@ -96,10 +96,10 @@
       border-radius: var(--r-card);
       background: var(--ink);
       color: var(--on-dark);
-      min-height: 36rem; height: calc(100svh - 1rem);
+      min-height: calc(100svh - 1rem);
       display: flex; flex-direction: column;
     }
-    @media (min-width: 640px) { .hero { height: calc(100svh - 1.5rem); } }
+    @media (min-width: 640px) { .hero { min-height: 36rem; height: calc(100svh - 1.5rem); } }
     .hero .plate { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
     .hero .plate .shift { position: absolute; left: 0; right: 0; top: -16%; height: 132%; will-change: transform; }
     .hero .plate img { width: 100%; height: 100%; object-fit: cover; }
@@ -122,7 +122,7 @@
     .topbar .cta { padding: 0.7rem 1.4rem; border-radius: var(--r-sm); background: rgba(247,245,240,0.14); border: 1px solid rgba(247,245,240,0.25); color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; backdrop-filter: blur(8px); transition: background 220ms; }
     .topbar .cta:hover { background: rgba(247,245,240,0.28); }
 
-    .hero .title { padding: 0 1.5rem; margin-top: auto; }
+    .hero .title { padding: 2.4rem 1.5rem 0; margin-top: auto; }
     @media (min-width: 640px) { .hero .title { padding: 0 2.5rem; } }
     .hero .kicker { display: flex; align-items: center; gap: 0.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; color: var(--copper-light); margin-bottom: 1.3rem; }
     .hero .kicker::before { content: ""; width: 1.8rem; height: 2px; background: var(--copper-light); }
@@ -181,11 +181,17 @@
     .sect-head .side { font-size: 0.95rem; color: var(--muted); max-width: 24rem; line-height: 1.6; }
 
     /* Marcas */
-    .marcas { display: flex; align-items: center; gap: 2.6rem; flex-wrap: wrap; padding: 1.6rem 1.5rem; background: var(--paper-2); border-radius: var(--r-card); margin-top: 0.75rem; }
+    .marcas { display: flex; align-items: center; gap: 1.1rem 2.4rem; flex-wrap: wrap; padding: 1.6rem 1.5rem; background: var(--paper-2); border-radius: var(--r-card); margin-top: 0.75rem; }
     @media (min-width: 640px) { .marcas { padding: 1.6rem 2.5rem; } }
-    .marcas .l { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; color: var(--faint); }
-    .marcas b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.25rem; color: #9AA8AC; letter-spacing: 0.04em; }
-    .marcas span { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; color: #9AA8AC; }
+    .marcas .l { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; color: var(--copper); }
+    .marcas b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.25rem; color: #4F6167; letter-spacing: 0.04em; }
+    .marcas span { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; color: #56696F; }
+    @media (max-width: 640px) {
+      .marcas { gap: 0.8rem 1.6rem; padding: 1.4rem 1.5rem; }
+      .marcas .l { width: 100%; }
+      .marcas b { font-size: 1.05rem; }
+      .marcas span { font-size: 0.74rem; }
+    }
 
     /* Serviços */
     .rows { margin-top: 3rem; border-bottom: 1px solid var(--hairline); }
@@ -292,7 +298,7 @@
     .foot-bar { border-top: 1px solid rgba(247,245,240,0.14); padding-top: 1.6rem; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.82rem; color: rgba(247,245,240,0.55); }
     @media (min-width: 640px) { .foot-bar { flex-direction: row; justify-content: space-between; align-items: center; } }
 
-    .preview-tag { position: fixed; left: 50%; transform: translateX(-50%); bottom: 0.9rem; z-index: 60; background: var(--ink); color: var(--copper-light); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.5rem 1.1rem; border-radius: 99px; box-shadow: 0 10px 26px rgba(0,0,0,0.35); opacity: 0.92; pointer-events: none; }
+    .preview-tag { position: fixed; left: 0.9rem; bottom: 0.9rem; z-index: 60; background: var(--ink); color: var(--copper-light); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.4rem 0.85rem; border-radius: 99px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); opacity: 0.75; pointer-events: none; }
   </style>
 </head>
 <body>
