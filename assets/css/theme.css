@@ -1,0 +1,479 @@
+/**
+ * M Conf&A — Tema visual 2026
+ * Carregado DEPOIS de main.css: moderniza cores, tipografia e componentes
+ * em todas as páginas sem tocar no CSS base do template.
+ */
+
+/* ============================================================
+   1. Tokens
+   ============================================================ */
+:root {
+  --font-primary: "Plus Jakarta Sans", "Work Sans", sans-serif;
+  --font-secondary: "Plus Jakarta Sans", "Work Sans", sans-serif;
+
+  --color-default: #33424d;
+  --color-primary: #0e7a94;          /* teal da marca, afinado */
+  --color-primary-dark: #0a5f74;
+  --color-primary-light: #16a3bf;
+  --color-accent: #f59f1d;           /* âmbar: usar com moderação */
+  --color-ink: #0f2430;              /* navy-slate para superfícies escuras */
+  --color-surface: #f6f9fa;
+  --color-border: #e3ebee;
+
+  --grad-primary: linear-gradient(135deg, #0e7a94 0%, #16a3bf 100%);
+  --grad-ink: linear-gradient(150deg, #0d1f2b 0%, #123240 55%, #0e5468 100%);
+
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgb(15 36 48 / .05), 0 2px 8px rgb(15 36 48 / .06);
+  --shadow-md: 0 4px 12px rgb(15 36 48 / .07), 0 12px 32px rgb(15 36 48 / .09);
+  --shadow-lift: 0 10px 20px rgb(14 122 148 / .14), 0 22px 48px rgb(15 36 48 / .14);
+}
+
+body {
+  font-family: var(--font-default);
+  color: var(--color-default);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  letter-spacing: -0.01em;
+  color: #122b38;
+}
+
+a { color: var(--color-primary); }
+a:hover { color: var(--color-primary-light); }
+
+::selection { background: rgb(22 163 191 / .25); }
+
+/* ============================================================
+   2. Header — vidro com blur
+   ============================================================ */
+.header {
+  background: rgb(255 255 255 / .82);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid rgb(15 36 48 / .06);
+  box-shadow: none;
+}
+
+.header .logo img { max-height: 48px; }
+
+.navbar a {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .02em;
+  color: #2c3e4a;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover > a {
+  color: var(--color-primary);
+}
+
+/* sublinhado animado nos itens do menu (desktop) */
+@media (min-width: 1280px) {
+  .navbar a {
+    position: relative;
+  }
+  .navbar a:not(.active)::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--grad-primary);
+    transition: right .25s ease;
+  }
+  .navbar a:not(.active):hover::after { right: 0; }
+}
+
+/* ============================================================
+   3. Hero (homepage)
+   ============================================================ */
+.hero .carousel-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(90% 120% at 15% 100%, rgb(14 122 148 / .55) 0%, transparent 55%),
+    linear-gradient(180deg, rgb(13 31 43 / .55) 0%, rgb(13 31 43 / .72) 100%);
+}
+
+.hero .info h2 {
+  font-size: clamp(38px, 5.4vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+
+.hero .info h2 span {
+  background: linear-gradient(90deg, #6fd6ea, #b7ecf5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero .info p {
+  font-size: 19px;
+  line-height: 1.65;
+  color: rgb(255 255 255 / .88);
+}
+
+.btn-get-started,
+.hero .info .btn-get-started {
+  background: var(--grad-primary);
+  border: none;
+  border-radius: 999px;
+  padding: 15px 44px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  box-shadow: 0 10px 26px rgb(14 122 148 / .40);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.btn-get-started:hover {
+  background: var(--grad-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgb(14 122 148 / .5);
+}
+
+/* ============================================================
+   4. Breadcrumbs — fim da foto de obras; gradiente da marca
+   ============================================================ */
+.breadcrumbs {
+  background-image: var(--grad-ink) !important;
+  min-height: 26vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.breadcrumbs::before {
+  /* malha de pontos subtil por cima do gradiente */
+  background:
+    radial-gradient(rgb(255 255 255 / .10) 1px, transparent 1.6px);
+  background-size: 26px 26px;
+  opacity: .5;
+}
+
+.breadcrumbs::after {
+  content: "";
+  position: absolute;
+  right: -140px;
+  top: -140px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(22 163 191 / .35) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.breadcrumbs h2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-size: clamp(34px, 4.5vw, 52px);
+}
+
+.breadcrumbs ol { color: #8fd9e8; }
+.breadcrumbs ol a { color: rgb(255 255 255 / .75); }
+
+/* ============================================================
+   5. Cabeçalhos de secção
+   ============================================================ */
+.section-header h2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #122b38;
+}
+
+.section-header h2::before,
+.section-header h2::after {
+  /* substitui os traços laterais do template por um sublinhado central */
+  display: none;
+}
+
+.section-header {
+  padding-bottom: 48px;
+  position: relative;
+}
+
+.section-header h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.section-header h2 + p { margin-top: 10px; }
+
+.section-header h2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 64px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--grad-primary);
+}
+
+/* ============================================================
+   6. Cartões — serviços, ícones, produtos, blog
+   ============================================================ */
+.service-item,
+.icon-box,
+.card,
+.constructions .card-item,
+.calculator-card {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.service-item:hover,
+.icon-box:hover,
+.card:hover,
+.constructions .card-item:hover,
+.calculator-card:hover {
+  transform: translateY(-6px);
+  border-color: rgb(14 122 148 / .35);
+  box-shadow: var(--shadow-lift);
+}
+
+.card { overflow: hidden; }
+.card-img-top { transition: transform .45s ease; }
+.card:hover .card-img-top { transform: scale(1.04); }
+
+.service-item .icon i {
+  color: var(--color-primary);
+  transition: transform .3s ease;
+}
+
+.service-item:hover .icon i { transform: scale(1.12); }
+
+.service-item h3 { font-weight: 700; }
+
+/* ============================================================
+   7. Botões e formulários
+   ============================================================ */
+.btn-primary,
+.btn-calculate {
+  background: var(--grad-primary) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-weight: 700;
+  letter-spacing: .02em;
+  padding: 12px 30px;
+  box-shadow: 0 6px 18px rgb(14 122 148 / .28);
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+.btn-primary:hover,
+.btn-calculate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgb(14 122 148 / .38);
+  filter: brightness(1.05);
+}
+
+.btn-outline-primary {
+  border-radius: 999px !important;
+  border: 2px solid var(--color-primary) !important;
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  transition: all .22s ease;
+}
+
+.btn-outline-primary:hover {
+  background: var(--grad-primary) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+.btn-success {
+  border-radius: 999px !important;
+  font-weight: 700;
+}
+
+.form-control,
+.form-select {
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  padding: 10px 14px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 4px rgb(22 163 191 / .15);
+}
+
+.form-label { font-weight: 600; color: #24404f; }
+
+/* filtros (utilidades / produtos) em pastilha unificada */
+.filter-btn {
+  border-radius: 999px !important;
+  border: 1.5px solid var(--color-border) !important;
+  background: #fff !important;
+  color: #33555f !important;
+  font-weight: 600;
+  transition: all .22s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+  background: rgb(14 122 148 / .06) !important;
+}
+
+.filter-btn.active {
+  background: var(--grad-primary) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgb(14 122 148 / .3);
+}
+
+/* ============================================================
+   8. Resultados das calculadoras — painel de destaque
+   ============================================================ */
+.result-card {
+  background: var(--grad-ink) !important;
+  border: 1px solid rgb(22 163 191 / .35) !important;
+  border-radius: var(--radius-lg) !important;
+  color: #dcecf1 !important;
+  box-shadow: var(--shadow-md);
+}
+
+.result-card h4,
+.result-card h5,
+.result-card h6,
+.result-card strong { color: #fff !important; }
+
+.result-card p, .result-card li, .result-card small { color: #c6dde5 !important; }
+
+.result-card .result-value {
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: clamp(34px, 4vw, 46px) !important;
+  background: linear-gradient(90deg, #6fd6ea, #cdf3fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #6fd6ea !important;
+}
+
+.result-card a.btn-primary { box-shadow: 0 8px 20px rgb(0 0 0 / .35); }
+
+/* nota técnica dentro dos resultados */
+.result-card [style*="background: #e3f2fd"],
+.result-card [style*="background: #f8f9fa"] {
+  background: rgb(255 255 255 / .08) !important;
+  color: #d5e8ee;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   9. Footer e flutuantes
+   ============================================================ */
+.footer,
+.footer .footer-legal {
+  background: var(--grad-ink) !important;
+}
+
+.footer .copyright { color: rgb(255 255 255 / .82); letter-spacing: .02em; }
+
+.scroll-top {
+  background: var(--grad-primary);
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgb(14 122 148 / .4);
+}
+
+.scroll-top:hover { filter: brightness(1.08); }
+
+/* botão WhatsApp flutuante (classe própria; substitui estilos inline) */
+.whatsapp-float {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 1000;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2bd267, #1faf53);
+  color: #fff !important;
+  font-size: 30px;
+  box-shadow: 0 10px 24px rgb(31 175 83 / .45);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  color: #fff;
+  box-shadow: 0 16px 32px rgb(31 175 83 / .55);
+}
+
+/* ============================================================
+   10. Detalhes finos
+   ============================================================ */
+.get-started .content h3,
+.alt-services h3 { font-weight: 800; }
+
+img { border-radius: 0; }
+.card img.card-img-top { border-radius: 0; }
+
+/* barras de progresso/badges herdados do bootstrap */
+.badge { border-radius: 999px; font-weight: 600; }
+
+/* acessibilidade: respeitar redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ============================================================
+   11. Afinações pós-screenshot
+   ============================================================ */
+
+/* ícones dos serviços: teal em vez de cinzento; disco de fundo tintado */
+.service-item .icon i { color: var(--color-primary) !important; }
+.service-item .icon::before,
+.service-item .icon:before { background: rgb(14 122 148 / .12) !important; }
+.service-item h3::after, .service-item h3:after { background: var(--grad-primary) !important; }
+
+/* produtos: o botão "Filtrar" é ação primária, não pastilha de filtro */
+.btn-primary.filter-btn,
+button#filter-btn {
+  background: var(--grad-primary) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgb(14 122 148 / .28);
+}
+
+/* botões secundários (Limpar, etc.) como pastilha neutra */
+.btn-secondary {
+  border-radius: 999px !important;
+  background: #fff !important;
+  border: 1.5px solid var(--color-border) !important;
+  color: #33555f !important;
+  font-weight: 600;
+  transition: all .22s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+  background: rgb(14 122 148 / .06) !important;
+}
+
+/* ícones das calculadoras (utilidades): âmbar -> teal para coerência */
+.calculator-icon { color: var(--color-primary) !important; }
