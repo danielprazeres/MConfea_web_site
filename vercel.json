@@ -9,6 +9,26 @@
         "source": "/início/nossos-links",
         "destination": "/",
         "permanent": true
+      },
+      {
+        "source": "/service-details.html",
+        "destination": "/services.html",
+        "permanent": true
+      },
+      {
+        "source": "/projects.html",
+        "destination": "/services.html",
+        "permanent": true
+      },
+      {
+        "source": "/project-details.html",
+        "destination": "/services.html",
+        "permanent": true
+      },
+      {
+        "source": "/sample-inner-page.html",
+        "destination": "/",
+        "permanent": true
       }
     ]
   }
