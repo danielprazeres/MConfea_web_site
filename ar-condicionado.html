@@ -34,7 +34,7 @@
   <!-- Fontes auto-alojadas (sem pedidos a fonts.googleapis.com): 1 ficheiro por família, subset latin -->
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/BricolageGrotesque.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/HankenGrotesk.woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/landing/split-zantia.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/landing/split-zantia.webp" media="(min-width: 1024px)">
 
   <!-- ====== Medição (Google Ads / GTM) ======
        A agência cola o snippet do Google Tag Manager (ou gtag.js) no sítio marcado, DEPOIS do bloco de consentimento.
@@ -199,8 +199,11 @@
     .actions .btn { flex: 1 1 9rem; }
     .actions .btn .lbl { display: none; }
     @media (min-width: 640px) { .actions .btn { flex: 0 1 auto; } .actions .btn .lbl { display: inline; } }
-    .hero-visual { order: -1; width: min(13rem, 48%); margin: 0 0 .25rem auto; filter: drop-shadow(0 26px 34px rgba(0,0,0,.5)); }
-    @media (min-width: 1024px) { .hero-visual { order: 10; width: min(25rem, 88%); margin: 2rem 0 0 auto; } }
+    .hero-side { display: flex; flex-direction: column; }
+    .hero-visual { display: none; }
+    @media (min-width: 1024px) {
+      .hero-visual { display: block; width: min(19rem, 62%); margin: 0 1.5rem 1rem auto; filter: drop-shadow(0 30px 34px rgba(0,0,0,.55)); }
+    }
 
     /* uma única sequência de entrada (só o hero; só transform, para não atrasar o LCP) */
     .in { animation: rise .9s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
@@ -455,9 +458,10 @@
               <a class="btn btn-wa" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="hero"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg><span><span class="lbl">Falar no </span>WhatsApp<span class="sr-only"> (abre numa nova janela)</span></span></a>
               <a class="btn btn-ghost" href="tel:+351913632248" data-track="phone" data-loc="hero"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span>Ligar<span class="lbl"> 913 632 248</span></span></a>
             </div>
-            <img class="hero-visual in" style="--i:0" src="assets/img/landing/split-zantia.webp" alt="Unidade interior de ar condicionado Zantia" width="573" height="295" fetchpriority="high" decoding="async">
           </div>
 
+          <div class="hero-side">
+            <img class="hero-visual in" style="--i:1" src="assets/img/landing/split-zantia.webp" alt="Unidade interior de ar condicionado Zantia" width="573" height="295" decoding="async">
           <form id="pedido-rapido" class="card-form lead-form in" style="--i:3" data-form="hero" action="https://formsubmit.co/geral@mconfea.com" method="POST" aria-labelledby="f1-title">
             <h2 id="f1-title">Peça o seu orçamento grátis</h2>
             <p class="hint">Demora menos de um minuto. Ligamos-lhe nós para marcar a visita técnica.</p>
@@ -493,6 +497,7 @@
               <a class="btn btn-wa" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="hero-form-success"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>Abrir WhatsApp<span class="sr-only"> (abre numa nova janela)</span></a>
             </div>
           </form>
+          </div>
         </div>
       </div>
     </section>
