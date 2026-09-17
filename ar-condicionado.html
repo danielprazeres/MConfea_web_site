@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Instalação de Ar Condicionado em Vale de Cambra e Aveiro | M Conf&A</title>
-  <meta name="description" content="Instalação de ar condicionado em Vale de Cambra e Aveiro por instalador certificado. Zantia e Ariston até A+++. Visita técnica e orçamento grátis.">
+  <meta name="description" content="Instalação de ar condicionado em Vale de Cambra e Aveiro por instalador certificado. Equipamentos inverter até A+++. Visita técnica com orçamento a partir de 30 €.">
   <!-- ===================== LANDING PAGE DE CAMPANHA (Google Ads) =====================
        CHECKLIST DE PUBLICAÇÃO (antes de ativar os anúncios):
          1. Testemunhos: substituir os 3 testemunhos ilustrativos por testemunhos reais (ou remover a secção #testemunhos).
@@ -14,7 +14,9 @@
          4. Colar o snippet do GTM/gtag no sítio marcado abaixo e passar CONSENT_BANNER a true no JS.
          5. Passar PREVIEW a false no JS (remove a etiqueta de pré-visualização e a nota dos testemunhos).
          6. Preencher os dados legais no rodapé (denominação social, NIPC, entidade RAL) e confirmar o texto da certificação DL 145.
-         7. Trocar robots para "index, follow" e adicionar a página ao sitemap.xml (se se quiser indexação orgânica). -->
+         7. Trocar robots para "index, follow" e adicionar a página ao sitemap.xml (se se quiser indexação orgânica).
+         8. Confirmar com o cliente se os 30 € da visita técnica com orçamento incluem IVA (preço ao consumidor tem de ser
+            com IVA) e se são descontados na instalação; ajustar todas as ocorrências de "a partir de 30 €" em conformidade. -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://mconfea.com/ar-condicionado.html">
   <meta name="geo.region" content="PT-01">
@@ -24,7 +26,7 @@
   <meta property="og:locale" content="pt_PT">
   <meta property="og:site_name" content="M Conf&A">
   <meta property="og:title" content="Instalação de Ar Condicionado em Vale de Cambra e Aveiro | M Conf&A">
-  <meta property="og:description" content="Equipamentos Zantia e Ariston até classe A+++, instalados por instalador certificado (DL 145). Visita técnica e orçamento grátis.">
+  <meta property="og:description" content="Equipamentos inverter até classe A+++, instalados por instalador certificado (DL 145). Visita técnica com orçamento a partir de 30 €.">
   <meta property="og:url" content="https://mconfea.com/ar-condicionado.html">
   <meta property="og:image" content="https://mconfea.com/assets/img/logo.png">
 
@@ -254,9 +256,6 @@
 
     /* ============ Faixa de confiança ============ */
     .trust { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2.5rem; padding: 1.25rem var(--pad); background: var(--paper-2); border-radius: var(--r); margin-top: var(--gutter); }
-    .trust .brands { display: flex; align-items: center; gap: 1.4rem; }
-    .trust .brands span { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: var(--copper-text); }
-    .trust .brands b { font-family: "Bricolage Grotesque", "Bricolage Fallback", Arial, sans-serif; font-size: 1.25rem; color: #4F6167; letter-spacing: .04em; }
     .trust ul { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; font-size: .9rem; font-weight: 600; color: var(--muted); }
     .trust li { display: flex; align-items: center; gap: .45rem; }
     .trust li svg { width: 1.1rem; height: 1.1rem; color: var(--teal); }
@@ -294,9 +293,16 @@
     .equip p { color: var(--on-dark-muted); margin-top: .5rem; }
     .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
     .chips span { padding: .4rem .85rem; border: 1px solid rgba(247,245,240,.28); border-radius: 99px; font-size: .82rem; font-weight: 600; color: #D6E0E2; }
-    .equip .models { font-size: .88rem; color: var(--on-dark-muted); margin-top: 1.1rem; }
-    .equip .models b { color: var(--on-dark); font-weight: 600; }
     .equip img { width: min(24rem, 100%); margin-inline: auto; filter: drop-shadow(0 20px 30px rgba(0,0,0,.45)); }
+
+    /* ============ As nossas marcas ============ */
+    .brands-band { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 1024px) { .brands-band { grid-template-columns: 1.1fr .9fr; gap: 4rem; } }
+    .brand-list { display: grid; gap: 1rem; }
+    @media (min-width: 640px) { .brand-list { grid-template-columns: 1fr 1fr 1fr; } }
+    .brand-list div { background: #fff; border: 1px solid var(--hairline); border-radius: .9rem; padding: 1.6rem 1.5rem; display: flex; flex-direction: column; gap: .4rem; }
+    .brand-list b { font-family: "Bricolage Grotesque", "Bricolage Fallback", Arial, sans-serif; font-size: 1.45rem; letter-spacing: .06em; text-transform: uppercase; color: #4F6167; }
+    .brand-list span { font-size: .9rem; color: var(--muted); }
 
     /* ============ Como funciona ============ */
     .steps { display: grid; gap: 1rem; }
@@ -450,9 +456,9 @@
             <h1 id="h1" class="in" style="--i:1">Instalação de ar condicionado em <span data-zona>Vale de Cambra e Aveiro</span></h1>
             <p class="sub in" style="--i:2">Medimos a divisão, propomos o equipamento certo e instalamos. A mesma equipa faz depois a manutenção.</p>
             <ul class="proofs in" style="--i:3">
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Orçamento grátis e sem compromisso</li>
               <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Instalador certificado (DL 145)</li>
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Zantia e Ariston, até classe A+++</li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Equipamentos inverter, até classe A+++</li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Visita técnica com orçamento a partir de 30&nbsp;€</li>
             </ul>
             <div class="actions in" style="--i:4">
               <a class="btn btn-wa" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="hero"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg><span><span class="lbl">Falar no </span>WhatsApp<span class="sr-only"> (abre numa nova janela)</span></span></a>
@@ -463,7 +469,7 @@
           <div class="hero-side">
             <img class="hero-visual in" style="--i:1" src="assets/img/landing/split-zantia.webp" alt="Unidade interior de ar condicionado Zantia" width="573" height="295" decoding="async">
           <form id="pedido-rapido" class="card-form lead-form in" style="--i:3" data-form="hero" action="https://formsubmit.co/geral@mconfea.com" method="POST" aria-labelledby="f1-title">
-            <h2 id="f1-title">Peça o seu orçamento grátis</h2>
+            <h2 id="f1-title">Peça o seu orçamento</h2>
             <p class="hint">Demora menos de um minuto. Ligamos-lhe nós para marcar a visita técnica.</p>
             <div class="form-body">
               <input type="hidden" name="_subject" value="Pedido de orçamento AC (formulário rápido)">
@@ -486,8 +492,8 @@
                 <label class="lt" for="f1-loc">Localidade <span class="opt">(opcional)</span></label>
                 <input id="f1-loc" type="text" name="localidade" list="concelhos" autocomplete="address-level2" placeholder="Ex.: Vale de Cambra">
               </div>
-              <button class="btn btn-teal btn-block btn-lg" type="submit">Pedir orçamento grátis <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
-              <p class="fine">Sem compromisso. Ao enviar, aceita que usemos os seus dados apenas para responder a este pedido. <a class="tlink" href="#privacidade">Política de privacidade</a></p>
+              <button class="btn btn-teal btn-block btn-lg" type="submit">Pedir orçamento <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
+              <p class="fine">Visita técnica com orçamento a partir de 30&nbsp;€. Ao enviar, aceita que usemos os seus dados apenas para responder a este pedido. <a class="tlink" href="#privacidade">Política de privacidade</a></p>
               <div class="form-msg error" role="alert">Não foi possível enviar o pedido. Tente novamente ou contacte-nos diretamente pelo 913 632 248 (chamada ou WhatsApp).<br><a class="wa-fallback" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-track="whatsapp" data-loc="hero-form-fallback"><svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>Enviar pelo WhatsApp</a><a href="tel:+351913632248" data-track="phone" data-loc="hero-form-fallback"><svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Ligar agora</a></div>
             </div>
             <div class="form-state" role="status" aria-live="polite">
@@ -510,11 +516,10 @@
 
     <!-- ============ Faixa de confiança ============ -->
     <section class="trust" aria-label="Porque pode confiar em nós">
-      <div class="brands"><span>INSTALAMOS</span><b>ZANTIA</b><b>ARISTON</b></div>
       <ul>
         <li><svg aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Instalador certificado</li>
-        <li><svg aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg>Visita técnica ao local</li>
-        <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Orçamento grátis e sem compromisso</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg>Visita técnica com orçamento a partir de 30&nbsp;€</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Proposta fechada, sem surpresas</li>
         <li><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>Vale de Cambra, Aveiro e região</li>
       </ul>
     </section>
@@ -528,10 +533,10 @@
           <p class="eyebrow">Quem somos</p>
           <h2 class="h2" id="h-quem">Empresa de Vale de Cambra, instalador certificado</h2>
           <p>A M Conf&amp;A é uma empresa de Vale de Cambra especializada em climatização, ar condicionado, energia solar e automação residencial. Servimos a região de Aveiro num raio de cerca de 50 km, de Arouca a Ovar e de Águeda a Espinho.</p>
-          <p>Somos instaladores certificados e trabalhamos com marcas que conhecemos bem: Zantia e Ariston. Escolhemos o equipamento pela divisão e pelo uso, não pelo catálogo.</p>
+          <p>Somos instaladores certificados e trabalhamos com marcas de referência em climatização. Escolhemos o equipamento pela divisão e pelo uso, não pelo catálogo.</p>
           <p>Quem faz o orçamento é quem instala e quem depois faz a manutenção. Sem intermediários. E se quiser confirmar as contas antes de nos ligar, temos seis calculadoras gratuitas de dimensionamento no nosso site: são as mesmas que usamos na visita técnica.</p>
           <div class="facts">
-            <div class="fact"><b>Zantia e Ariston</b><span>marcas que instalamos</span></div>
+            <div class="fact"><b>Frio e calor</b><span>conforto todo o ano</span></div>
             <div class="fact"><b>Até A+++</b><span>classe energética dos equipamentos</span></div>
             <div class="fact"><b>DL 145</b><span>instalador certificado</span></div>
             <div class="fact"><b>6 calculadoras</b><span>gratuitas de dimensionamento</span></div>
@@ -556,13 +561,13 @@
         <div class="inc">
           <article>
             <div class="ico"><svg aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg></div>
-            <h3>Visita técnica e dimensionamento</h3>
-            <p>Medimos a divisão, a exposição solar e o isolamento para calcular a potência certa (BTU). Nem a mais, nem a menos.</p>
+            <h3>Dimensionamento à medida</h3>
+            <p>Na visita técnica medimos a divisão, a exposição solar e o isolamento para calcular a potência certa (BTU). Nem a mais, nem a menos.</p>
           </article>
           <article>
             <div class="ico"><svg aria-hidden="true" focusable="false"><use href="#i-snow"/></svg></div>
             <h3>Equipamento eficiente, à sua medida</h3>
-            <p>Splits e multisplits Zantia e Ariston, inverter e gás R32, até classe A+++. Wi-Fi opcional e modo silencioso.</p>
+            <p>Splits e multisplits inverter, gás R32, até classe A+++, da marca que melhor se adapta ao seu espaço. Wi-Fi opcional e modo silencioso.</p>
           </article>
           <article>
             <div class="ico"><svg aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></div>
@@ -587,9 +592,8 @@
           <article class="equip">
             <div>
               <h3>Mono ou multisplit, para uma ou várias divisões</h3>
-              <p>Unidades murais, de cassete ou de conduta, com garantia oficial Zantia ou Ariston. Entregamos-lhe a fatura e a documentação e somos o seu contacto se algo falhar.</p>
+              <p>Unidades murais, de cassete ou de conduta, com garantia oficial do fabricante. Entregamos-lhe a fatura e a documentação e somos o seu contacto se algo falhar.</p>
               <div class="chips"><span>Até classe A+++</span><span>Gás R32</span><span>Inverter</span><span>Wi-Fi opcional</span><span>Modo silencioso</span><span>Frio e calor</span></div>
-              <p class="models"><b>Modelos que instalamos:</b> Zantia Split Austin 12 000 BTU (A+++), Zantia Split Havai 18 000 BTU (A++), Zantia Multisplit e Multisplit V23, Ariston Alys 32 (A+++).</p>
             </div>
             <img src="assets/img/landing/multisplit-zantia.webp" alt="Sistema multisplit Zantia: unidade exterior, cassete, conduta e unidade mural" width="513" height="507" loading="lazy" decoding="async">
           </article>
@@ -597,8 +601,24 @@
       </div>
     </section>
 
+    <!-- ============ As nossas marcas ============ -->
+    <section class="band" id="marcas" aria-labelledby="h-marcas">
+      <div class="wrap brands-band">
+        <div>
+          <p class="eyebrow">As nossas marcas</p>
+          <h2 class="h2" id="h-marcas">Marcas com que trabalhamos</h2>
+          <p class="lead">Trabalhamos com marcas de referência em climatização. Escolhemos o equipamento certo para cada projeto e para cada divisão, não a marca primeiro.</p>
+        </div>
+        <div class="brand-list" role="list">
+          <div role="listitem"><b>Zantia</b><span>Splits e multisplits inverter</span></div>
+          <div role="listitem"><b>Ariston</b><span>Splits inverter</span></div>
+          <div role="listitem"><b>Outras marcas</b><span>Consoante o projeto e a disponibilidade</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ Como funciona ============ -->
-    <section class="band" id="como-funciona" aria-labelledby="h-como">
+    <section class="band alt" id="como-funciona" aria-labelledby="h-como">
       <div class="wrap">
         <div class="sect-head">
           <p class="eyebrow">Como funciona</p>
@@ -607,13 +627,13 @@
         <div class="steps">
           <article class="step">
             <div class="n" aria-hidden="true">1</div>
-            <h3>Peça orçamento grátis</h3>
+            <h3>Peça orçamento</h3>
             <p>Envie o formulário, escreva no WhatsApp ou ligue. Basta a localidade e as divisões que quer climatizar.</p>
           </article>
           <article class="step">
             <div class="n" aria-hidden="true">2</div>
             <h3>Visita técnica e orçamento</h3>
-            <p>Vamos ao local, medimos e apresentamos uma proposta clara: equipamento, potência e trabalho incluído. Sem compromisso.</p>
+            <p>Vamos ao local, medimos e apresentamos uma proposta fechada: equipamento, potência e trabalho incluído. A visita técnica com orçamento custa a partir de 30&nbsp;€. A instalação só avança se quiser.</p>
           </article>
           <article class="step">
             <div class="n" aria-hidden="true">3</div>
@@ -631,7 +651,7 @@
         <p>Preencha o formulário em menos de um minuto ou fale já connosco.</p>
       </div>
       <div class="actions">
-        <a class="btn btn-teal btn-lg" href="#orcamento" data-track="quote_scroll" data-loc="meio">Pedir orçamento grátis <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-teal btn-lg" href="#orcamento" data-track="quote_scroll" data-loc="meio">Pedir orçamento <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-wa btn-lg" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="meio"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>WhatsApp<span class="sr-only"> (abre numa nova janela)</span></a>
       </div>
     </section>
@@ -707,7 +727,11 @@
         <div class="faq">
           <details class="faq-item">
             <summary>Quanto custa instalar um ar condicionado?<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
-            <div class="a">Depende do equipamento, do número de divisões e da instalação (distância entre unidades, tipo de parede, parte elétrica). Por isso fazemos uma visita técnica e entregamos um orçamento grátis e sem compromisso, com equipamento, trabalho e materiais discriminados.</div>
+            <div class="a">Depende do equipamento, do número de divisões e da instalação (distância entre unidades, tipo de parede, parte elétrica). Por isso fazemos uma visita técnica e entregamos um orçamento fechado, com equipamento, trabalho e materiais discriminados. A visita técnica com orçamento custa a partir de 30&nbsp;€.</div>
+          </details>
+          <details class="faq-item">
+            <summary>O orçamento é pago?<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+            <div class="a">Sim. A visita técnica com orçamento custa a partir de 30&nbsp;€ e confirmamos-lhe o valor exato quando lhe ligarmos para marcar a visita. Inclui a medição das divisões, o dimensionamento e uma proposta fechada com equipamento, trabalho e materiais discriminados, para decidir com tudo em cima da mesa.</div>
           </details>
           <details class="faq-item">
             <summary>Quanto tempo demora até à instalação?<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
@@ -715,7 +739,7 @@
           </details>
           <details class="faq-item">
             <summary>Que equipamento me aconselham? E se tiver várias divisões?<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
-            <div class="a">Instalamos Zantia e Ariston: splits inverter (por exemplo, de 12 000 ou 18 000 BTU), classe até A+++, gás R32, Wi-Fi opcional e modo silencioso. Para duas ou mais divisões, um multisplit liga várias unidades interiores a uma só exterior, com menos máquinas na fachada. Decidimos consigo depois da visita.</div>
+            <div class="a">Instalamos splits inverter (por exemplo, de 12 000 ou 18 000 BTU), classe até A+++, gás R32, Wi-Fi opcional e modo silencioso, de marcas de referência (veja <a class="tlink" href="#marcas">as nossas marcas</a>). Para duas ou mais divisões, um multisplit liga várias unidades interiores a uma só exterior, com menos máquinas na fachada. Decidimos consigo depois da visita.</div>
           </details>
           <details class="faq-item">
             <summary>O ar condicionado gasta muita energia?<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
@@ -737,13 +761,13 @@
     <section class="band alt" id="orcamento" aria-labelledby="h-orc">
       <div class="wrap quote-grid">
         <div>
-          <p class="eyebrow">Orçamento grátis</p>
+          <p class="eyebrow">Pedido de orçamento</p>
           <h2 class="h2" id="h-orc">Conte-nos o que quer climatizar</h2>
-          <p class="lead">Diga-nos onde fica o espaço e que divisões quer climatizar. Entramos em contacto para marcar a visita técnica, sem compromisso. Se preferir, ligue ou envie mensagem no WhatsApp.</p>
+          <p class="lead">Diga-nos onde fica o espaço e que divisões quer climatizar. Entramos em contacto para marcar a visita técnica. Se preferir, ligue ou envie mensagem no WhatsApp.</p>
           <ul class="bullets">
             <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Visita técnica para confirmar o dimensionamento</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Proposta clara: equipamento, potência e trabalho incluído</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Resposta por telefone, email ou WhatsApp</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Proposta fechada: equipamento, potência e trabalho incluído</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Visita técnica com orçamento a partir de 30&nbsp;€</li>
           </ul>
           <div class="contacts">
             <a href="tel:+351913632248" data-track="phone" data-loc="orcamento"><span class="ico"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span><span>913 632 248<small>Chamada para rede móvel nacional</small></span></a>
@@ -758,7 +782,7 @@
         </div>
 
         <form class="card-form lead-form" data-form="completo" action="https://formsubmit.co/geral@mconfea.com" method="POST" aria-labelledby="f2-title">
-          <h2 id="f2-title">Peça o seu orçamento grátis</h2>
+          <h2 id="f2-title">Peça o seu orçamento</h2>
           <p class="hint">Quanto mais nos disser, mais rápido preparamos a proposta.</p>
           <div class="form-body">
             <input type="hidden" name="_subject" value="Pedido de orçamento AC (formulário completo)">
@@ -820,7 +844,8 @@
               <label for="f2-cons">Autorizo a M Conf&amp;A a usar os meus dados apenas para responder a este pedido, de acordo com a <a class="tlink" href="#privacidade">Política de privacidade</a>.</label>
               <span class="err" id="f2-e-cons">Tem de aceitar a Política de privacidade para enviar.</span>
             </div>
-            <button class="btn btn-teal btn-block btn-lg" type="submit">Pedir orçamento grátis <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
+            <button class="btn btn-teal btn-block btn-lg" type="submit">Pedir orçamento <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
+            <p class="fine">Visita técnica com orçamento a partir de 30&nbsp;€. Ligamos-lhe para marcar.</p>
             <div class="form-msg error" role="alert">Não foi possível enviar o pedido. Tente novamente ou contacte-nos diretamente pelo 913 632 248 (chamada ou WhatsApp).<br><a class="wa-fallback" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-track="whatsapp" data-loc="form-fallback"><svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>Enviar pelo WhatsApp</a><a href="tel:+351913632248" data-track="phone" data-loc="form-fallback"><svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Ligar agora</a></div>
           </div>
           <div class="form-state" role="status" aria-live="polite" id="obrigado">
@@ -864,7 +889,7 @@
   <nav class="stickybar" aria-label="Contactar">
     <a class="btn btn-ghost" href="tel:+351913632248" data-track="phone" data-loc="stickybar" aria-label="Ligar para 913 632 248"><svg aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Ligar</a>
     <a class="btn btn-wa" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="stickybar"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>WhatsApp<span class="sr-only"> (abre numa nova janela)</span></a>
-    <a class="btn btn-teal" href="#pedido-rapido" data-track="quote_scroll" data-loc="stickybar">Orçamento grátis</a>
+    <a class="btn btn-teal" href="#pedido-rapido" data-track="quote_scroll" data-loc="stickybar">Pedir orçamento</a>
   </nav>
   <!-- WhatsApp flutuante (desktop) -->
   <a class="wa-float" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="float" aria-label="Abrir conversa no WhatsApp (abre numa nova janela)"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg></a>
