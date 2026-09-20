@@ -4,18 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Instalação de Ar Condicionado em Vale de Cambra e Aveiro | M Conf&A</title>
-  <meta name="description" content="Instalação de ar condicionado em Vale de Cambra e Aveiro por instalador certificado. Equipamentos inverter até A+++. Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
-  <!-- ===================== LANDING PAGE DE CAMPANHA (Google Ads) =====================
-       CHECKLIST DE PUBLICAÇÃO (antes de ativar os anúncios):
-         1. Testemunhos: substituir os 3 testemunhos ilustrativos por testemunhos reais (ou remover a secção #testemunhos).
-         2. Foto de "Quem somos": substituir assets/img/landing/equipa.webp (imagem de banco, igual ao carrossel da homepage) por foto real.
-         3. FormSubmit: fazer 1 envio de teste, abrir geral@mconfea.com e clicar no link de ativação; depois trocar o email
-            pelo alias que o FormSubmit atribui (action dos 2 formulários e ENDPOINT no JS) para não expor o email.
-         4. Colar o snippet do GTM/gtag no sítio marcado abaixo e passar CONSENT_BANNER a true no JS.
-         5. Passar PREVIEW a false no JS (remove a etiqueta de pré-visualização e a nota dos testemunhos).
-         6. Preencher os dados legais no rodapé (denominação social, NIPC, entidade RAL) e confirmar o texto da certificação DL 145.
-         7. Trocar robots para "index, follow" e adicionar a página ao sitemap.xml (se se quiser indexação orgânica).
-         Confirmado pelo cliente em 2026-09-17: visita técnica com orçamento a partir de 30 € com IVA incluído, descontados na instalação. -->
+  <meta name="description" content="Instalação de ar condicionado em Vale de Cambra e no distrito de Aveiro por empresa certificada. Equipamentos inverter até A+++. Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
+  <!-- Landing page de campanha (Google Ads). Checklist de publicação: docs/landing-ac-checklist.md -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://mconfea.com/ar-condicionado.html">
   <meta name="geo.region" content="PT-01">
@@ -25,7 +15,7 @@
   <meta property="og:locale" content="pt_PT">
   <meta property="og:site_name" content="M Conf&A">
   <meta property="og:title" content="Instalação de Ar Condicionado em Vale de Cambra e Aveiro | M Conf&A">
-  <meta property="og:description" content="Equipamentos inverter até classe A+++, instalados por instalador certificado (DL 145). Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
+  <meta property="og:description" content="Equipamentos inverter até classe A+++, instalados por empresa certificada. Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
   <meta property="og:url" content="https://mconfea.com/ar-condicionado.html">
   <meta property="og:image" content="https://mconfea.com/assets/img/logo.png">
 
@@ -65,6 +55,8 @@
     "@type": "HVACBusiness",
     "@id": "https://mconfea.com/#business",
     "name": "M Conf&A",
+    "legalName": "Mconf&A — Mascarenhas Conforto & Automação, Unipessoal Lda",
+    "vatID": "PT519008294",
     "url": "https://mconfea.com/",
     "image": "https://mconfea.com/assets/img/logo.png",
     "logo": "https://mconfea.com/assets/img/logo.png",
@@ -73,6 +65,7 @@
     "address": { "@type": "PostalAddress", "streetAddress": "Rua da Escola de Macinhata, 300", "addressLocality": "Vale de Cambra", "addressRegion": "Aveiro", "addressCountry": "PT" },
     "geo": { "@type": "GeoCoordinates", "latitude": "40.8430", "longitude": "-8.3956" },
     "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Distrito de Aveiro" },
       { "@type": "City", "name": "Vale de Cambra" }, { "@type": "City", "name": "Oliveira de Azeméis" }, { "@type": "City", "name": "São João da Madeira" },
       { "@type": "City", "name": "Santa Maria da Feira" }, { "@type": "City", "name": "Arouca" }, { "@type": "City", "name": "Sever do Vouga" },
       { "@type": "City", "name": "Águeda" }, { "@type": "City", "name": "Aveiro" }, { "@type": "City", "name": "Ovar" }, { "@type": "City", "name": "Espinho" }
@@ -261,21 +254,21 @@
 
     /* ============ Quem somos ============ */
     .about { display: grid; gap: 2rem; }
-    @media (min-width: 1024px) { .about { grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; } }
-    .about .photo { border-radius: 1rem; overflow: hidden; background: var(--ink); aspect-ratio: 4 / 3; }
-    .about .photo img { width: 100%; height: 100%; object-fit: cover; }
+    @media (min-width: 1024px) { .about { grid-template-columns: 1.15fr .85fr; gap: 4rem; align-items: start; } }
+    .creds { background: #fff; border: 1px solid var(--hairline); border-radius: 1rem; padding: 2rem 1.75rem; text-align: center; box-shadow: 0 18px 44px rgba(16,38,43,.08); }
+    .creds img { width: clamp(8.25rem, 30vw, 10.5rem); height: auto; margin: 0 auto .9rem; }
+    .creds b { display: block; font-family: "Bricolage Grotesque", "Bricolage Fallback", Arial, sans-serif; font-size: 1.3rem; color: var(--ink); }
+    .creds .cert-scope { font-size: .9rem; color: var(--muted); margin-top: .35rem; }
+    .creds .legal { font-size: .8rem; color: var(--faint); margin-top: .7rem; }
+    .creds ul { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--hairline); display: flex; flex-direction: column; gap: .65rem; text-align: left; }
+    .creds li { display: flex; gap: .6rem; align-items: flex-start; font-size: .92rem; color: var(--muted); }
+    .creds li svg { width: 1.1rem; height: 1.1rem; color: var(--teal); flex-shrink: 0; margin-top: .2rem; }
     .about p { margin-top: 1rem; max-width: 36rem; }
     .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 1.5rem; margin-top: 2rem; }
     @media (min-width: 640px) { .facts { grid-template-columns: repeat(4, 1fr); } }
     .fact { border-top: 1px solid var(--hairline); padding-top: .9rem; }
-    .fact b { display: block; font-family: "Bricolage Grotesque", "Bricolage Fallback", Arial, sans-serif; font-size: clamp(1.35rem, 2.2vw, 1.75rem); font-weight: 700; color: var(--ink); line-height: 1.1; }
+    .fact b { display: block; min-height: 2.2em; font-family: "Bricolage Grotesque", "Bricolage Fallback", Arial, sans-serif; font-size: clamp(1.35rem, 2.2vw, 1.75rem); font-weight: 700; color: var(--ink); line-height: 1.1; }
     .fact span { display: block; font-size: .85rem; color: var(--muted); margin-top: .4rem; }
-    .cert { display: flex; align-items: center; gap: 1rem; margin-top: 1.75rem; padding: 1rem 1.2rem; background: #fff; border: 1px solid var(--hairline); border-radius: .9rem; max-width: 30rem; }
-    .cert img { width: 4.2rem; height: 4.2rem; object-fit: contain; }
-    .cert b { display: block; font-size: .95rem; color: var(--ink); }
-    .cert span { font-size: .85rem; color: var(--muted); }
-    .area { margin-top: 1.5rem; font-size: .9rem; color: var(--muted); max-width: 36rem; }
-    .area b { color: var(--ink); }
 
     /* ============ O que inclui ============ */
     .inc { display: grid; gap: 1rem; }
@@ -326,18 +319,6 @@
     .pillar .ico { background: rgba(247,245,240,.08); color: var(--copper-light); }
     .pillar h3 { font-size: 1.15rem; margin-top: 1rem; }
     .pillar p { font-size: .95rem; color: var(--on-dark-muted); margin-top: .5rem; }
-
-    /* ============ Testemunhos ============ */
-    .quotes { display: grid; gap: 1rem; }
-    @media (min-width: 768px) { .quotes { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
-    .quote { background: #fff; border: 1px solid var(--hairline); border-radius: .9rem; padding: 1.5rem; display: flex; flex-direction: column; gap: .9rem; }
-    .stars { display: flex; gap: .15rem; color: var(--copper); }
-    .stars svg { width: 1rem; height: 1rem; }
-    .quote blockquote { font-size: 1.02rem; line-height: 1.5; color: var(--ink); }
-    .quote footer { font-size: .85rem; color: var(--muted); margin-top: auto; }
-    .quote footer b { color: var(--ink); }
-    .placeholder-note { margin: -1rem 0 1.5rem; font-size: .9rem; color: var(--copper-text); display: flex; align-items: center; gap: .5rem; }
-    .placeholder-note::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--copper); flex-shrink: 0; }
 
     /* ============ FAQ ============ */
     .faq { max-width: 46rem; }
@@ -425,7 +406,6 @@
       <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
       <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
       <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
-      <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.2-6.2 3.2 1.2-6.8-5-4.9 6.9-1z"/></symbol>
       <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></symbol>
       <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
       <symbol id="i-remote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="7" r="1.2"/><path d="M10 12h4M10 15h4M10 18h4"/></symbol>
@@ -455,9 +435,9 @@
             <h1 id="h1" class="in" style="--i:1">Instalação de ar condicionado em <span data-zona>Vale de Cambra e Aveiro</span></h1>
             <p class="sub in" style="--i:2">Medimos a divisão, propomos o equipamento certo e instalamos. A mesma equipa faz depois a manutenção.</p>
             <ul class="proofs in" style="--i:3">
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Instalador certificado (DL 145)</li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Empresa com certificação CERTIF</li>
               <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Equipamentos inverter, até classe A+++</li>
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Orçamento a partir de 30&nbsp;€ com IVA, descontados na instalação</li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Visita técnica com orçamento a partir de 30&nbsp;€, descontados na instalação</li>
             </ul>
             <div class="actions in" style="--i:4">
               <a class="btn btn-wa" href="https://wa.me/351913632248?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20instala%C3%A7%C3%A3o%20de%20ar%20condicionado." target="_blank" rel="noopener" data-wa data-track="whatsapp" data-loc="hero"><svg aria-hidden="true" focusable="false"><use href="#i-wa"/></svg><span><span class="lbl">Falar no </span>WhatsApp<span class="sr-only"> (abre numa nova janela)</span></span></a>
@@ -508,43 +488,45 @@
     </section>
 
     <datalist id="concelhos">
-      <option value="Vale de Cambra"></option><option value="Oliveira de Azeméis"></option><option value="São João da Madeira"></option>
-      <option value="Santa Maria da Feira"></option><option value="Arouca"></option><option value="Sever do Vouga"></option>
-      <option value="Águeda"></option><option value="Aveiro"></option><option value="Ovar"></option><option value="Espinho"></option>
+      <option value="Águeda"></option><option value="Albergaria-a-Velha"></option><option value="Anadia"></option><option value="Arouca"></option><option value="Aveiro"></option><option value="Castelo de Paiva"></option><option value="Espinho"></option><option value="Estarreja"></option><option value="Santa Maria da Feira"></option><option value="Ílhavo"></option><option value="Mealhada"></option><option value="Murtosa"></option><option value="Oliveira de Azeméis"></option><option value="Oliveira do Bairro"></option><option value="Ovar"></option><option value="São João da Madeira"></option><option value="Sever do Vouga"></option><option value="Vagos"></option><option value="Vale de Cambra"></option>
     </datalist>
 
     <!-- ============ Faixa de confiança ============ -->
     <section class="trust" aria-label="Porque pode confiar em nós">
       <ul>
-        <li><svg aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Instalador certificado</li>
-        <li><svg aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg>Orçamento a partir de 30&nbsp;€, descontados na instalação</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Empresa certificada</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg>Visita técnica com orçamento a partir de 30&nbsp;€</li>
         <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Proposta fechada, sem surpresas</li>
-        <li><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>Vale de Cambra, Aveiro e região</li>
+        <li><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>Distrito de Aveiro e arredores</li>
       </ul>
     </section>
 
     <!-- ============ 2. QUEM SOMOS ============ -->
     <section class="band" id="quem-somos" aria-labelledby="h-quem">
       <div class="wrap about">
-        <!-- PLACEHOLDER: imagem de banco (a mesma do carrossel da homepage). Substituir por foto real da equipa ou de uma instalação M Conf&A. -->
-        <div class="photo" data-placeholder="true"><img src="assets/img/landing/equipa.webp" alt="" width="1200" height="804" loading="lazy" decoding="async"></div>
         <div>
           <p class="eyebrow">Quem somos</p>
-          <h2 class="h2" id="h-quem">Empresa de Vale de Cambra, instalador certificado</h2>
-          <p>A M Conf&amp;A é uma empresa de Vale de Cambra especializada em climatização, ar condicionado, energia solar e automação residencial. Servimos a região de Aveiro num raio de cerca de 50 km, de Arouca a Ovar e de Águeda a Espinho.</p>
-          <p>Somos instaladores certificados e trabalhamos com marcas de referência em climatização. Escolhemos o equipamento pela divisão e pelo uso, não pelo catálogo.</p>
+          <h2 class="h2" id="h-quem">De Vale de Cambra para todo o distrito de Aveiro</h2>
+          <p>A M Conf&amp;A é uma empresa de Vale de Cambra especializada em climatização, ar condicionado, energia solar e automação residencial. Trabalhamos em todo o distrito de Aveiro e arredores.</p>
+          <p>Além da climatização, fazemos energia solar, automação, canalização e eletricidade. Se a instalação obrigar a mexer no quadro elétrico ou a abrir roços, não tem de chamar mais ninguém.</p>
           <p>Quem faz o orçamento é quem instala e quem depois faz a manutenção. Sem intermediários. E se quiser confirmar as contas antes de nos ligar, temos seis calculadoras gratuitas de dimensionamento no nosso site: são as mesmas que usamos na visita técnica.</p>
           <div class="facts">
             <div class="fact"><b>Frio e calor</b><span>conforto todo o ano</span></div>
             <div class="fact"><b>Até A+++</b><span>classe energética dos equipamentos</span></div>
-            <div class="fact"><b>DL 145</b><span>instalador certificado</span></div>
+            <div class="fact"><b>Vale de Cambra</b><span>sede da empresa</span></div>
             <div class="fact"><b>6 calculadoras</b><span>gratuitas de dimensionamento</span></div>
           </div>
-          <div class="cert">
-            <img src="assets/img/landing/certificado-dl145.svg" alt="Selo do Certificado de Registo de Execução DL 145" loading="lazy" width="64" height="64">
-            <div><b>Instalador certificado</b><span>Certificado de Registo de Execução (DL 145), com fatura e documentação entregues em cada instalação.</span></div>
-          </div>
-          <p class="area"><b>Onde instalamos:</b> Vale de Cambra, Oliveira de Azeméis, São João da Madeira, Santa Maria da Feira, Arouca, Sever do Vouga, Águeda, Aveiro, Ovar e Espinho, num raio de cerca de 50 km.</p>
+        </div>
+        <div class="creds">
+          <img src="assets/img/landing/selo-certif.svg" alt="Selo CERTIF de serviço certificado" width="351" height="371" loading="lazy">
+          <b>Empresa certificada</b>
+          <p class="cert-scope">Certificação CERTIF</p>
+          <p class="legal">Mconf&amp;A &mdash; Mascarenhas Conforto &amp;&nbsp;Automação, Unipessoal&nbsp;Lda · NIPC&nbsp;519008294</p>
+          <ul>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Instalação com fatura e documentação</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Garantia oficial do fabricante</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Assistência pela mesma equipa</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -665,8 +647,8 @@
         <div class="pillars">
           <article class="pillar">
             <div class="ico"><svg aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></div>
-            <h3>Instalador certificado</h3>
-            <p>Certificado de Registo de Execução (DL 145). Instalação feita por quem está habilitado, com fatura e documentação.</p>
+            <h3>Trabalho com fatura e garantia</h3>
+            <p>Instalação feita por quem está habilitado, com fatura, documentação e garantia do fabricante entregues no final.</p>
           </article>
           <article class="pillar">
             <div class="ico"><svg aria-hidden="true" focusable="false"><use href="#i-ruler"/></svg></div>
@@ -687,41 +669,14 @@
       </div>
     </section>
 
-    <!-- ============ TESTEMUNHOS ============ -->
-    <!-- PLACEHOLDER: testemunhos ilustrativos. Substituir por testemunhos reais (Google, clientes) ou remover a secção antes de ativar os anúncios. -->
-    <section class="band alt" id="testemunhos" aria-labelledby="h-test">
-      <div class="wrap">
-        <div class="sect-head">
-          <p class="eyebrow">Testemunhos</p>
-          <h2 class="h2" id="h-test">O que dizem os nossos clientes</h2>
-        </div>
-        <p class="placeholder-note">Testemunhos ilustrativos para pré-visualização: serão substituídos pelos testemunhos reais dos clientes antes da publicação.</p>
-        <div class="quotes" data-placeholder="true">
-          <article class="quote">
-            <div class="stars" role="img" aria-label="5 estrelas"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg></div>
-            <blockquote>“Vieram medir a sala antes de dar o preço. Instalaram sem confusão e deixaram tudo limpo. O aparelho nem se ouve.”</blockquote>
-            <footer><b>Cliente particular</b><br>Vale de Cambra</footer>
-          </article>
-          <article class="quote">
-            <div class="stars" role="img" aria-label="5 estrelas"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg></div>
-            <blockquote>“Explicaram-me a diferença entre 12 000 e 18 000 BTU sem me tentar vender o maior. A proposta veio com tudo discriminado.”</blockquote>
-            <footer><b>Cliente particular</b><br>Oliveira de Azeméis</footer>
-          </article>
-          <article class="quote">
-            <div class="stars" role="img" aria-label="5 estrelas"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg></div>
-            <blockquote>“Pedi orçamento pelo WhatsApp e foi tudo simples. Instalaram um multisplit em três quartos e ainda me ensinaram a usar a app.”</blockquote>
-            <footer><b>Cliente particular</b><br>Santa Maria da Feira</footer>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Secção de prova social (testemunhos/avaliações) a inserir aqui. -->
 
     <!-- ============ FAQ ============ -->
     <section class="band" id="faq" aria-labelledby="h-faq">
       <div class="wrap">
         <div class="sect-head">
           <p class="eyebrow">Perguntas frequentes</p>
-          <h2 class="h2" id="h-faq">Antes de decidir, o que costumam perguntar-nos</h2>
+          <h2 class="h2" id="h-faq">Antes de decidir, o que nos costumam perguntar</h2>
         </div>
         <div class="faq">
           <details class="faq-item">
@@ -750,7 +705,7 @@
           </details>
           <details class="faq-item">
             <summary>Em que zonas fazem instalações?<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
-            <div class="a">Em Vale de Cambra e num raio de cerca de 50 km: Oliveira de Azeméis, São João da Madeira, Santa Maria da Feira, Arouca, Sever do Vouga, Águeda, Aveiro, Ovar e Espinho. Se estiver perto, pergunte-nos.</div>
+            <div class="a">Em todo o distrito de Aveiro e arredores, a partir de Vale de Cambra. Diga-nos a sua localidade no pedido de orçamento e confirmamos logo se chegamos lá.</div>
           </details>
         </div>
       </div>
@@ -776,7 +731,7 @@
           </div>
           <details class="privacy" id="privacidade">
             <summary>Política de privacidade: como tratamos os seus dados<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
-            <p>Os dados que nos envia (nome, contactos, localidade, tipo de espaço, divisões e mensagem), juntamente com a página de origem e os identificadores da campanha que o trouxe até aqui (gclid e parâmetros UTM), são tratados pela M Conf&amp;A exclusivamente para responder ao seu pedido de orçamento e marcar a visita técnica (diligências pré-contratuais). O envio é feito através do serviço FormSubmit, que entrega a mensagem em geral@mconfea.com. Não partilhamos os seus dados com terceiros para outros fins nem lhe enviamos comunicações de marketing sem o seu consentimento. Ao clicar no botão WhatsApp é aberta a aplicação WhatsApp (Meta). Pode pedir o acesso, a retificação ou a eliminação dos seus dados a qualquer momento através de <a class="tlink" href="mailto:geral@mconfea.com">geral@mconfea.com</a>, e apresentar reclamação à CNPD (cnpd.pt).</p>
+            <p>Os dados que nos envia (nome, contactos, localidade, tipo de espaço, divisões e mensagem), juntamente com a página de origem e os identificadores da campanha que o trouxe até aqui (gclid e parâmetros UTM), são tratados pela Mconf&amp;A &mdash; Mascarenhas Conforto &amp; Automação, Unipessoal Lda (NIPC 519008294), com sede na Rua da Escola de Macinhata, 300, Vale de Cambra, exclusivamente para responder ao seu pedido de orçamento e marcar a visita técnica (diligências pré-contratuais). O envio é feito através do serviço FormSubmit, que entrega a mensagem em geral@mconfea.com. Não partilhamos os seus dados com terceiros para outros fins nem lhe enviamos comunicações de marketing sem o seu consentimento. Ao clicar no botão WhatsApp é aberta a aplicação WhatsApp (Meta). Pode pedir o acesso, a retificação ou a eliminação dos seus dados a qualquer momento através de <a class="tlink" href="mailto:geral@mconfea.com">geral@mconfea.com</a>, e apresentar reclamação à CNPD (cnpd.pt).</p>
           </details>
         </div>
 
@@ -866,7 +821,7 @@
         <div class="foot">
           <div>
             <a class="brand" href="#topo" aria-label="M Conf&A, início da página"><img src="assets/img/landing/logo-256.webp" alt="" width="42" height="42"><b>M Conf&amp;A</b></a>
-            <p class="tag">Climatização, ar condicionado e energia solar em Vale de Cambra, ao serviço da região de Aveiro.</p>
+            <p class="tag">Climatização, ar condicionado e energia solar em Vale de Cambra, ao serviço do distrito de Aveiro e arredores.</p>
           </div>
           <address>
             <span>Rua da Escola de Macinhata, 300, Vale de Cambra</span>
@@ -874,10 +829,10 @@
             <a href="mailto:geral@mconfea.com">geral@mconfea.com</a>
           </address>
         </div>
-        <!-- PLACEHOLDER legal (a fornecer pelo cliente): denominação social completa, NIPC, conservatória e n.º de matrícula, capital social; entidade RAL competente. -->
-        <p class="foot-legal">Em caso de litígio, o consumidor pode recorrer a uma entidade de resolução alternativa de litígios de consumo. Mais informações em <a href="https://www.consumidor.gov.pt/" target="_blank" rel="noopener">consumidor.gov.pt<span class="sr-only"> (abre numa nova janela)</span></a>. <a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noopener">Livro de Reclamações<span class="sr-only"> (abre numa nova janela)</span></a>.</p>
+        <p class="foot-legal">Mconf&amp;A &mdash; Mascarenhas Conforto &amp; Automação, Unipessoal Lda · NIPC 519008294 · Sede: Rua da Escola de Macinhata, 300, Vale de Cambra.<br>
+          Em caso de litígio, o consumidor pode recorrer a uma entidade de resolução alternativa de litígios de consumo. Mais informações em <a href="https://www.consumidor.gov.pt/" target="_blank" rel="noopener">consumidor.gov.pt<span class="sr-only"> (abre numa nova janela)</span></a>. <a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noopener">Livro de Reclamações<span class="sr-only"> (abre numa nova janela)</span></a>.</p>
         <div class="foot-bar">
-          <span>© M Conf&amp;A. Todos os direitos reservados.</span>
+          <span>© Mconf&amp;A &mdash; Mascarenhas Conforto &amp; Automação, Unipessoal Lda. Todos os direitos reservados.</span>
           <span><a href="#privacidade">Privacidade</a> · <a href="#cookies" data-cookies>Cookies</a> · <a href="https://mconfea.com/">mconfea.com</a></span>
         </div>
       </div>
@@ -910,13 +865,17 @@
     /* ---- Configuração ---- */
     var ENDPOINT = 'https://formsubmit.co/ajax/geral@mconfea.com'; // envio sem backend; a 1.ª submissão pede ativação por email (ver checklist no head)
     var WA_NUMBER = '351913632248';
-    var PREVIEW = true;                         // passar a false ao publicar (remove etiqueta e nota de placeholder)
+    var PREVIEW = true;                         // passar a false ao publicar (remove a etiqueta de pré-visualização)
     var CONSENT_BANNER = false;                 // passar a true quando o GTM for adicionado
-    var CONSENT_TEXT_VERSION = '2026-09-16-v1'; // versão do texto de consentimento (prova RGPD)
+    var CONSENT_TEXT_VERSION = '2026-09-20-v2'; // versão do texto de consentimento (prova RGPD)
     var ZONAS = {                               // ?zona=<slug> troca a localidade no H1 (uma URL final por grupo de anúncios)
-      'vale-de-cambra': 'Vale de Cambra', 'oliveira-de-azemeis': 'Oliveira de Azeméis', 'sao-joao-da-madeira': 'São João da Madeira',
-      'santa-maria-da-feira': 'Santa Maria da Feira', 'arouca': 'Arouca', 'sever-do-vouga': 'Sever do Vouga',
-      'agueda': 'Águeda', 'aveiro': 'Aveiro', 'ovar': 'Ovar', 'espinho': 'Espinho'
+      'agueda': 'Águeda', 'albergaria-a-velha': 'Albergaria-a-Velha', 'anadia': 'Anadia',
+      'arouca': 'Arouca', 'aveiro': 'Aveiro', 'castelo-de-paiva': 'Castelo de Paiva',
+      'espinho': 'Espinho', 'estarreja': 'Estarreja', 'santa-maria-da-feira': 'Santa Maria da Feira',
+      'ilhavo': 'Ílhavo', 'mealhada': 'Mealhada', 'murtosa': 'Murtosa',
+      'oliveira-de-azemeis': 'Oliveira de Azeméis', 'oliveira-do-bairro': 'Oliveira do Bairro', 'ovar': 'Ovar',
+      'sao-joao-da-madeira': 'São João da Madeira', 'sever-do-vouga': 'Sever do Vouga', 'vagos': 'Vagos',
+      'vale-de-cambra': 'Vale de Cambra'
     };
     var CLICK_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
     var REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -951,7 +910,7 @@
     function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
     if (zona) qsa('a[data-wa]').forEach(function (a) { a.href = waLink(WA_TEXT); });
 
-    if (!PREVIEW) qsa('.preview-tag, .placeholder-note').forEach(function (el) { el.parentNode.removeChild(el); });
+    if (!PREVIEW) qsa('.preview-tag').forEach(function (el) { el.parentNode.removeChild(el); });
 
     /* ---- Cliques em pontos de contacto ---- */
     document.addEventListener('click', function (e) {
