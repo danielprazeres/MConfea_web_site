@@ -1,7 +1,9 @@
 # Landing de campanha: `ar-condicionado.html`
 
 Página de destino dos anúncios Google Ads de instalação de ar condicionado (agência Saltypuzzle).
-URL: `https://mconfea.com/ar-condicionado.html`. É uma página à parte: o site principal mantém-se.
+URL final (o que a agência usa nos anúncios): `https://mconfea.com/ar-condicionado`, servido pelo rewrite
+declarado no `vercel.json`. O `.html` continua a funcionar, mas o canonical aponta para a versão sem extensão.
+É uma página à parte: o site principal mantém-se.
 
 ## Checklist antes de ativar os anúncios
 
@@ -10,13 +12,15 @@ URL: `https://mconfea.com/ar-condicionado.html`. É uma página à parte: o site
    com nome e localidade reais.
 2. **Fotografias.** A página não usa fotos de pessoas. Se o cliente enviar fotos de instalações suas,
    a secção "Quem somos" ganha uma coluna de imagem ao lado do cartão de credenciais.
-3. **Formulários.** O envio usa o FormSubmit sem backend. Está pendente a ativação: foi enviado um email
-   para `geral@mconfea.com` com o link "Activate Form"; enquanto não for clicado, o formulário mostra erro
-   e oferece WhatsApp e telefone. Depois de ativado, trocar o email pelo alias que o FormSubmit atribui,
-   no `action` dos dois formulários e na constante `ENDPOINT` do JavaScript.
-4. **Medição.** A agência cola o snippet do GTM (ou gtag.js) no sítio marcado no `<head>`, a seguir ao bloco
-   de Consent Mode, e passa `CONSENT_BANNER` a `true` no JavaScript.
-5. **Pré-visualização.** Passar `PREVIEW` a `false` no JavaScript (remove a etiqueta de pré-visualização).
+3. **Formulários.** Os pedidos vão para `engenharia@mconfea.com` (pedido do cliente em 2026-09-22). O envio
+   usa o FormSubmit sem backend e está pendente a ativação: foi enviado um email para essa caixa com o link
+   "Activate Form"; enquanto não for clicado, o formulário mostra erro e oferece WhatsApp e telefone.
+   Depois de ativado, trocar o email pelo alias que o FormSubmit atribui, no `action` dos dois formulários e
+   na constante `ENDPOINT` do JavaScript. Os contactos públicos da página continuam a ser `geral@mconfea.com`.
+4. **Medição.** Feito: o container `GTM-KGXGSRZ2` está instalado no `<head>`, logo a seguir ao bloco de
+   Consent Mode v2 (a ordem importa: o consentimento tem de ser declarado antes de o container carregar), e o
+   `<noscript>` está imediatamente a seguir ao `<body>`. O banner de cookies está ativo (`CONSENT_BANNER`).
+5. **Pré-visualização.** Feito: `PREVIEW` está a `false` e a etiqueta já não aparece.
 6. **Dados legais.** Falta a entidade de resolução alternativa de litígios (RAL) da zona e, para cumprir o
    artigo 171.º do Código das Sociedades Comerciais, a conservatória do registo comercial, o número de
    matrícula e o capital social. O rodapé já tem firma, NIPC e sede.

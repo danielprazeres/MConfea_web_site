@@ -1,34 +1,40 @@
 {
-    "redirects": [
-      {
-        "source": "/in%C3%ADcio/nossos-links",
-        "destination": "/",
-        "permanent": true
-      },
-      {
-        "source": "/início/nossos-links",
-        "destination": "/",
-        "permanent": true
-      },
-      {
-        "source": "/service-details.html",
-        "destination": "/services.html",
-        "permanent": true
-      },
-      {
-        "source": "/projects.html",
-        "destination": "/services.html",
-        "permanent": true
-      },
-      {
-        "source": "/project-details.html",
-        "destination": "/services.html",
-        "permanent": true
-      },
-      {
-        "source": "/sample-inner-page.html",
-        "destination": "/",
-        "permanent": true
-      }
-    ]
-  }
+  "redirects": [
+    {
+      "source": "/in%C3%ADcio/nossos-links",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/início/nossos-links",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects.html",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-details.html",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/sample-inner-page.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ar-condicionado",
+      "destination": "/ar-condicionado.html"
+    }
+  ]
+}

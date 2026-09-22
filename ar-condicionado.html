@@ -7,28 +7,10 @@
   <meta name="description" content="Instalação de ar condicionado em Vale de Cambra e no distrito de Aveiro por empresa certificada. Equipamentos inverter até A+++. Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
   <!-- Landing page de campanha (Google Ads). Checklist de publicação: docs/landing-ac-checklist.md -->
   <meta name="robots" content="noindex, nofollow">
-  <link rel="canonical" href="https://mconfea.com/ar-condicionado.html">
-  <meta name="geo.region" content="PT-01">
-  <meta name="geo.placename" content="Vale de Cambra, Portugal">
-
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_PT">
-  <meta property="og:site_name" content="M Conf&A">
-  <meta property="og:title" content="Instalação de Ar Condicionado em Vale de Cambra e Aveiro | M Conf&A">
-  <meta property="og:description" content="Equipamentos inverter até classe A+++, instalados por empresa certificada. Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
-  <meta property="og:url" content="https://mconfea.com/ar-condicionado.html">
-  <meta property="og:image" content="https://mconfea.com/assets/img/logo.png">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/landing/logo-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/landing/logo-180.png">
-
-  <!-- Fontes auto-alojadas (sem pedidos a fonts.googleapis.com): 1 ficheiro por família, subset latin -->
-  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/BricolageGrotesque.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/HankenGrotesk.woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/landing/split-zantia.webp" media="(min-width: 1024px)">
-
+  <link rel="canonical" href="https://mconfea.com/ar-condicionado">
   <!-- ====== Medição (Google Ads / GTM) ======
-       A agência cola o snippet do Google Tag Manager (ou gtag.js) no sítio marcado, DEPOIS do bloco de consentimento.
+       Google Tag Manager GTM-KGXGSRZ2 (fornecido pela agência). O Consent Mode v2 é declarado ANTES do container,
+       para o GTM já conhecer o estado do consentimento quando avalia as tags.
        Eventos publicados no dataLayer (nomes estáveis, independentes do CSS; todos incluem zona: 'geral' | <concelho>):
          generate_lead      { form_id: 'hero' | 'completo', localidade, divisoes }  -> envio do formulário confirmado pelo servidor
          whatsapp_click     { location }                                            -> clique em qualquer botão WhatsApp
@@ -47,7 +29,33 @@
     gtag('set', 'url_passthrough', true);
     gtag('set', 'ads_data_redaction', true);
   </script>
-  <!-- [GTM / gtag.js aqui] -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KGXGSRZ2');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta name="geo.region" content="PT-01">
+  <meta name="geo.placename" content="Vale de Cambra, Portugal">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:site_name" content="M Conf&A">
+  <meta property="og:title" content="Instalação de Ar Condicionado em Vale de Cambra e Aveiro | M Conf&A">
+  <meta property="og:description" content="Equipamentos inverter até classe A+++, instalados por empresa certificada. Visita técnica com orçamento a partir de 30 € (IVA incluído), descontados na instalação.">
+  <meta property="og:url" content="https://mconfea.com/ar-condicionado">
+  <meta property="og:image" content="https://mconfea.com/assets/img/logo.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/landing/logo-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/landing/logo-180.png">
+
+  <!-- Fontes auto-alojadas (sem pedidos a fonts.googleapis.com): 1 ficheiro por família, subset latin -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/BricolageGrotesque.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/HankenGrotesk.woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/landing/split-zantia.webp" media="(min-width: 1024px)">
+
 
   <script type="application/ld+json">
   {
@@ -73,7 +81,7 @@
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Climatização",
-      "itemListElement": [ { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalação de ar condicionado", "serviceType": "Instalação de ar condicionado", "url": "https://mconfea.com/ar-condicionado.html" } } ]
+      "itemListElement": [ { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalação de ar condicionado", "serviceType": "Instalação de ar condicionado", "url": "https://mconfea.com/ar-condicionado" } } ]
     }
   }
   </script>
@@ -375,7 +383,7 @@
     @media (min-width: 1024px) { .wa-float { display: grid; } }
 
     /* ============ Cookies (ativado só quando houver GTM) ============ */
-    .cookies { display: none; position: fixed; left: .6rem; right: .6rem; bottom: calc(var(--sticky-h) + .6rem + env(safe-area-inset-bottom)); z-index: 90; background: #fff; color: var(--body); border: 1px solid var(--hairline); border-radius: .9rem; padding: 1rem 1.1rem; box-shadow: 0 18px 44px rgba(16,38,43,.18); font-size: .9rem; }
+    .cookies { display: none; position: fixed; left: .6rem; right: .6rem; bottom: calc(var(--sticky-h) + .5rem + env(safe-area-inset-bottom)); z-index: 90; background: #fff; color: var(--body); border: 1px solid var(--hairline); border-radius: .9rem; padding: .85rem 1rem; font-size: .88rem; box-shadow: 0 18px 44px rgba(16,38,43,.18); font-size: .9rem; }
     .cookies.show { display: block; }
     @media (min-width: 768px) { .cookies { left: auto; right: 1rem; max-width: 26rem; } }
     @media (min-width: 1024px) { .cookies { bottom: 1rem; right: 6.5rem; } }
@@ -388,6 +396,11 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGXGSRZ2"
+  height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 
   <a class="skip" href="#orcamento">Saltar para o pedido de orçamento</a>
 
@@ -447,14 +460,14 @@
 
           <div class="hero-side">
             <img class="hero-visual in" style="--i:1" src="assets/img/landing/split-zantia.webp" alt="Unidade interior de ar condicionado Zantia" width="573" height="295" decoding="async">
-          <form id="pedido-rapido" class="card-form lead-form in" style="--i:3" data-form="hero" action="https://formsubmit.co/geral@mconfea.com" method="POST" aria-labelledby="f1-title">
+          <form id="pedido-rapido" class="card-form lead-form in" style="--i:3" data-form="hero" action="https://formsubmit.co/engenharia@mconfea.com" method="POST" aria-labelledby="f1-title">
             <h2 id="f1-title">Peça o seu orçamento</h2>
             <p class="hint">Demora menos de um minuto. Ligamos-lhe nós para marcar a visita técnica.</p>
             <div class="form-body">
               <input type="hidden" name="_subject" value="Pedido de orçamento AC (formulário rápido)">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="https://mconfea.com/ar-condicionado.html?enviado=hero#obrigado">
+              <input type="hidden" name="_next" value="https://mconfea.com/ar-condicionado?enviado=hero#obrigado">
               <input type="hidden" name="form_id" value="hero">
               <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="field">
@@ -731,18 +744,18 @@
           </div>
           <details class="privacy" id="privacidade">
             <summary>Política de privacidade: como tratamos os seus dados<svg aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
-            <p>Os dados que nos envia (nome, contactos, localidade, tipo de espaço, divisões e mensagem), juntamente com a página de origem e os identificadores da campanha que o trouxe até aqui (gclid e parâmetros UTM), são tratados pela Mconf&amp;A &mdash; Mascarenhas Conforto &amp; Automação, Unipessoal Lda (NIPC 519008294), com sede na Rua da Escola de Macinhata, 300, Vale de Cambra, exclusivamente para responder ao seu pedido de orçamento e marcar a visita técnica (diligências pré-contratuais). O envio é feito através do serviço FormSubmit, que entrega a mensagem em geral@mconfea.com. Não partilhamos os seus dados com terceiros para outros fins nem lhe enviamos comunicações de marketing sem o seu consentimento. Ao clicar no botão WhatsApp é aberta a aplicação WhatsApp (Meta). Pode pedir o acesso, a retificação ou a eliminação dos seus dados a qualquer momento através de <a class="tlink" href="mailto:geral@mconfea.com">geral@mconfea.com</a>, e apresentar reclamação à CNPD (cnpd.pt).</p>
+            <p>Os dados que nos envia (nome, contactos, localidade, tipo de espaço, divisões e mensagem), juntamente com a página de origem e os identificadores da campanha que o trouxe até aqui (gclid e parâmetros UTM), são tratados pela Mconf&amp;A &mdash; Mascarenhas Conforto &amp; Automação, Unipessoal Lda (NIPC 519008294), com sede na Rua da Escola de Macinhata, 300, Vale de Cambra, exclusivamente para responder ao seu pedido de orçamento e marcar a visita técnica (diligências pré-contratuais). O envio é feito através do serviço FormSubmit, que entrega a mensagem por email à M Conf&amp;A. Não partilhamos os seus dados com terceiros para outros fins nem lhe enviamos comunicações de marketing sem o seu consentimento. Ao clicar no botão WhatsApp é aberta a aplicação WhatsApp (Meta). Pode pedir o acesso, a retificação ou a eliminação dos seus dados a qualquer momento através de <a class="tlink" href="mailto:geral@mconfea.com">geral@mconfea.com</a>, e apresentar reclamação à CNPD (cnpd.pt).</p>
           </details>
         </div>
 
-        <form class="card-form lead-form" data-form="completo" action="https://formsubmit.co/geral@mconfea.com" method="POST" aria-labelledby="f2-title">
+        <form class="card-form lead-form" data-form="completo" action="https://formsubmit.co/engenharia@mconfea.com" method="POST" aria-labelledby="f2-title">
           <h2 id="f2-title">Peça o seu orçamento</h2>
           <p class="hint">Quanto mais nos disser, mais rápido preparamos a proposta.</p>
           <div class="form-body">
             <input type="hidden" name="_subject" value="Pedido de orçamento AC (formulário completo)">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://mconfea.com/ar-condicionado.html?enviado=completo#obrigado">
+            <input type="hidden" name="_next" value="https://mconfea.com/ar-condicionado?enviado=completo#obrigado">
             <input type="hidden" name="form_id" value="completo">
             <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="duo">
@@ -850,7 +863,7 @@
 
   <!-- Banner de cookies: só é mostrado quando CONSENT_BANNER = true (ativar ao adicionar o GTM) -->
   <div class="cookies" id="cookies" role="dialog" aria-label="Cookies" aria-hidden="true" tabindex="-1">
-    <p>Usamos cookies de medição para saber se os nossos anúncios trazem pedidos de orçamento. Pode aceitar ou rejeitar; a página funciona da mesma forma. <a class="tlink" href="#privacidade">Saber mais</a></p>
+    <p>Usamos cookies de medição para saber se os anúncios trazem pedidos de orçamento. <a class="tlink" href="#privacidade">Saber mais</a></p>
     <div class="cbtns">
       <button class="btn btn-outline" type="button" data-consent="deny">Rejeitar</button>
       <button class="btn btn-teal" type="button" data-consent="grant">Aceitar</button>
@@ -863,10 +876,10 @@
   (function () {
     'use strict';
     /* ---- Configuração ---- */
-    var ENDPOINT = 'https://formsubmit.co/ajax/geral@mconfea.com'; // envio sem backend; a 1.ª submissão pede ativação por email (ver checklist no head)
+    var ENDPOINT = 'https://formsubmit.co/ajax/engenharia@mconfea.com'; // envio sem backend; pede ativação por email na 1.ª submissão (docs/landing-ac-checklist.md)
     var WA_NUMBER = '351913632248';
-    var PREVIEW = true;                         // passar a false ao publicar (remove a etiqueta de pré-visualização)
-    var CONSENT_BANNER = false;                 // passar a true quando o GTM for adicionado
+    var PREVIEW = false;                        // true mostra a etiqueta de pré-visualização
+    var CONSENT_BANNER = true;                  // banner de cookies (necessário com o GTM instalado)
     var CONSENT_TEXT_VERSION = '2026-09-20-v2'; // versão do texto de consentimento (prova RGPD)
     var ZONAS = {                               // ?zona=<slug> troca a localidade no H1 (uma URL final por grupo de anúncios)
       'agueda': 'Águeda', 'albergaria-a-velha': 'Albergaria-a-Velha', 'anadia': 'Anadia',
