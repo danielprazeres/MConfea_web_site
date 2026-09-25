@@ -1,9 +1,14 @@
 # Landing de campanha: `ar-condicionado.html`
 
 Página de destino dos anúncios Google Ads de instalação de ar condicionado (agência Saltypuzzle).
-URL final (o que a agência usa nos anúncios): `https://mconfea.com/ar-condicionado`, servido pelo rewrite
-declarado no `vercel.json`. O `.html` continua a funcionar, mas o canonical aponta para a versão sem extensão.
+URL final (o que a agência usa nos anúncios): `https://www.mconfea.com/ar-condicionado`.
+
+O domínio servido é o **www**: `mconfea.com` responde 308 para `www.mconfea.com`. Usar sempre a versão com www
+nos anúncios, para o URL final não passar por um redirecionamento. O `.html` continua a abrir.
 É uma página à parte: o site principal mantém-se.
+
+Atenção ao FormSubmit: trata `mconfea.com` e `www.mconfea.com` como formulários distintos, cada um com a sua
+ativação por email. A origem válida é a do site, `www.mconfea.com`.
 
 ## Checklist antes de ativar os anúncios
 
