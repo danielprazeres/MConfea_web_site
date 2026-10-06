@@ -92,6 +92,50 @@
     "ficha": "ficha-Split HAVAI.pdf"
   },
   {
+    "id": 23,
+    "nome": "Split DENVER",
+    "categoria": "Ar Condicionado",
+    "subcategoria": "Split",
+    "descricao": "Novidade | Classe Energética A+++ | Wi-Fi incluído | Modo ECO+ | R32",
+    "detalhes": "Nova geração de ar condicionado Split DENVER de alta eficiência (A+++), com funcionalidades de inteligência artificial como o Modo ECO+ e o Controlo de Humidade Inteligente. Tecnologia de purificação do ar Super Ionizador, que neutraliza partículas como poeira, pólen, ácaros e bactérias e reduz odores. Módulo Wi-Fi de série para controlo através do telemóvel com a aplicação Smart Life. Disponível em 9 000, 12 000, 18 000 e 24 000 BTU (2,6 a 7,0 kW), com SEER até 8,8 e SCOP 4,6.",
+    "empresa": "Zantia",
+    "btu": 12000,
+    "capacidade_litragem": null,
+    "eficiencia_energetica": "A+++",
+    "caracteristicas": [
+      "Compressor Super DC Inverter",
+      "Modo ECO+ (máxima eficiência energética)",
+      "Modo GEAR (limita o compressor a 75% ou 50%)",
+      "Controlo de Humidade por Inteligência Artificial",
+      "Super Ionizador (purificação do ar)",
+      "Filtro de Alta Densidade e Filtro de Catalisador Frio",
+      "Auto-Limpeza a 56 ºC",
+      "Controlo Wi-Fi incluído (Smart Life)",
+      "Aquecimento a 8 ºC (proteção contra o gelo)",
+      "Função Follow Me",
+      "Modo Turbo+",
+      "Modo Silêncio (unidade interior e exterior)",
+      "1 W em standby",
+      "Compatibilidade Mono & Multisplit",
+      "Funcionamento em aquecimento até -25 ºC exteriores",
+      "Deteção de Fugas",
+      "Reinício Automático",
+      "Temporizador"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/ar-condicionado/zantia-split-denver/",
+    "imagens": [
+      "img/split-denver-1.png",
+      "img/split-denver-2.png",
+      "img/split-denver-3.png",
+      "img/split-denver-4.png",
+      "img/split-denver-5.png",
+      "img/split-denver-6.png"
+    ],
+    "manual": "manual-split-denver.pdf",
+    "ficha": "ficha-split-denver.pdf"
+  },
+  {
     "id": 3,
     "nome": "Multiplit",
     "categoria": "Ar Condicionado",
@@ -325,6 +369,72 @@
     ],
     "manual": "manual-ficha-REGINA-SMART-500-A.pdf",
     "ficha": "ficha-REGINA-SMART-500-A.pdf"
+  },
+  {
+    "id": 24,
+    "nome": "REGINA NEO A+",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "A.Q.S.",
+    "descricao": "Novidade | Prod. e Acum. de A.Q.S. | 100L a 300L | R290 | Sem Serp., 1 ou 2 Serp. | Wi-Fi | Aço inox Duplex 2101",
+    "detalhes": "Nova geração de bomba de calor de alta eficiência energética (A+) para produção e acumulação de água quente sanitária, com capacidade de 100L a 300L (100L mural, restantes de chão). Gás refrigerante de última geração R290. Display digital touch com interface de controlo via Wi-Fi. Acumulador em aço inox Duplex 2101. A transferência de energia do circuito frigorífico é efetuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
+    "empresa": "Zantia",
+    "btu": null,
+    "capacidade_litragem": "100L, 150L, 200L e 300L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Elevada eficiência energética (COP até 3,75)",
+      "Fluído frigorigéneo: R290",
+      "Display digital touch",
+      "Interface de controlo via Wi-Fi",
+      "Controlador com função solar (inclui sonda para coletor solar)",
+      "1 ou 2 serpentinas auxiliares: Sistema Solar, Recuperadores, Caldeiras Biomassa, Gasóleo ou Gás",
+      "Condensador de alta eficiência",
+      "Apoio elétrico de 1,6 kW",
+      "Temperatura máxima da água: 70 ºC",
+      "Funcionamento entre -7 ºC e 45 ºC",
+      "Acumulador em aço inox Duplex 2101",
+      "Acumulador com sistema de proteção avançada anti-corrosão"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/zantia-regina-neo/",
+    "imagens": [
+      "img/regina-neo-1.png"
+    ],
+    "manual": "manual-regina-neo.pdf",
+    "ficha": "ficha-regina-neo.pdf"
+  },
+  {
+    "id": 25,
+    "nome": "REGINA NEO PRO A+",
+    "categoria": "Bombas de Calor",
+    "subcategoria": "A.Q.S.",
+    "descricao": "Novidade | Prod. e Acum. de A.Q.S. | 100L a 300L | R290 | Sem Serp., 1 ou 2 Serp. | Wi-Fi | Aço inox Duplex 2205",
+    "detalhes": "Nova geração de bomba de calor de alta eficiência energética (A+) para produção e acumulação de água quente sanitária, com capacidade de 100L a 300L (100L mural, restantes de chão). Gás refrigerante de última geração R290. Display digital touch com interface de controlo via Wi-Fi. Acumulador em aço inox Duplex 2205. A transferência de energia do circuito frigorífico é efetuada através de uma serpentina exterior a funcionar como condensador na parede exterior do acumulador.",
+    "empresa": "Zantia",
+    "btu": null,
+    "capacidade_litragem": "100L, 150L, 200L e 300L",
+    "eficiencia_energetica": "A+",
+    "caracteristicas": [
+      "Elevada eficiência energética (COP até 3,75)",
+      "Fluído frigorigéneo: R290",
+      "Display digital touch",
+      "Interface de controlo via Wi-Fi",
+      "Controlador com função solar (inclui sonda para coletor solar)",
+      "1 ou 2 serpentinas auxiliares: Sistema Solar, Recuperadores, Caldeiras Biomassa, Gasóleo ou Gás",
+      "Condensador de alta eficiência",
+      "Apoio elétrico de 1,6 kW",
+      "Temperatura máxima da água: 70 ºC",
+      "Funcionamento entre -7 ºC e 45 ºC",
+      "Acumulador em aço inox Duplex 2205",
+      "Acumulador com sistema de proteção avançada anti-corrosão"
+    ],
+    "disponibilidade": "Sob Consulta",
+    "pasta": "assets/files/products/bomba-de-calor/zantia-regina-neo-pro/",
+    "imagens": [
+      "img/regina-neo-pro-1.png"
+    ],
+    "manual": "manual-regina-neo-pro.pdf",
+    "ficha": "ficha-regina-neo-pro.pdf"
   },
   {
     "id": 10,
