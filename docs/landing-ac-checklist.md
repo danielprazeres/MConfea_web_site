@@ -12,9 +12,9 @@ ativação por email. A origem válida é a do site, `www.mconfea.com`.
 
 ## Checklist antes de ativar os anúncios
 
-1. **Prova social.** A secção de testemunhos foi removida por não haver testemunhos reais. Quando existirem
-   avaliações (idealmente no Perfil de Empresa do Google), inserir uma secção entre "Porquê nós" e o FAQ,
-   com nome e localidade reais.
+1. **Prova social.** Secção "Testemunho" entre "Porquê nós" e o FAQ, com o email de um cliente real
+   (Arnaldo F., set. 2026), citado literalmente e só com cortes. Confirmar com o cliente que autoriza a
+   publicação. Quando houver avaliações no Perfil de Empresa do Google, juntá-las a esta secção.
 2. **Fotografias.** A página não usa fotos de pessoas. Se o cliente enviar fotos de instalações suas,
    a secção "Quem somos" ganha uma coluna de imagem ao lado do cartão de credenciais.
 3. **Formulários.** Os pedidos vão para `engenharia@mconfea.com` (pedido do cliente em 2026-09-22). O envio

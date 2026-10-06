@@ -328,6 +328,13 @@
     .pillar h3 { font-size: 1.15rem; margin-top: 1rem; }
     .pillar p { font-size: .95rem; color: var(--on-dark-muted); margin-top: .5rem; }
 
+    /* ============ Testemunho ============ */
+    .quote { max-width: 46rem; background: #fff; border: 1px solid var(--hairline); border-left: 4px solid var(--copper); border-radius: 1rem; padding: 1.75rem 1.5rem; box-shadow: 0 18px 44px rgba(16,38,43,.08); }
+    @media (min-width: 768px) { .quote { padding: 2.25rem 2.5rem; } }
+    .quote blockquote { display: grid; gap: .9rem; font-size: 1.1rem; line-height: 1.6; color: var(--ink); }
+    .quote figcaption { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--hairline); font-size: .9rem; color: var(--muted); }
+    .quote figcaption b { color: var(--ink); }
+
     /* ============ FAQ ============ */
     .faq { max-width: 46rem; }
     .faq-item { border-top: 1px solid var(--hairline); }
@@ -682,7 +689,23 @@
       </div>
     </section>
 
-    <!-- Secção de prova social (testemunhos/avaliações) a inserir aqui. -->
+    <!-- ============ TESTEMUNHO ============ -->
+    <!-- Testemunho real recebido por email (set. 2026). Citação literal do cliente, só com cortes. Autorização de publicação a confirmar pelo Rafael. -->
+    <section class="band alt" id="testemunhos" aria-labelledby="h-test">
+      <div class="wrap">
+        <div class="sect-head">
+          <p class="eyebrow">Testemunho</p>
+          <h2 class="h2" id="h-test">O que nos escreveu um cliente</h2>
+        </div>
+        <figure class="quote">
+          <blockquote>
+            <p>“Gostaria de parabenizar os técnicos pelo trabalho muito eficiente e pela simpatia. Eles me explicaram bem o funcionamento do aparelho. […] Estamos totalmente satisfeitos com o serviço prestado.”</p>
+            <p>“Realmente um trabalho sério que reflete a imagem de vocês.”</p>
+          </blockquote>
+          <figcaption><b>Arnaldo F.</b>, cliente particular · mensagem enviada por email, setembro de 2026</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <!-- ============ FAQ ============ -->
     <section class="band" id="faq" aria-labelledby="h-faq">
