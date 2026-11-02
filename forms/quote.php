@@ -6,7 +6,7 @@
   * For more info and help: https://bootstrapmade.com/php-email-form/
   */
 
-  // Replace contact@example.com with your real receiving email address
+  // Email que recebe as submissões deste formulário
   $receiving_email_address = 'geral@mconfea.com';
 
   if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
